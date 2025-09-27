@@ -1,0 +1,311 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+/* Slide 3 Container */
+.slide3-section {
+  display: flex;
+  justify-content: center;    /* Center horizontally */
+  align-items: center;        /* Center vertically */
+  gap: 25px;
+  flex-wrap: nowrap;
+  width: 100%;
+  min-height: 80vh;
+  padding: 20px;
+  box-sizing: border-box;
+  margin-top: 60px;
+}
+
+/* Slide 3 Card Container */
+.slide3-card-container {
+  border: 3px solid rgba(255, 255, 255, 0.4);
+  border-radius: 20px;
+  padding: 12px;
+  display: inline-block;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.slide3-card-container:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.2);
+}
+
+/* Slide 3 Card */
+.slide3-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 20px;
+  width: 350px;
+  height: 470px; /* fixed height for desktop */
+  text-align: center;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.slide3-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.6);
+}
+
+/* Slide 3 Title */
+.slide3-card h2 {
+  font-size: 35px;
+  margin-bottom: 10px;
+  font-weight: 800;
+}
+
+/* Slide 3 Text */
+.slide3-card p {
+  font-size: 20px;
+  font-weight: 600;
+  font-family: 'Montserrat', sans-serif;
+  text-align: justify;
+  padding: 20px;
+  word-spacing: 10px;
+  margin-bottom: 15px;
+  line-height: 1.27;
+}
+
+/* Slide 3 Image */
+.slide3-card img {
+  max-width: 200px;
+  max-height: 200px;
+  align-self: center;
+}
+
+/* Standard laptops (13"–15") */
+@media (min-width: 1025px) and (max-width: 1405px) {
+  .slide3-section {
+    display: flex;
+    flex-direction: row;         
+    justify-content: center;    
+    align-items: flex-start;    
+    gap: 18px;                  
+    width: 100%;                 
+    margin: 0 auto;              
+    padding: 90px 500px 100px;   /* extra bottom space for arrows */
+    box-sizing: border-box;
+  }
+
+  .slide3-card-container {
+    flex: 1 1 auto;              
+    max-width: 300px;   /* ↓ reduce width so all 3 fit */
+    min-width: 260px;            
+  }
+
+  .slide3-card {
+    width: 100%;
+    height: auto;                
+    min-height: 480px;           
+    padding: 16px;
+  }
+
+  /* Adjust text for laptops */
+  .slide3-card h2 {
+    font-size: 28px;
+  }
+
+  .slide3-card p {
+    font-size: 16px;
+    padding: 15px;
+    word-spacing: normal;
+  }
+
+  /* Images slightly smaller */
+  .slide3-card img {
+    max-width: 160px;
+    max-height: 160px;
+  }
+}
+
+
+
+/* Tablet Responsive (769px–1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .slide3-section {
+    display: flex;
+    flex-direction: row;         
+    justify-content: center;    
+    align-items: flex-start;    
+    gap: 15px;                  
+    width: 100%;                 
+    margin: 0 auto;              
+    padding: 90px 10px;
+  }
+
+  .slide3-card-container {
+    flex: 1 1 auto;              
+    max-width: 300px;            /* keep balance */
+    min-width: 260px;            /* prevent too small */
+  }
+
+  .slide3-card {
+    width: 100%;
+    height: auto;                
+    min-height: 470px;           
+    padding: 15px;
+  }
+
+  /* scale down text for tablets */
+  .slide3-card h2 {
+    font-size: 28px;
+  }
+
+  .slide3-card p {
+    font-size: 16px;
+    padding: 15px;
+    word-spacing: normal;  /* fix awkward spacing */
+  }
+
+  /* images shrink proportionally */
+  .slide3-card img {
+    max-width: 150px;
+    max-height: 150px;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .slide3-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    /* keep this as the scroll viewport */
+    position: relative;
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    box-sizing: border-box;
+
+    /* keep only right/left/bottom paddings here (no top) */
+    padding: 200px 10px 80px;
+    -webkit-overflow-scrolling: touch; /* smooth on iOS */
+    scrollbar-width: thin;
+    scrollbar-color: #87cefa transparent;
+  }
+
+  /* pseudo-element becomes a real scrollable spacer */
+  .slide3-section::before {
+    content: "";
+    display: block;
+    flex: 0 0 800px;    /* fixed spacer height */
+    height: 800px;
+    width: 100%;
+  }
+
+  /* optional small bottom spacer so last card isn't flush to edge */
+  .slide3-section::after {
+    content: "";
+    display: block;
+    flex: 0 0 20px;
+    height: 20px;
+    width: 100%;
+  }
+
+  .slide3-card {
+    width: 100%;
+    max-width: 320px;
+    min-height: 400px;
+    box-sizing: border-box;
+  }
+
+  /* If you still use transforms for horizontal nudge — it's OK,
+     but if you see clipping try replacing transform with margin-left */
+  .slide3-section > .slide3-card,
+  .slide3-section > .slide3-card-container {
+    transform: translateX(7px);
+    will-change: transform;
+  }
+
+  /* webkit scrollbar styling (same as you had) */
+  .slide3-section::-webkit-scrollbar { width: 8px; scrollbar-gutter: stable; }
+  .slide3-section::-webkit-scrollbar-track { background: transparent; }
+  .slide3-section::-webkit-scrollbar-thumb { background-color: #87cefa; border-radius: 10px; }
+  .slide3-section::-webkit-scrollbar-thumb:hover { background-color: #5ab4e8; }
+}
+
+/* Extra small phones (≤ 480px) */
+@media (max-width: 480px) {
+  .slide3-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    /* keep this as the scroll viewport */
+    position: relative;
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    box-sizing: border-box;
+
+    /* smaller padding since screen is narrower */
+    padding: 400px 6px 60px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: #87cefa transparent;
+    margin-left: 80px;
+  }
+
+  /* pseudo-element spacer for top offset */
+  .slide3-section::before {
+    content: "";
+    display: block;
+    flex: 0 0 600px;   /* reduced from 800px for smaller screens */
+    height: 600px;
+    width: 100%;
+  }
+
+  .slide3-section::after {
+    content: "";
+    display: block;
+    flex: 0 0 16px;
+    height: 16px;
+    width: 100%;
+  }
+
+  .slide3-card {
+    width: 100%;
+    max-width: 280px;   /* slimmer than 320px */
+    min-height: 360px;  /* slightly shorter */
+    padding: 10px;
+    box-sizing: border-box;
+  }
+
+  .slide3-card h2 {
+    font-size: clamp(18px, 6vw, 22px); /* scale heading down */
+    text-align: center;
+  }
+
+  .slide3-card p {
+    font-size: clamp(13px, 4vw, 16px);
+    line-height: 1.5;
+    padding: clamp(8px, 3vw, 14px);
+    word-spacing: 1;
+    text-align: justify;
+  }
+
+  .slide3-card img {
+    max-width: 100px;
+    max-height: 100px;
+    margin: 0 auto; /* keep centered */
+  }
+
+  /* horizontal nudge */
+  .slide3-section > .slide3-card,
+  .slide3-section > .slide3-card-container {
+    transform: translateX(4px);
+  }
+
+  /* scrollbar for webkit browsers */
+  .slide3-section::-webkit-scrollbar { width: 6px; scrollbar-gutter: stable; }
+  .slide3-section::-webkit-scrollbar-track { background: transparent; }
+  .slide3-section::-webkit-scrollbar-thumb { background-color: #87cefa; border-radius: 10px; }
+  .slide3-section::-webkit-scrollbar-thumb:hover { background-color: #5ab4e8; }
+}
+

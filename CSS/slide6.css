@@ -1,0 +1,274 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+.carousel-wrapper-slide6 {
+    display: flex;
+    justify-content: center; /* horizontal centering */
+    align-items: center;     /* vertical centering */
+    color: #fff;
+}
+
+.carousel-slide6 {
+  height: clamp(400px, 550px, 650px) !important;
+  width: 80%;
+  perspective: 120px;
+  margin-top: clamp(40px, 100px, 140px);
+  border-radius: clamp(12px, 20px, 28px);
+  z-index: 0;           /* 👈 stays at the back */
+  overflow: visible;    /* make sure shadows/glows show */
+}
+
+.carousel-slide6 .carousel-item-slide6 {
+  font-family: 'Montserrat', sans-serif; 
+  width: clamp(320px, 400px, 600px);
+  padding: clamp(8px, 10px, 14px);
+  margin-top: clamp(-120px, -90px, -60px);
+  background-color: rgba(20, 20, 40, 0.7);
+  border: 1px solid rgba(163, 91, 190, 0.5);
+  border-radius: clamp(6px, 8px, 12px);
+  box-shadow: 20px 20px 22px rgba(0, 0, 0, 0.2),
+              inset 0 0 6px #427A78;
+  backdrop-filter: blur(12px); 
+}
+
+.carousel-title-slide6 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(1.8rem, 2.5rem, 3rem);
+    font-weight: 800;
+    letter-spacing: -1px;
+    margin-top: -0.5px;
+}
+
+.carousel-text-slide6 {
+  font-family: 'Montserrat', sans-serif;
+  text-align: justify;
+  font-size: clamp(1.2rem, 1.5rem, 2rem);
+  font-weight: 600;
+  line-height: 1.6;
+  margin: 15px 0;
+  letter-spacing: 1px; 
+  word-spacing: clamp(2px, 5px, 8px);
+  padding: 0 20px;            
+}
+
+.safety-tips {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  list-style-type: disc;    
+  padding-left: clamp(20px, 40px, 60px);      
+  margin: 15px 0;
+  letter-spacing: 1px;
+  font-size: clamp(1.2rem, 1.5rem, 2rem);
+  word-spacing: clamp(2px, 5px, 8px);
+}
+
+.safety-tips li {
+  margin-bottom: clamp(12px, 20px, 28px);     
+  line-height: 1.6;
+  padding: 0 20px;
+  letter-spacing: 1px; 
+  word-spacing: clamp(2px, 5px, 8px);
+  padding-left: clamp(6px, 11px, 16px);  
+  text-indent: 0;      
+}
+
+.protection-steps {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  list-style-type: decimal;   
+  padding-left: clamp(30px, 50px, 70px);        
+  margin: clamp(12px, 20px, 28px) 0;    
+  letter-spacing: 1px;
+  word-spacing: clamp(2px, 5px, 8px);
+  font-size: clamp(1.2rem, 1.5rem, 2rem);
+}
+
+.protection-steps li {
+  margin-bottom: clamp(15px, 22px, 28px);        
+  line-height: 1.6;
+}
+
+.colors-legend-slide6 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  list-style-type: disc;       
+  padding-left: clamp(24px, 40px, 56px);        
+  margin: 1px 0;              
+  letter-spacing: 1px;
+  word-spacing: clamp(2px, 4px, 6px);
+  font-size: clamp(1.1rem, 1.4rem, 1.8rem);
+}
+
+.colors-legend-slide6 li {
+  margin-bottom: clamp(12px, 18px, 24px);         
+  line-height: 1.6;  
+  padding-left: clamp(12px, 20px, 28px);            
+}
+
+.colors-legend-slide6 li strong {
+  font-size: clamp(1.3rem, 1.7rem, 2.2rem);
+  word-spacing: clamp(2px, 4px, 6px);
+  letter-spacing: -1px;            
+  font-weight: 700;
+  color: #fff;             
+  margin-bottom: 5px;  
+  padding-left: -1px;           
+}
+
+.center-text {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  list-style-type: decimal;   
+  padding-left: clamp(15px, 25px, 35px);        
+  margin: clamp(12px, 20px, 28px) 0;    
+  letter-spacing: 1px;
+  word-spacing: clamp(2px, 5px, 8px);
+  font-size: clamp(1.2rem, 1.5rem, 2rem);
+}
+
+.download-link {
+    margin-top: clamp(4px, 12px, 20px);   /* tighter minimum and maximum */
+    text-align: center; 
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(0.7rem, 0.9rem, 1.1rem); 
+    font-weight: 600; 
+    color: rgb(7, 181, 224) ; 
+    letter-spacing: 1px; 
+    word-spacing: clamp(1px, 3px, 5px);
+    line-height: 1.6; 
+    padding: clamp(6px, 10px, 14px) clamp(12px, 20px, 28px); 
+    border-radius: clamp(6px, 8px, 12px);
+
+    /* add underline */
+    text-decoration: underline;
+    text-decoration-thickness: 1.5px;          /* optional: control thickness */
+    text-underline-offset: 4px;              /* optional: add some space */
+}
+
+.carousel-slide6 .carousel-item-slide6 {
+  font-family: 'Montserrat', sans-serif; 
+  width: clamp(320px, 600px, 800px);
+  height: clamp(200px, 550px, 650px) !important;
+  padding: clamp(20px, 30px, 40px);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: clamp(12px, 16px, 20px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3);
+  background-color: rgba(20, 20, 40, 0.7);
+  border: 1px solid rgba(163, 91, 190, 0.5);
+  border-radius: clamp(6px, 8px, 12px);
+  box-shadow: 20px 20px 22px rgba(0, 0, 0, 0.2),
+              inset 0 0 6px #427A78;
+  backdrop-filter: blur(12px); 
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.carousel-pagination-slide6 {
+    margin-top: clamp(-100px, -80px, -60px);
+    text-align: center;
+}
+
+.carousel-pagination-slide6 .dot {
+    display: inline-block;
+    width: clamp(12px, 20px, 28px);
+    height: clamp(2px, 4px, 6px);
+    margin: 0 clamp(2px, 4px, 6px);
+    border-radius: clamp(2px, 4px, 6px);
+    background: rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+    border: none;
+    box-sizing: border-box;
+    transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.carousel-pagination-slide6 .dot.active {
+    background: #a35bbe;
+    box-shadow: 0 0 6px #a35bbe;
+    transform: scale(1.05);
+}
+
+.carousel-pagination-slide6 .dot:hover {
+    background: #c08fd9;
+    transform: scale(1.1);
+}
+
+
+@media (max-width: 768px) {
+
+  .carousel-wrapper-slide6 {
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 1rem;
+    
+    padding-top: clamp(40px, 60px, 80px);
+    display: block;
+    color: #fff;
+    overflow-y: auto; /* allow vertical scroll */
+    
+
+    
+  }
+
+  .carousel-slide6 {
+    width: 100%;
+    height: auto !important;
+    margin-top: 0;
+    border-radius: 16px;
+    overflow: visible !important;
+    perspective: none !important;   /* disable 3D perspective */
+    transform: none !important;     /* reset transforms */
+    display: block !important;      /* disable flex carousel layout */
+  }
+
+  .carousel-slide6 .carousel-item-slide6 {
+    position: relative !important;  /* no absolute positioning */
+    transform: none !important;     /* cancel translations */
+    opacity: 1 !important;          /* ensure visible */
+    visibility: visible !important;
+    width: 90% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    margin: 0 auto 1.5rem auto;     /* spacing between items */
+    padding: 16px;
+    display: block !important;
+    margin: 10px auto;
+  }
+
+  /* Typography + content adjustments */
+  .carousel-title-slide6 {
+    font-size: clamp(1.2rem, 1.6rem, 2rem);
+    text-align: center;
+    margin: clamp(8px, 12px, 16px) 0;
+  }
+
+  .carousel-text-slide6,
+  .safety-tips,
+  .protection-steps,
+  .colors-legend-slide6,
+  .center-text {
+    font-size: clamp(0.9rem, 1rem, 1.2rem);
+    line-height: 1.5;
+    word-spacing: 1;
+    letter-spacing: 0.5;
+    text-align: left;
+  }
+
+  .download-link {
+    font-size: clamp(0.7rem, 0.8rem, 1rem);
+    margin-top: clamp(20px, 30px, 40px);
+    padding: clamp(8px, 10px, 12px);
+    text-align: center;
+  }
+
+  /* Disable navigation (dots/arrows) */
+  .carousel-pagination-slide6,
+  .carousel-pagination-slide6 .dot,
+  .carousel-navigation,
+  .carousel-prev,
+  .carousel-next {
+    display: none !important;
+    visibility: hidden;
+  }
+}

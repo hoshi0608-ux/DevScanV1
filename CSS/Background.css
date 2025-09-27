@@ -1,0 +1,33 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+
+}
+
+body {
+  background-color: #17171f;
+}
+.slider-pagination {
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none; 
+}
+.slider-pagination::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
+@media (max-width: 768px) {
+  .slider-pagination {
+    display: flex;
+    overflow-x: auto;
+    scrollbar-width: none; /* hide scrollbar in Firefox */
+  }
+  .slider-pagination::-webkit-scrollbar {
+    display: none; /* hide scrollbar in Chrome/Safari */
+  }
+  .slider-tab {
+    flex: 0 0 auto; /* prevent shrinking */
+    padding: 0 10px;
+  }
+}

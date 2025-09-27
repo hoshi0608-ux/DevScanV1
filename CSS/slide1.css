@@ -1,0 +1,389 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600;700;800;900&display=swap");
+
+
+/* Slider Section */
+.slider-wrapper .slider-item {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.slider-wrapper .slider-item::before {
+  position: absolute;
+  content: "";
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("../IMAGES/page1.png");
+  background-size: cover;
+  background-position: center;
+}
+
+/* Gradient Text */
+.gradient-text {
+  background: linear-gradient(to right, #ffffff, rgba(255, 255, 255, 0.2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Grid Container */
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto auto;
+  gap: 5px;
+  justify-items: start;
+  text-align: left;
+  position: absolute;
+  top: 15%;
+  left: 6%;
+}
+
+/* Headline */
+.Text {
+  color: #ffffff;
+  font-family: "Montserrat", sans-serif !important;
+  font-size: 5rem !important;
+  font-weight: 900 !important;
+
+  letter-spacing: 1px;
+}
+
+/* Info Text */
+.Info {
+  color: #ffffff;
+  font-family: "Montserrat", sans-serif !important;
+  font-size: 1.3rem !important;
+  letter-spacing: 1px;
+  font-weight: 300 !important;
+  
+  transition: 0.5s ease;
+
+  margin-left: -10px; 
+}
+
+.button-container {
+  margin-left: 13%;   
+  margin-top: 5%;   
+}
+/* Button */
+.button {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  height: 3rem;
+  padding: 0 4rem;
+  border-radius: 1.5rem;
+  background: #3d3a4e;
+  background-size: 400%;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(
+    82.3deg,
+    rgba(163, 91, 190, 1) 10.8%,
+    rgba(84, 51, 163, 1) 58.3%,
+    rgba(36, 28, 94, 1) 94.3%
+  );
+  transition: all 0.475s;
+  z-index: 0;
+}
+
+.button:hover::before {
+  transform: scaleX(1);
+}
+
+.button-content {
+  position: relative;
+  font-size: 1rem;
+  font-family: "Montserrat", sans-serif !important;
+  z-index: 1;
+  line-height: 3rem; /* vertical centering instead of padding hack */
+  font-weight: 450;
+  
+}
+
+.button:hover .button-content {
+  color: #fff;
+}
+
+
+.DEVLOGO .logo {
+  width: 100%;
+  height: auto;
+  position: relative;
+  z-index: 2;
+}
+
+.DEVLOGO { 
+  position: fixed;
+  top: 20px;
+  left: 52px;
+  width: 200px;                    
+  height: auto; 
+  z-index: 1000;
+  display: inline-block;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .DEVLOGO {
+    left: auto !important;
+    right: -10px !important;
+    width: 150px;
+  }
+}
+
+
+
+
+/* Button Container */
+.button-container {
+  margin-left: 13%;
+  margin-top: 5%;
+}
+
+/* Button */
+.button {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  height: 3rem;
+  padding: 0 4rem;
+  border-radius: 1.5rem;
+  background: #3d3a4e;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  z-index: 1;
+}
+
+/* Animated Gradient Border with Yellow Tint */
+.button::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 2px; 
+  background: linear-gradient(
+    270deg,
+           
+    rgba(163, 91, 190, 1),
+    rgba(84, 51, 163, 1),
+    rgba(56, 48, 114, 1)
+         
+  );
+  background-size: 300% 300%;
+  animation: gradientBorder 6s ease infinite;
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Keyframes for border animation */
+@keyframes gradientBorder {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Inner Background Hover Effect with Animation */
+.button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(
+    270deg,
+   /* rgba(255, 223, 0, 1), */
+    rgba(163, 91, 190, 1),
+    rgba(84, 51, 163, 1),
+    rgba(36, 28, 94, 1),
+  /*  rgba(255, 223, 0, 1) */
+  );
+  background-size: 300% 300%;
+  transition: transform 0.475s ease-in-out;
+  z-index: 0;
+}
+
+.button:hover::before {
+  transform: scaleX(1);
+  animation: gradientFill 4s ease infinite;
+}
+
+/* Keyframes for hover fill animation */
+@keyframes gradientFill {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Button Text */
+.button-content {
+  position: relative;
+  font-size: 1rem;
+  font-family: "Montserrat", sans-serif !important;
+  z-index: 3;
+  line-height: 3rem;
+  transition: color 0.3s ease;
+}
+
+.button:hover .button-content {
+  color:  rgba(163, 91, 190, 1) 10.8%,;
+}
+
+
+
+
+
+
+/*media query*/
+
+/* Headline */
+.Text {
+  font-size: clamp(1.2rem, 5rem, 6rem) !important; /* shrinks more at small screens */
+  font-weight: 900 !important;
+  color: #fff;
+  font-family: "Montserrat", sans-serif !important;
+  letter-spacing: 1px;
+  line-height: 1.2;
+}
+
+/* Info Text */
+.Info {
+  font-size: clamp(0.65rem, 1.3rem, 1.6rem) !important; /* smaller base for small screens */
+  font-weight: 300 !important;
+  color: #fff;
+  font-family: "Montserrat", sans-serif !important;
+  letter-spacing: 1px;
+  margin-left: -5px; /* softened for small screens */
+  max-width: 90%;
+  transition: 0.5s ease;
+}
+
+/* Grid Container */
+.grid-container {
+  gap: clamp(2px, 5px, 15px);
+  position: absolute;
+  top: clamp(8%, 15%, 18%); /* move slightly up on small screens */
+  left: clamp(2%, 6%, 8%);
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto auto;
+  justify-items: start;
+  text-align: left;
+}
+
+/* Button */
+.button {
+  height: clamp(1.5rem, 3rem, 3.5rem);
+  padding: 0 clamp(1.5rem, 4rem, 5rem);
+  border-radius: clamp(0.5rem, 1.5rem, 2rem);
+  background: #3d3a4e;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  display: inline-block;
+}
+
+/* Button Text */
+.button-content {
+  font-size: clamp(0.65rem, 1rem, 1.1rem);
+  font-family: "Montserrat", sans-serif !important;
+  line-height: clamp(1.5rem, 3rem, 3.5rem);
+  transition: color 0.3s ease;
+  position: relative;
+  z-index: 3;
+}
+
+
+
+/* Extra Small to Medium Screens Adjustments (769px – 1100px) */
+@media (min-width: 769px) and (max-width: 1100px) {
+  .Text {
+    font-size: clamp(4rem, 5.5vw, 6rem) !important; /* nearly original headline size */
+    white-space: nowrap; /* prevent wrapping */
+  }
+
+  .Info {
+    font-size: clamp(1.2rem, 2vw, 1.6rem) !important; /* info text close to original max */
+    white-space: nowrap; /* prevent wrapping */
+  }
+
+  .button-content {
+    font-size: clamp(1.1rem, 1.5vw, 1.1rem) !important; /* button text matches base */
+    white-space: nowrap; /* prevent wrapping */
+  }
+}
+
+
+
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+  .Text {
+    font-size: clamp(4rem, 6vw, 5rem) !important;
+    margin-left: clamp(-20px, -5vw, -60px); /* responsive negative margin */
+  }
+
+  .Info {
+    font-size: clamp(0.8rem, 3.5vw, 1.2rem) !important;
+    margin-left: clamp(-20px, -5vw, -60px); /* responsive negative margin */
+    padding-top: clamp(6px, 10vw, 20px);     /* scales spacing above */
+  }
+
+  .button {
+    height: clamp(1.8rem, 2.5rem, 3rem);
+    padding: 0 clamp(1.5rem, 2.5rem, 3rem);
+   margin-left: clamp(-40px, -5vw, -20px);
+    margin-top: clamp(5px, 10vw, 20px);      /* scales spacing above */
+  }
+
+  .button-content {
+    font-size: clamp(0.75rem, 0.9rem, 1rem);
+    line-height: clamp(1.8rem, 2.5rem, 3rem);
+    
+  }
+}

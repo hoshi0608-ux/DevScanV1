@@ -1,0 +1,84 @@
+.slider-navigations button{
+    position: absolute;
+    top: 50%;
+    height: 40px;
+    width: 40px;
+    cursor: pointer;
+    z-index: 20;
+    color: #fff;
+    border: none;
+    background: #17171f00;
+    transform: translateY(-50%);
+    font-size: 65px;   /* increase icon size */
+     transition: background-color 0.2s ease, color 0.2s ease, transform 0.1s ease;
+}
+.slider-navigations button.swiper-button-disabled {
+  display: none;
+}
+.slider-navigations button:hover{
+    background: #17171f00;
+}
+.slider-navigations button#slide-prev{
+    left: -5px;
+}
+.slider-navigations button#slide-next{
+    right: -5px;
+}
+.slider-navigations button {
+  width: 165px;       /* increase width */
+  font-size: 65px;   /* increase icon size */
+}
+/* Hover effect */
+.slider-navigations button:hover {
+  
+  color:  #a35bbe;
+}
+.slider-navigations button:focus,
+.slider-navigations button.temp-focus {
+  outline: none;            /* Remove default outline if desired */
+  user-select: none;        /* Prevent text selection */
+  caret-color: transparent; /* Hide blinking caret */
+    color:  #a35bbe;
+  transform: scale(1.05);
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.1s ease;
+
+}
+
+
+
+.slider-tabsss {
+  border-bottom: 2px solid white;
+  padding-bottom: 10px;
+  cursor: pointer;
+  color: white; /* fallback text color */
+  transition: color 0.3s ease, border-color 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  margin-right: 0; /* spacing between icon and text */
+  width: 300px;     /* if applicable */
+  justify-content: center; 
+}
+
+/* Make sure tab-text inherits color */
+.slider-tabsss .tab-text {
+  color: inherit;
+  transition: color 0.3s ease;
+}
+
+/* Active tab */
+.slider-tabsss.active {
+  border-bottom-color:  #a35bbe;
+  color:  #a35bbe;
+}
+
+/* Hover effect on tab and tab-text */
+.slider-tabsss:hover,
+.slider-tabsss:hover .tab-text {
+  border-bottom-color:  #a35bbe;
+  color:  #a35bbe
+}
+.tab-text {
+  font-size: 1rem !important;
+  font-weight: 400  !important ;
+  
+}

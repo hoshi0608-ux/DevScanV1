@@ -1,0 +1,601 @@
+/* ===== Base Styles with Fluid Typography ===== */
+.Text {
+  font-size: clamp(1.5rem, 4vw, 3rem);
+  line-height: 1.2;
+  font-weight: bold;
+}
+
+.Info {
+  font-size: clamp(0.85rem, 1.5vw, 1.2rem);
+  line-height: 1.5;
+  max-width: 800px;
+}
+
+/* ===== Responsive Background Images ===== */
+.slider-wrapper .slider-item::before {
+  position: absolute;
+  content: "";
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+@media (max-width: 1024px) {
+  .slider-wrapper .slider-item::before {
+    background-position: center top;
+  }
+  .slider-indicator {
+    margin-left: 12vw;
+}
+  
+}
+
+@media (max-width: 768px) and (min-width: 481px) {
+  .slider-wrapper .slider-item::before {
+    background-position: center center;
+    background-size: cover;
+  }
+  .slider-indicator {
+    margin-left: 12vw;
+}
+}
+
+@media (max-width: 480px) {
+  .slider-wrapper .slider-item::before {
+    background-position: center;
+    background-size: cover;
+  }
+  .slider-indicator {
+    margin-left: 12vw;
+}
+}
+
+@media (max-width: 1536px) {
+  .slider-wrapper .slider-item .slide-content,
+  .slider-controls .slider-pagination {
+    width: 100%;
+  }
+  .slider-indicator {
+    margin-left: 12vw;
+}
+}
+
+@media (max-width: 1024px) {
+  .slider-wrapper .slider-item .slide-content,
+  .slider-controls .slider-pagination {
+    width: 100%;
+  }
+  .slider-wrapper .slider-item .slide-content > * {
+    max-width: 66%;
+  }
+  .slider-navigations button {
+    top: unset;
+    bottom: -20px;
+    background: none;
+  }
+  .slider-navigations button:hover {
+    background: none;
+  }
+  .slider-navigations button.material-symbols-rounded {
+    font-size: 30px !important;
+  }
+  .slider-indicator {
+    margin-left: 12vw;
+}
+}
+
+@media (max-width: 768px) and (min-width: 481px) {
+  .slider-wrapper .slider-item .slide-content > * {
+    max-width: 100%;
+  }
+  .slider-item .slide-content .Text {
+    font-size: clamp(1.8rem, 6vw, 3rem);
+    white-space: normal;
+    padding-left: 20px;
+    margin-top: 0;
+  }
+  .slider-item .slide-content .Info {
+    font-size: clamp(0.85rem, 2vw, 1.2rem);
+    white-space: normal;
+    padding-left: 20px;
+  }
+  .slider-navigations button.material-symbols-rounded {
+    font-size: 24px !important;
+  }
+  .slider-indicator {
+    margin-left: 12vw;
+}
+}
+
+@media (max-width: 480px) {
+  .tab-text {
+    font-size: 0.5rem;
+  }
+  .slider-item .slide-content .Text {
+    font-size: clamp(1.5rem, 8vw, 2.5rem);
+    white-space: normal;
+    padding-left: 15px;
+    margin-top: 0;
+  }
+  .slider-item .slide-content .Info {
+    font-size: clamp(0.8rem, 3vw, 1rem);
+    white-space: normal;
+    padding-left: 15px;
+  }
+  .slider-indicator {
+    margin-left: 12vw;
+}
+}
+
+/* Drawer Overlay */
+.drawer-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 998;
+}
+
+.drawer-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Drawer Panel - Solid Image Background */
+.drawer {
+  position: fixed;
+  top: 0;
+  left: -260px;
+  width: 260px;
+  height: 100%;
+  background-image: url("../IMAGES/Group\ 194\ \(3\).png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #000; /* fallback in case image fails */
+  box-shadow: 2px 0 10px rgba(0,0,0,0.2);
+  transition: left 0.3s ease;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+.drawer.open {
+  left: 0;
+}
+
+/* Close Button */
+.drawer-close {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  align-self: flex-end;
+  cursor: pointer;
+}
+
+/* Drawer Tabs (Mobile Nav) */
+.drawer-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0;
+}
+
+.drawer-nav li {
+  padding: 0.8rem 0;
+  cursor: pointer;
+  border-bottom: 1px solid #eee;
+}
+
+.drawer-nav .tab-text {
+  font-size: 1rem;
+}
+
+/* Toggle Button */
+.drawer-toggle {
+  display: none;
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  background: #333;
+  color: #fff;
+  border: none;
+  padding: 0.6rem 0.8rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+/* Mobile Only */
+@media (max-width: 768px) {
+  .drawer-toggle {
+    display: block;
+  }
+  .slider-controls {
+    display: none !important;
+  }
+}
+
+/* Drawer Content Spacing */
+.drawer-tabs {
+  list-style: none;
+  padding: 20px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.drawer-tabs .slider-tab {
+  padding: 12px 10px;
+  border-radius: 8px;
+  transition: background 0.2s ease;
+}
+
+.drawer-tabs .slider-tab:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.drawer-tabs .tab-text {
+  font-size: 1rem;
+  font-weight: 500;
+  color: white;
+  display: block;
+  line-height: 1.3;
+}
+
+
+
+/* Burger Menu Button */
+.drawer-toggle {
+  background: transparent; 
+  color: white;             
+  border-radius: 6px;
+  font-size: 1.5rem;
+  padding: 0.8rem;
+  border: none;
+  cursor: pointer;
+  transition: color 0.3s ease; /* Smooth color transition */
+}
+
+/* Hover: Change icon color only */
+.drawer-toggle:hover {
+  color: #a35bbe; 
+}
+
+/* Click: Change icon color only */
+.drawer-toggle:active {
+  color: #a35bbe;
+  transform: scale(0.95); /* Optional small click animation */
+}
+
+/* Drawer Close (X Button) */
+.drawer-close {
+  background: transparent;
+  color: white;
+  border-radius: 6px;
+  font-size: 2rem;
+  padding: 0.5rem;
+  border: none;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+/* Hover: Change icon color only */
+.drawer-close:hover {
+  color: #a35bbe;
+}
+
+/* Click: Change icon color only */
+.drawer-close:active {
+  color: #a35bbe;
+  transform: scale(0.95);
+}
+/* Hide burger when drawer is open */
+.drawer.open ~ .drawer-toggle {
+  display: none;
+}
+/* Hover or Active tab state */
+.drawer-tabs .slider-tab:hover,
+.drawer-tabs .slider-tab.active {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+
+
+
+
+/* 🔹 Large Desktop (≤ 1444px) */
+@media (max-width: 1444px) {
+  #developers {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, auto);
+    gap: clamp(25px, 2vw, 40px) clamp(20px, 2vw, 30px);
+
+    /* ✅ Center horizontally, balanced vertically */
+    margin-top: clamp(60px, 8vh, 100px);
+    margin-bottom: clamp(60px, 8vh, 100px);
+
+    width: min(100%, 1250px); /* give it more breathing room */
+    padding-inline: clamp(20px, 3vw, 40px);
+
+    justify-items: center;
+    align-items: start;  /* ✅ avoid awkward vertical stretch */
+  }
+
+  .team-header {
+    grid-column: 3 / span 2;
+    grid-row: 1;
+    text-align: right;
+    margin-bottom: clamp(20px, 2vh, 35px);
+  }
+
+  .team-title {
+    font-size: clamp(2.8rem, 3vw, 4.2rem) !important;
+    margin-left: -20px;
+    margin-top: 0;
+    white-space: nowrap;
+  }
+
+  .team-subtitle {
+    font-size: clamp(1.1rem, 1.4vw, 1.5rem);
+    margin-top: clamp(8px, 1vh, 15px);
+  }
+
+  .avatar {
+    width: clamp(150px, 12vw, 180px);
+    height: clamp(150px, 12vw, 180px);
+    margin-inline: clamp(12px, 1.5vw, 20px);
+  }
+
+  .member h3 {
+    font-size: clamp(1.1rem, 1.2vw, 1.4rem);
+    line-height: 1.4;
+    white-space: nowrap;
+  }
+
+  .team-members p {
+    font-size: clamp(0.9rem, 1vw, 1.1rem);
+    white-space: nowrap;
+  }
+}
+/* 🔹 Medium Desktop (1440px → 1025px) */
+@media (max-width: 1440px) and (min-width: 1025px) {
+  #developers {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr) !important; /* ✅ force 3 columns */
+    grid-template-rows: repeat(2, auto) !important;   /* ✅ force 2 rows */
+    gap: clamp(25px, 2vw, 40px) clamp(20px, 2vw, 30px);
+
+    /* ✅ Pull section closer to top */
+    margin-top: 20px !important;
+    margin-bottom: clamp(40px, 6vh, 70px);
+
+    width: min(100%, 1150px);
+    margin-inline: auto;
+
+    justify-items: center;
+    align-items: start;
+  }
+
+  .team-header {
+    grid-column: 1 / -1; /* ✅ span full width */
+    grid-row: 1;
+    text-align: center;
+    margin-bottom: clamp(15px, 2vh, 25px);
+  }
+
+  .team-title {
+    font-size: clamp(2.4rem, 2.6vw, 3.2rem) !important;
+    margin: 0 auto;
+    text-align: center;
+    white-space: normal;
+  }
+
+  .team-subtitle {
+    font-size: clamp(1rem, 1.2vw, 1.3rem);
+    margin-top: clamp(6px, 1vh, 12px);
+    text-align: center;
+    white-space: normal;
+  }
+
+  .avatar {
+    width: clamp(130px, 11vw, 160px);
+    height: clamp(130px, 11vw, 160px);
+  }
+
+  .member h3 {
+    font-size: clamp(1.1rem, 1.2vw, 1.3rem);
+    text-align: center;
+  }
+
+  .team-members p {
+    font-size: clamp(0.9rem, 1vw, 1rem);
+    text-align: center;
+  }
+}
+
+
+/* 🔹 Tablet (≤ 1024px) */
+@media (max-width: 1024px) {
+  #developers {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
+    grid-auto-rows: auto;                  /* rows adjust automatically */
+    gap: clamp(15px, 2vw, 30px);
+
+    /* ✅ Push grid lower for better spacing */
+    margin-top: clamp(40px, 8vh, 80px);
+    padding-bottom: clamp(20px, 5vh, 50px);
+
+    justify-items: center;
+    width: 100%;
+  }
+
+  .team-header {
+    grid-column: 1 / -1; /* spans across all 3 columns */
+    text-align: center;
+    margin-bottom: clamp(15px, 2vw, 25px);
+  }
+
+  .team-title {
+    font-size: clamp(2rem, 3vw, 2.6rem) !important;
+    margin: 0 auto;
+    text-align: center;
+    white-space: normal;
+  }
+
+  .team-subtitle {
+    font-size: clamp(1rem, 1.5vw, 1.3rem);
+    text-align: center;
+    margin-top: clamp(5px, 2vw, 12px);
+    white-space: normal;
+  }
+
+  .avatar {
+    width: clamp(120px, 12vw, 150px);
+    height: clamp(120px, 12vw, 150px);
+  }
+
+  .member h3 {
+    font-size: clamp(1rem, 1.2vw, 1.2rem);
+    text-align: center;
+    white-space: normal;
+  }
+
+  .team-members p {
+    font-size: clamp(0.8rem, 1vw, 1rem);
+    text-align: center;
+    white-space: normal;
+  }
+}
+
+
+/* Mobile (≤ 600px) */
+@media (max-width: 600px) {
+  #developers {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columns */
+    gap: clamp(10px, 3vw, 20px);
+    width: 100%;
+    justify-items: center;
+
+    /* 🔹 Push content lower */
+    margin-top: clamp(60px, 12vh, 100px); 
+    padding-bottom: clamp(20px, 5vh, 40px);
+  }
+
+  .team-header {
+    grid-column: 1 / -1; /* span across both columns */
+    text-align: center;
+    margin-bottom: clamp(15px, 3vw, 25px);
+  }
+
+  .team-title {
+    font-size: clamp(1.5rem, 4vw, 2rem) !important;
+    margin: 0 auto;
+    text-align: center;
+    white-space: normal;
+  }
+
+  .team-subtitle {
+    font-size: clamp(0.9rem, 3vw, 1.2rem);
+    text-align: center;
+    margin-top: clamp(5px, 2vw, 10px);
+    white-space: normal;
+  }
+
+  .avatar {
+    width: clamp(90px, 20vw, 120px);
+    height: clamp(90px, 20vw, 120px);
+  }
+
+  .member h3 {
+    font-size: clamp(0.8rem, 2.5vw, 1rem);
+    white-space: normal;
+  }
+
+  .team-members p {
+    font-size: clamp(0.7rem, 2.5vw, 0.9rem);
+    white-space: normal;
+  }
+}
+
+/* 🔹 Large Desktop (≤ 1444px) */
+@media (max-width: 1444px) {
+  #developers {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, auto);
+    gap: clamp(20px, 2vw, 35px) clamp(10px, 1vw, 20px);
+
+    /* ✅ Center vertically & horizontally */
+    min-height: 100vh;
+    place-content: center;
+    place-items: center;
+
+    width: min(100%, 1100px);
+    padding-inline: clamp(16px, 2vw, 32px);
+  }
+}
+
+/* 🔹 Tablet (≤ 1024px) */
+@media (max-width: 1024px) {
+  #developers {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: auto;
+    gap: clamp(20px, 3vw, 35px);
+
+    /* ✅ Center vertically & horizontally */
+    min-height: 100vh;
+    place-content: center;
+    place-items: center;
+
+    width: 100%;
+  }
+}
+
+/* 🔹 Mobile (≤ 600px) */
+@media (max-width: 600px) {
+  #developers {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: clamp(15px, 3vw, 25px);
+    width: 100%;
+
+    /* ✅ Center vertically & horizontally */
+    min-height: 100vh;
+    place-content: center;
+    place-items: center;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
