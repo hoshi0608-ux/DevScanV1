@@ -516,62 +516,71 @@
 }
 
 
+
 /* Extra small phones (≤480px) */
 @media (max-width: 480px) {
   .faq-slide6 {
-  width: 290px !important;
-  margin-left: calc((100vw - 290px) / 2) !important;
-  margin-right: calc((100vw - 290px) / 2) !important;
-  max-width: 95% !important;
-  box-sizing: border-box !important;
-  
-}
-.faq-slide6 h1 {
-  display: block !important;
-  width: 100% !important;        /* full container width */
-  margin: 0 auto !important;
-  text-align: center !important; /* keeps text centered */
-  white-space: normal !important; /* allow wrapping */
-  font-size: clamp(0.8rem, 2vw, 1.2rem) !important; /* responsive scaling */
-  line-height: 1.3 !important;
-}
+    width: min(290px, 95%) !important;  /* ✅ 290px max, but shrinks below */
+    margin-left: calc((100vw - min(290px, 95%)) / 2) !important;
+    margin-right: calc((100vw - min(290px, 95%)) / 2) !important;
+    box-sizing: border-box !important;
 
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;   /* ✅ keeps children centered */
 
+  }
+
+  .faq-slide6 h1 {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 5px auto !important;
+    padding: 6px 8px !important;
+    box-sizing: border-box !important;
+
+    font-size: clamp(0.75rem, 2vw, 1rem) !important; /* ✅ smaller scaling */
+    line-height: 1.2 !important;
+    text-align: center !important;
+    white-space: normal !important;
+  }
 
   .faq-slide6 .faq-box {
-    width: 290px !important;          
-    margin: 0 auto !important;      /* ✅ keeps boxes centered */
-    text-align: left !important;    
-  }
-
-  .faq-slide6 h3 {
-    font-size: 0.6rem !important;   
-    line-height: 1.3 !important;
-    margin-right: 10px !important;
-  }
-
-  .faq-slide6 .faq-box-answer p {
-    font-size: 0.6rem !important;   
-    line-height: 1.3 !important; 
-    margin-top: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;  
+    margin: 0 auto !important;
     text-align: left !important;
   }
 
-  /* 🎯 Extra-small tweaks for Colors-legend */
+  .faq-slide6 h3 {
+    font-size: clamp(0.5rem, 1.5vw, 0.55rem) !important;
+    line-height: 1.2 !important;
+  }
+
+  .faq-slide6 .faq-box-answer p {
+    font-size: clamp(0.5rem, 1.5vw, 0.55rem) !important;
+    line-height: 1.2 !important;
+    margin-top: -10px !important;
+    text-align: left !important;
+    margin-bottom: 1px;
+     
+  }
+
   .Colors-legend {
     flex-direction: column !important;
     align-items: center !important;
     justify-content: center !important;
-    gap: 6px !important;
-    margin: 10px auto !important;   /* ✅ centers legend */
+    gap: 4px !important;
+    margin: 8px auto !important;
   }
 
   .Colors-legend li {
-    font-size: 0.6rem !important;
+    font-size: clamp(0.5rem, 1.5vw, 0.55rem) !important;
     line-height: 1 !important;
     letter-spacing: 0.5px !important;
     margin: 0 auto !important;
     text-align: center !important;
   }
 }
+
 
