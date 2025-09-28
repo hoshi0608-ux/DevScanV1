@@ -308,4 +308,99 @@
   .slide3-section::-webkit-scrollbar-thumb { background-color: #87cefa; border-radius: 10px; }
   .slide3-section::-webkit-scrollbar-thumb:hover { background-color: #5ab4e8; }
 }
+/* Extra small phones (≤ 480px) */
+@media (max-width: 480px) {
+  .slide3-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
+    /* keep this as the scroll viewport */
+    position: relative;
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    box-sizing: border-box;
+
+    /* smaller padding since screen is narrower */
+    padding: 400px 6px 60px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: #87cefa transparent;
+    margin-left: 110px;
+  }
+
+  /* pseudo-element spacer for top offset */
+  .slide3-section::before {
+    content: "";
+    display: block;
+    flex: 0 0 600px;   /* reduced from 800px for smaller screens */
+    height: 600px;
+    width: 100%;
+  }
+
+  .slide3-section::after {
+    content: "";
+    display: block;
+    flex: 0 0 16px;
+    height: 16px;
+    width: 100%;
+  }
+
+  .slide3-card {
+    width: 100%;
+    max-width: 280px;   /* slimmer than 320px */
+    min-height: 360px;  /* slightly shorter */
+    padding: 10px;
+    box-sizing: border-box;
+  }
+
+  .slide3-card h2 {
+    font-size: clamp(18px, 6vw, 22px); /* scale heading down */
+    text-align: center;
+  }
+
+  .slide3-card p {
+    font-size: clamp(13px, 4vw, 16px);
+    line-height: 1.5;
+    padding: clamp(8px, 3vw, 14px);
+    word-spacing: 1;
+    text-align: justify;
+  }
+
+  .slide3-card img {
+    max-width: 100px;
+    max-height: 100px;
+    margin: 0 auto; /* keep centered */
+  }
+
+  /* horizontal nudge */
+  .slide3-section > .slide3-card,
+  .slide3-section > .slide3-card-container {
+    transform: translateX(4px);
+  }
+
+  /* scrollbar for webkit browsers */
+  .slide3-section::-webkit-scrollbar { width: 6px; scrollbar-gutter: stable; }
+  .slide3-section::-webkit-scrollbar-track { background: transparent; }
+  .slide3-section::-webkit-scrollbar-thumb { background-color: #87cefa; border-radius: 10px; }
+  .slide3-section::-webkit-scrollbar-thumb:hover { background-color: #5ab4e8; }
+}
+
+@media (max-width: 480px) {
+  .slide3-card-container  {
+    margin-right: 12.5vh;
+  }
+
+}
+
+
+@media (max-width: 480px) {
+  .slide3-card p {
+    font-size: clamp(15px, 4vw, 15px);
+    line-height: 1.5;
+    padding: clamp(8px, 3vw, 14px);
+    word-spacing: 1;
+    text-align: justify;
+  }
+  }
