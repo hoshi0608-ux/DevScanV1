@@ -2,88 +2,97 @@
 
 .carousel-wrapper-slide6 {
     display: flex;
-    justify-content: center; /* horizontal centering */
-    align-items: center;     /* vertical centering */
+    justify-content: center;
+    align-items: center;
     color: #fff;
 }
 
 .carousel-slide6 {
-  height: clamp(400px, 550px, 650px) !important;
-  width: 80%;
-  perspective: 120px;
-  margin-top: clamp(40px, 100px, 140px);
-  border-radius: clamp(12px, 20px, 28px);
-  z-index: 0;           /* 👈 stays at the back */
-  overflow: visible;    /* make sure shadows/glows show */
+  height: clamp(300px, 412.5px, 487.5px) !important;
+  width: 60%;
+  perspective: 155px;
+  margin-top: clamp(30px, 75px, 105px);
+  border-radius: clamp(9px, 15px, 21px);
+  z-index: 0;
+  overflow: visible;
+  margin: 145px auto 0;
 }
 
 .carousel-slide6 .carousel-item-slide6 {
   font-family: 'Montserrat', sans-serif; 
-  width: clamp(320px, 400px, 600px);
-  padding: clamp(8px, 10px, 14px);
-  margin-top: clamp(-120px, -90px, -60px);
+  width: clamp(240px, 450px, 750px);
+  height: clamp(150px, 412.5px, 637.5px) !important;
+  padding: clamp(15px, 22.5px, 30px);
+  margin-top: clamp(-90px, -67.5px, -45px);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(7.5px);
+  border-radius: clamp(9px, 12px, 15px);
+  border: 1.5px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 4.5px 18px rgba(0, 0, 0, 0.3);
   background-color: rgba(20, 20, 40, 0.7);
-  border: 1px solid rgba(163, 91, 190, 0.5);
-  border-radius: clamp(6px, 8px, 12px);
-  box-shadow: 20px 20px 22px rgba(0, 0, 0, 0.2),
-              inset 0 0 6px #427A78;
-  backdrop-filter: blur(12px); 
+  border: 1.5px solid rgba(163, 91, 190, 0.5);
+  border-radius: clamp(4.5px, 6px, 9px);
+  box-shadow: 15px 15px 16.5px rgba(0, 0, 0, 0.2),
+              inset 0 0 4.5px #427A78;
+  backdrop-filter: blur(9px); 
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
 .carousel-title-slide6 {
     font-family: 'Montserrat', sans-serif;
-    font-size: clamp(1.8rem, 2.5rem, 3rem);
+    font-size: clamp(1.35rem, 1.875rem, 3rem);
     font-weight: 800;
-    letter-spacing: -1px;
-    margin-top: -0.5px;
+    letter-spacing: -0.75px;
+    margin-top: -0.375px;
 }
 
 .carousel-text-slide6 {
   font-family: 'Montserrat', sans-serif;
   text-align: justify;
-  font-size: clamp(1.2rem, 1.5rem, 2rem);
+  font-size: clamp(0.9rem, 1.125rem, 2.25rem);
   font-weight: 600;
   line-height: 1.6;
-  margin: 15px 0;
-  letter-spacing: 1px; 
-  word-spacing: clamp(2px, 5px, 8px);
-  padding: 0 20px;            
+  margin: 12px 0;
+  letter-spacing: 0.75px; 
+  word-spacing: clamp(1.5px, 3.75px, 6px);
+  padding: 0 15px;            
 }
 
 .safety-tips {
   font-family: 'Montserrat', sans-serif;
   font-weight: 600;
   list-style-type: disc;    
-  padding-left: clamp(20px, 40px, 60px);      
-  margin: 15px 0;
-  letter-spacing: 1px;
-  font-size: clamp(1.2rem, 1.5rem, 2rem);
-  word-spacing: clamp(2px, 5px, 8px);
+  padding-left: clamp(15px, 30px, 45px);      
+  margin: 12px 0;
+  letter-spacing: 0.75px;
+  font-size: clamp(0.9rem, 1.125rem, 2.25rem);
+  word-spacing: clamp(1.5px, 3.75px, 6px);
 }
 
 .safety-tips li {
-  margin-bottom: clamp(12px, 20px, 28px);     
+  margin-bottom: clamp(9px, 15px, 21px);     
   line-height: 1.6;
-  padding: 0 20px;
-  letter-spacing: 1px; 
-  word-spacing: clamp(2px, 5px, 8px);
-  padding-left: clamp(6px, 11px, 16px);  
-  text-indent: 0;      
+  padding: 0 15px;
+  letter-spacing: 0.75px; 
+  word-spacing: clamp(1.5px, 3.75px, 6px);
+  padding-left: clamp(4.5px, 8.25px, 12px);  
 }
 
 .protection-steps {
   font-family: 'Montserrat', sans-serif;
   font-weight: 600;
   list-style-type: decimal;   
-  padding-left: clamp(30px, 50px, 70px);        
-  margin: clamp(12px, 20px, 28px) 0;    
-  letter-spacing: 1px;
-  word-spacing: clamp(2px, 5px, 8px);
-  font-size: clamp(1.2rem, 1.5rem, 2rem);
+  padding-left: clamp(22.5px, 37.5px, 52.5px);        
+  margin: clamp(9px, 15px, 21px) 0;    
+  letter-spacing: 0.75px;
+  word-spacing: clamp(1.5px, 3.75px, 6px);
+  font-size: clamp(0.9rem, 1.125rem, 2.25rem);
 }
 
 .protection-steps li {
-  margin-bottom: clamp(15px, 22px, 28px);        
+  margin-bottom: clamp(10.5px, 16.5px, 21px);        
   line-height: 1.6;
 }
 
@@ -91,91 +100,68 @@
   font-family: 'Montserrat', sans-serif;
   font-weight: 500;
   list-style-type: disc;       
-  padding-left: clamp(24px, 40px, 56px);        
-  margin: 1px 0;              
-  letter-spacing: 1px;
-  word-spacing: clamp(2px, 4px, 6px);
-  font-size: clamp(1.1rem, 1.4rem, 1.8rem);
+  padding-left: clamp(18px, 30px, 42px);        
+  margin: 1.5px 0;              
+  letter-spacing: 0.75px;
+  word-spacing: clamp(1.5px, 3px, 4.5px);
+  font-size: clamp(0.825rem, 1.05rem, 1.35rem);
 }
 
 .colors-legend-slide6 li {
-  margin-bottom: clamp(12px, 18px, 24px);         
+  margin-bottom: clamp(9px, 13.5px, 18px);         
   line-height: 1.6;  
-  padding-left: clamp(12px, 20px, 28px);            
+  padding-left: clamp(9px, 15px, 21px);            
 }
 
 .colors-legend-slide6 li strong {
-  font-size: clamp(1.3rem, 1.7rem, 2.2rem);
-  word-spacing: clamp(2px, 4px, 6px);
-  letter-spacing: -1px;            
+  font-size: clamp(0.975rem, 1.275rem, 2.25rem);
+  word-spacing: clamp(1.5px, 3px, 4.5px);
+  letter-spacing: -0.75px;            
   font-weight: 700;
   color: #fff;             
-  margin-bottom: 5px;  
-  padding-left: -1px;           
+  margin-bottom: 4.5px;  
 }
 
 .center-text {
   font-family: 'Montserrat', sans-serif;
   font-weight: 600;
   list-style-type: decimal;   
-  padding-left: clamp(15px, 25px, 35px);        
-  margin: clamp(12px, 20px, 28px) 0;    
-  letter-spacing: 1px;
-  word-spacing: clamp(2px, 5px, 8px);
-  font-size: clamp(1.2rem, 1.5rem, 2rem);
+  padding-left: clamp(12px, 18px, 27px);        
+  margin: clamp(9px, 15px, 21px) 0;    
+  letter-spacing: 0.75px;
+  word-spacing: clamp(1.5px, 3.75px, 6px);
+  font-size: clamp(0.9rem, 1.125rem, 2.25rem);
 }
 
 .download-link {
-    margin-top: clamp(4px, 12px, 20px);   /* tighter minimum and maximum */
+    margin-top: clamp(3px, 9px, 15px); 
     text-align: center; 
     font-family: 'Montserrat', sans-serif;
-    font-size: clamp(0.7rem, 0.9rem, 1.1rem); 
+    font-size: clamp(0.525rem, 0.675rem, 0.9rem); 
     font-weight: 600; 
     color: rgb(7, 181, 224) ; 
-    letter-spacing: 1px; 
-    word-spacing: clamp(1px, 3px, 5px);
+    letter-spacing: px; 
+    word-spacing: clamp(0.75px, 2.25px, 3.75px);
     line-height: 1.6; 
-    padding: clamp(6px, 10px, 14px) clamp(12px, 20px, 28px); 
-    border-radius: clamp(6px, 8px, 12px);
+    padding: clamp(4.5px, 7.5px, 10.5px) clamp(9px, 15px, 21px); 
+    border-radius: clamp(4.5px, 6px, 9px);
 
-    /* add underline */
     text-decoration: underline;
-    text-decoration-thickness: 1.5px;          /* optional: control thickness */
-    text-underline-offset: 4px;              /* optional: add some space */
-}
-
-.carousel-slide6 .carousel-item-slide6 {
-  font-family: 'Montserrat', sans-serif; 
-  width: clamp(320px, 600px, 800px);
-  height: clamp(200px, 550px, 650px) !important;
-  padding: clamp(20px, 30px, 40px);
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border-radius: clamp(12px, 16px, 20px);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3);
-  background-color: rgba(20, 20, 40, 0.7);
-  border: 1px solid rgba(163, 91, 190, 0.5);
-  border-radius: clamp(6px, 8px, 12px);
-  box-shadow: 20px 20px 22px rgba(0, 0, 0, 0.2),
-              inset 0 0 6px #427A78;
-  backdrop-filter: blur(12px); 
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+    text-decoration-thickness: 1.5px;  
+    text-underline-offset: 3px;      
 }
 
 .carousel-pagination-slide6 {
-    margin-top: clamp(-100px, -80px, -60px);
+    margin-top: clamp(-75px, -60px, -45px);
     text-align: center;
 }
 
 .carousel-pagination-slide6 .dot {
     display: inline-block;
-    width: clamp(12px, 20px, 28px);
-    height: clamp(2px, 4px, 6px);
-    margin: 0 clamp(2px, 4px, 6px);
-    border-radius: clamp(2px, 4px, 6px);
+    width: clamp(9px, 15px, 21px);
+    height: clamp(1.5px, 3px, 4.5px);
+    margin: 0 clamp(1.5px, 3px, 4.5px);
+    border-radius: clamp(1.5px, 3px, 4.5px);
     background: rgba(255, 255, 255, 0.6);
     cursor: pointer;
     border: none;
@@ -185,7 +171,7 @@
 
 .carousel-pagination-slide6 .dot.active {
     background: #a35bbe;
-    box-shadow: 0 0 6px #a35bbe;
+    box-shadow: 0 0 4.5px #a35bbe;
     transform: scale(1.05);
 }
 
@@ -193,82 +179,239 @@
     background: #c08fd9;
     transform: scale(1.1);
 }
+/* ==== BASE DESIGN (yours) ==== */
+/* (keeping everything you already have unchanged) */
 
 
-@media (max-width: 768px) {
-
-  .carousel-wrapper-slide6 {
-    overflow-y: auto;
-    overflow-x: hidden;
-    padding: 1rem;
-    
-    padding-top: clamp(40px, 60px, 80px);
-    display: block;
-    color: #fff;
-    overflow-y: auto; /* allow vertical scroll */
-    
-
-    
-  }
-
+/* ==== MEDIA QUERY FOR <=1204px ==== */
+@media (max-width: 1204px) {
   .carousel-slide6 {
-    width: 100%;
-    height: auto !important;
-    margin-top: 0;
-    border-radius: 16px;
-    overflow: visible !important;
-    perspective: none !important;   /* disable 3D perspective */
-    transform: none !important;     /* reset transforms */
-    display: block !important;      /* disable flex carousel layout */
+    height: clamp(280px, 380px, 460px) !important; /* bigger */
+    width: 80%; /* wider */
+    perspective: 140px;
+    margin-top: clamp(30px, 60px, 90px);
+    border-radius: clamp(8px, 12px, 16px);
+    margin: 145px auto 0;
   }
 
   .carousel-slide6 .carousel-item-slide6 {
-    position: relative !important;  /* no absolute positioning */
-    transform: none !important;     /* cancel translations */
-    opacity: 1 !important;          /* ensure visible */
-    visibility: visible !important;
-    width: 90% !important;
-    max-width: 100% !important;
-    height: auto !important;
-    margin: 0 auto 1.5rem auto;     /* spacing between items */
-    padding: 16px;
-    display: block !important;
-    margin: 10px auto;
+    width: clamp(220px, 400px, 600px); /* larger range */
+    height: clamp(160px, 350px, 500px) !important;
+    padding: clamp(14px, 22px, 28px); /* more breathing room */
+    margin-top: clamp(-70px, -50px, -35px);
+    border-radius: clamp(8px, 10px, 14px);
   }
 
-  /* Typography + content adjustments */
   .carousel-title-slide6 {
-    font-size: clamp(1.2rem, 1.6rem, 2rem);
-    text-align: center;
+    font-size: clamp(1.2rem, 1.6rem, 2.2rem);
+    letter-spacing: -0.5px;
+    margin-bottom: 6px;
+  }
+
+  .carousel-text-slide6 {
+    font-size: clamp(0.85rem, 1.05rem, 1.05rem);
+    line-height: 1.4;
+    margin: 10px 0;
+    padding: 0 14px; /* spacing from edges */
+  }
+
+  .safety-tips {
+    font-size: clamp(0.85rem, 1.05rem, 1.05rem);
+    padding-left: clamp(14px, 22px, 30px);
+    margin: 10px 0;
+  }
+
+  .safety-tips li {
+    margin-bottom: clamp(8px, 12px, 16px);
+    line-height: 1.4;
+    padding: 0 12px;
+    padding-left: clamp(5px, 7px, 10px);
+  }
+
+  .protection-steps {
+    font-size: clamp(0.85rem, 1.05rem, 1.05rem);
+    padding-left: clamp(16px, 24px, 32px);
     margin: clamp(8px, 12px, 16px) 0;
   }
 
-  .carousel-text-slide6,
-  .safety-tips,
-  .protection-steps,
-  .colors-legend-slide6,
+  .protection-steps li {
+    margin-bottom: clamp(9px, 13px, 16px);
+    line-height: 1.4;
+  }
+
+  .colors-legend-slide6 {
+    font-size: clamp(0.75rem, 1rem, 1.2rem);
+    padding-left: clamp(12px, 20px, 28px);
+  }
+
+  .colors-legend-slide6 li {
+    margin-bottom: clamp(8px, 11px, 14px);
+    line-height: 1.4;
+    padding-left: clamp(6px, 9px, 12px);
+  }
+
+  .colors-legend-slide6 li strong {
+    font-size: clamp(0.9rem, 1.1rem, 1.1rem);
+  }
+
   .center-text {
-    font-size: clamp(0.9rem, 1rem, 1.2rem);
-    line-height: 1.5;
-    word-spacing: 1;
-    letter-spacing: 0.5;
-    text-align: left;
+    font-size: clamp(0.85rem, 1.1rem, 1.1rem);
+    padding-left: clamp(10px, 14px, 20px);
   }
 
   .download-link {
-    font-size: clamp(0.7rem, 0.8rem, 1rem);
-    margin-top: clamp(20px, 30px, 40px);
-    padding: clamp(8px, 10px, 12px);
-    text-align: center;
+    font-size: clamp(0.5rem, 0.65rem, 0.85rem);
+    padding: clamp(4px, 6px, 8px) clamp(8px, 12px, 16px);
+    margin-top: clamp(3px, 6px, 9px);
   }
 
-  /* Disable navigation (dots/arrows) */
-  .carousel-pagination-slide6,
-  .carousel-pagination-slide6 .dot,
-  .carousel-navigation,
-  .carousel-prev,
-  .carousel-next {
-    display: none !important;
-    visibility: hidden;
+  .carousel-pagination-slide6 {
+    margin-top: clamp(-60px, -50px, -40px);
   }
+
+  .carousel-pagination-slide6 .dot {
+    width: clamp(8px, 12px, 16px);
+    height: clamp(2px, 3px, 4px);
+    margin: 0 clamp(2px, 3px, 4px);
+  }
+}
+
+
+/* ==== MEDIA QUERY FOR 1075px → 769px ==== */
+@media (max-width: 1076px){
+  .carousel-slide6 {
+    height: clamp(270px, 360px, 440px) !important;
+    width: 85%; /* take more space on tablets */
+    perspective: 130px;
+    margin-top: clamp(25px, 55px, 85px);
+    border-radius: clamp(8px, 12px, 16px);
+    margin: 145px auto 0;
+  }
+
+  .carousel-slide6 .carousel-item-slide6 {
+    width: clamp(200px, 380px, 550px);
+    height: clamp(150px, 320px, 460px) !important;
+    padding: clamp(12px, 20px, 26px);
+    margin-top: clamp(-65px, -50px, -35px);
+    border-radius: clamp(7px, 10px, 14px);
+  }
+
+  .carousel-title-slide6 {
+    font-size: clamp(1.1rem, 1.5rem, 2rem);
+    letter-spacing: -0.5px;
+    margin-bottom: 5px;
+  }
+
+  .carousel-text-slide6 {
+    font-size: clamp(0.8rem, 1rem, 1.05rem);
+    line-height: 1.4;
+    margin: 8px 0;
+    padding: 0 12px;
+  }
+
+  .safety-tips {
+    font-size: clamp(0.8rem, 1rem, 1.05rem);
+    padding-left: clamp(12px, 20px, 28px);
+    margin: 8px 0;
+  }
+
+  .safety-tips li {
+    margin-bottom: clamp(7px, 11px, 15px);
+    line-height: 1.4;
+    padding: 0 10px;
+    padding-left: clamp(4px, 6px, 9px);
+  }
+
+  .protection-steps {
+    font-size: clamp(0.8rem, 1rem, 1.05rem);
+    padding-left: clamp(14px, 22px, 30px);
+    margin: clamp(7px, 11px, 15px) 0;
+  }
+
+  .protection-steps li {
+    margin-bottom: clamp(8px, 12px, 15px);
+    line-height: 1.4;
+  }
+
+  .colors-legend-slide6 {
+    font-size: clamp(0.7rem, 0.95rem, 1.1rem);
+    padding-left: clamp(10px, 18px, 26px);
+  }
+
+  .colors-legend-slide6 li {
+    margin-bottom: clamp(7px, 10px, 13px);
+    line-height: 1.4;
+    padding-left: clamp(5px, 8px, 11px);
+  }
+
+  .colors-legend-slide6 li strong {
+    font-size: clamp(0.85rem, 1.05rem, 1.1rem);
+  }
+
+  .center-text {
+    font-size: clamp(0.8rem, 1rem, 1.05rem);
+    padding-left: clamp(9px, 13px, 18px);
+  }
+
+  .download-link {
+    font-size: clamp(0.45rem, 0.6rem, 0.8rem);
+    padding: clamp(4px, 6px, 8px) clamp(7px, 11px, 15px);
+    margin-top: clamp(3px, 5px, 7px);
+  }
+
+  .carousel-pagination-slide6 {
+    margin-top: clamp(-55px, -45px, -35px);
+  }
+
+  .carousel-pagination-slide6 .dot {
+    width: clamp(7px, 11px, 14px);
+    height: clamp(2px, 3px, 4px);
+    margin: 0 clamp(2px, 3px, 4px);
+  }
+}
+
+@media (width: 1024px) {
+  .carousel-title-slide6 {
+    font-size: clamp(1rem, 1.4rem, 1.8rem) !important;
+  }
+
+  .carousel-text-slide6 {
+    font-size: clamp(0.78rem, 0.95rem, 1rem) !important;
+    line-height: 1.45 !important;
+  }
+
+  .safety-tips,
+  .protection-steps,
+  .center-text {
+    font-size: clamp(0.78rem, 0.95rem, 1rem) !important;
+  }
+
+  .safety-tips li,
+  .protection-steps li {
+    margin-bottom: clamp(6px, 10px, 14px) !important;
+  }
+
+  .colors-legend-slide6 {
+    font-size: clamp(0.7rem, 0.9rem, 1rem) !important;
+  }
+
+  .colors-legend-slide6 li strong {
+    font-size: clamp(0.8rem, 1rem, 1.1rem) !important;
+  }
+
+  .download-link {
+    font-size: clamp(0.45rem, 0.6rem, 0.75rem) !important;
+  }
+}
+/* Hide scrollbar for Chrome, Safari, Edge */
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for Firefox */
+html, body {
+  scrollbar-width: none;   /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  overflow-y: scroll;      /* keeps content scrollable */
 }
