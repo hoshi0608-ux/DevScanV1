@@ -10,14 +10,14 @@
         }
     </style>  
     <!-- SLIDER-ITEMS 1-5 AND BACKGROUND -->
-    <link rel="stylesheet" href="./CSS/Background.css">
-    <link rel="stylesheet" href="./CSS/nthchildBGslides.css">
-    <link rel="stylesheet" href="./CSS/slider-container.css">
-    <link rel="stylesheet" href="./CSS/slide1.css">
-    <link rel="stylesheet" href="./CSS/slide2.css">
-    <link rel="stylesheet" href="./CSS/slide3.css">
-    <link rel="stylesheet" href="./CSS/slide4.css">
-    <link rel="stylesheet" href="./CSS/slide5.css">
+    <link rel="stylesheet" href="../CSS/Background.css">
+    <link rel="stylesheet" href="../CSS/nthchildBGslides.css">
+    <link rel="stylesheet" href="../CSS/slider-container.css">
+    <link rel="stylesheet" href="../CSS/slide1.css">
+    <link rel="stylesheet" href="../CSS/slide2.css">
+    <link rel="stylesheet" href="../CSS/slide3.css">
+    <link rel="stylesheet" href="../CSS/slide4.css">
+    <link rel="stylesheet" href="../CSS/slide5.css">
     <link rel="stylesheet" href="../CSS/slide7.css">
     
     
@@ -391,64 +391,43 @@
                   </div>
 
                   <!-- Privacy Policy Section -->
-                  <section class="privacy-container">
+                        <section class="privacy-container">
                           <h1 class="privacy-title">DEVScan Privacy Policy</h1>
-                          <p class="privacy-effective-date"><strong>Effective Date:</strong> September 30, 2025 — 7:32 PM (PHT)</p>
+                          <p class="privacy-effective-date"><strong>Effective Date:</strong> October 1, 2025</p>
 
                           <p>
                             DEVScan is a Chrome extension that helps protect users from hyperlink-based threats.
                             We designed DEVScan to analyze links primarily on your device, and to minimize the data that leaves your browser.
-                            This Privacy Policy explains what information DEVScan accesses, how we use it,
-                            what (if anything) is sent to our servers, and your choices.
+                            This privacy policy explains how we collect, use, and protect your information when you use our extension.
                           </p>
 
                           <h3 class="privacy-heading">1) What DEVScan Accesses (Extension Permissions in Practice)</h3>
                           <p>To provide link safety checks, DEVScan’s content scripts and service worker access:</p>
                           <ul class="privacy-list">
-                            <li><strong>Page Content (DOM):</strong> We read page text, hyperlinks, and surrounding markup to identify and annotate links for safety (e.g., highlight, tooltip, help sidebar).</li>
+                            <li><strong>Page Content (DOM):</strong> We analyze the URLs of links you encounter while browsing to determine if they are safe or potentially malicious and provide appropriate visual warnings (e.g., highlight, tooltip, help sidebar).</li>
                             <li><strong>Network Requests (link navigation only):</strong> We listen for main-frame navigations triggered by links you click or URLs you type, to scan the destination before loading the site and, when necessary, show a warning page.</li>
                             <li><strong>Session State & Preferences (chrome.storage):</strong> We store lightweight settings (e.g., strict blocking preference), a short-lived scan session ID, and ephemeral verdict cache entries so we can avoid rescanning the same URL repeatedly for a brief period.</li>
                           </ul>
-                          <p>We do not read passwords, form inputs, page content in iframes we don’t inject into, or your clipboard. We don’t record keystrokes or mouse movements.</p>
+                          <p><em>We do not read passwords, form inputs, page content in iframes we don’t inject into, or your clipboard.</em></p>
 
-                          <h3 class="privacy-heading">2) What DEVScan Processes Locally</h3>
-                          <p>Most analysis happens locally in your browser:</p>
+                          <h3 class="privacy-heading">2) Data Processing and Security</h3>
+                          <p><strong>Local Processing:</strong> Most URL filtering happens locally in your browser, meaning many links are analyzed without sending data to our servers.</p>
+                          <p><strong>Server Analysis:</strong> When a link requires advanced analysis, it is sent to our secure servers using encrypted HTTPS connections. Our machine learning models analyze the URL structure and patterns to determine safety.</p>
                           <ul class="privacy-list">
-                            <li>Link & Page Analysis: detect suspicious patterns in URLs and surrounding context.</li>
-                            <li>Same-Domain Skips: optionally skip scans for links that keep you on the same domain (configurable).</li>
-                            <li>Short-Lived Verdict Cache: a temporary in-memory cache (typically 5–10 minutes) so we don’t re-scan the same URL immediately.</li>
-                            <li>UI Elements: underline/highlight links, show tooltips/help sidebar, display a warning or scanning page when needed.</li>
-                          </ul>
-                          <p>These operations are performed in your browser and are not transmitted to us unless a server lookup is necessary (see next section).</p>
-
-                          <h3 class="privacy-heading">3) When DEVScan Contacts Our Server (and What Is Sent)</h3>
-                          <p>In limited cases (for example, to check a suspicious URL against our threat models or reputation lists), the extension may call our backend.</p>
-                          <p><strong>Data we may send:</strong></p>
-                          <ul class="privacy-list">
-                            <li>URL being evaluated (the link or navigation target).</li>
-                            <li>Basic technical metadata needed to operate the service (e.g., a random session ID, extension engine version, high-level browser/extension info string).</li>
-                            <li>Optional unshortened URL if the link uses a known shortener (we may request a resolved destination to evaluate actual risk).</li>
-                          </ul>
-                          <p><strong>Data we do not send:</strong></p>
-                          <ul class="privacy-list">
-                            <li>Page contents, your search queries, cookies, account credentials, payment info, or other personal data unrelated to the URL being evaluated.</li>
-                            <li>Server logs: As with any web service, our servers may automatically log standard technical information (e.g., IP address, timestamp, user agent) strictly for security, abuse prevention, and service reliability. We do not use this for advertising or profiling.</li>
-                          </ul>
-                          <p><strong>Retention:</strong></p>
-                          <ul class="privacy-list">
-                            <li>URL lookups and verdict responses are processed and returned; any operational logs are retained only as long as necessary for security and reliability, then deleted or aggregated.</li>
-                            <li>The verdict cache in your browser expires automatically (generally within 5–10 minutes).</li>
+                            <li><strong>Encryption:</strong> All data transmission uses HTTPS/TLS encryption.</li>
+                            <li><strong>Access Control:</strong> Server access is restricted and monitored.</li>
+                            <li><strong>Data Minimization:</strong> We only collect and process data necessary for security analysis.</li>
+                            <li><strong>Automatic Cleanup:</strong> Cached data is automatically deleted after 7 days.</li>
                           </ul>
 
-                          <h3 class="privacy-heading">4) What DEVScan Does Not Do</h3>
+                          <h3 class="privacy-heading">3) Third-Party Services</h3>
                           <ul class="privacy-list">
-                            <li>No keystroke logging or screenshotting.</li>
-                            <li>No collection or sale of personally identifiable information (PII).</li>
-                            <li>No use of your browsing data for advertising, marketing, or profiling.</li>
-                            <li>No third-party ad tech, trackers, or analytics beacons in the extension.</li>
+                            <li><strong>Tranco Domain Rankings:</strong> We use the Tranco research project's top 1,000 website rankings to identify trusted domains. This is a public dataset and no personal data is shared.</li>
+                            <li><strong>Machine Learning Service:</strong> URLs requiring advanced analysis are processed by our ML service hosted on secure AWS infrastructure. No personal information is included.</li>
+                            <li><strong>No Advertising or Analytics:</strong> DEVScan does not use advertising networks, analytics services, or other third-party tracking systems.</li>
                           </ul>
 
-                          <h3 class="privacy-heading">5) How We Use the Information We Access</h3>
+                          <h3 class="privacy-heading">4) How We Use the Information We Access</h3>
                           <ul class="privacy-list">
                             <li>Identify and warn about suspicious or malicious links.</li>
                             <li>Block unsafe redirects or sites before they load (according to your settings).</li>
@@ -456,29 +435,52 @@
                             <li>Operate, secure, and troubleshoot the service.</li>
                           </ul>
 
-                          <h3 class="privacy-heading">6) Your Choices & Controls</h3>
+                          <h3 class="privacy-heading">5) What We Don’t Collect</h3>
                           <ul class="privacy-list">
-                            <li><strong>Disable/Remove:</strong> You can disable or remove DEVScan anytime from <code>chrome://extensions</code>.</li>
-                            <li><strong>Settings:</strong> Within the extension, you can adjust strict blocking and other preferences.</li>
-                            <li><strong>Bypass Options:</strong> On a warning page, you may choose to proceed (temporary bypass applies to that URL only).</li>
+                            <li>Personal information (names, emails, addresses)</li>
+                            <li>Login credentials or passwords</li>
+                            <li>Browsing history beyond links being analyzed</li>
+                            <li>File contents or downloads</li>
+                            <li>Social media posts or private messages</li>
+                            <li>Financial or payment information</li>
+                            <li>Location data or device identifiers</li>
                           </ul>
 
-                          <h3 class="privacy-heading">7) Data Security</h3>
-                          <p>We use reasonable technical and organizational safeguards to protect data in transit and at rest. Access to operational systems is restricted to authorized personnel with a need to know. Despite our efforts, no system can be guaranteed 100% secure.</p>
+                          <h3 class="privacy-heading">6) User Rights and Control</h3>
+                          <ul class="privacy-list">
+                            <li><strong>Disable Scanning:</strong> You can disable link analysis at any time through the extension popup.</li>
+                            <li><strong>Adjust Settings:</strong> Customize blocking behavior and warning levels in extension settings.</li>
+                            <li><strong>Uninstall:</strong> Remove the extension completely to stop all data processing.</li>
+                            <li><strong>Data Deletion:</strong> When you uninstall the extension, all local data is automatically removed. Server-side cached data is deleted after 7 days.</li>
+                          </ul>
 
-                          <h3 class="privacy-heading">9) International Users</h3>
-                          <p>If you use DEVScan from outside the country where our servers are hosted, your data (limited to what’s described above) may be processed in that country. We apply the same protections described in this policy regardless of location.</p>
+                          <h3 class="privacy-heading">7) Legal Basis & User Rights (Where Applicable)</h3>
+                          <p>Depending on your location, you may have rights over your personal data (e.g., access, deletion, portability, objection). Because DEVScan avoids collecting personal data, these requests typically involve operational logs (if any). To make a request, contact us at the email below.</p>
 
-                          <h3 class="privacy-heading">10) Legal Basis & User Rights (Where Applicable)</h3>
-                          <p>Depending on your location, you may have rights over your personal data (e.g., access, deletion, portability, objection). Because DEVScan is designed to avoid collecting personal data, these requests typically involve operational logs (if any). To make a request, contact us at the email below. We will respond consistent with applicable laws.</p>
+                          <h3 class="privacy-heading">8) Third Parties</h3>
+                          <p>We do not sell or share user data with advertisers. If we ever use a sub-processor (e.g., for secure hosting), it will be bound by confidentiality and data protection obligations.</p>
 
-                          <h3 class="privacy-heading">11) Third Parties</h3>
-                          <p>We do not sell or share user data with advertisers. If we ever use a sub-processor (e.g., for secure hosting), it will be bound by confidentiality, data protection obligations, and used only to deliver the DEVScan functionality.</p>
+                          <h3 class="privacy-heading">9) Changes to This Policy</h3>
+                          <p>We may update this privacy policy to reflect changes in our practices or legal requirements. We will notify users of significant changes through the extension’s update mechanism.</p>
 
-                          <h3 class="privacy-heading">12) Changes to This Policy</h3>
-                          <p>We may update this Privacy Policy to reflect product or legal changes. We’ll post the updated policy here with a new Effective Date. Material changes will be highlighted for clarity.</p>
+                          <h3 class="privacy-heading">10) Technical Details</h3>
+                          <p><strong>Permissions Used:</strong></p>
+                          <ul class="privacy-list">
+                            <li><code>activeTab</code>: To analyze links on the current webpage</li>
+                            <li><code>storage</code>: To save user preferences and cache scan results locally</li>
+                            <li><code>webNavigation</code>: To intercept navigation to malicious websites</li>
+                            <li><code>host permissions</code>: To communicate with our security analysis servers</li>
+                          </ul>
+                          <p><strong>Data Flow:</strong></p>
+                          <ul class="privacy-list">
+                            <li>Extension identifies external links on webpages.</li>
+                            <li>Links are checked against local trusted domain lists.</li>
+                            <li>Unknown links are sent to our servers for ML analysis.</li>
+                            <li>Security verdicts are returned and cached locally.</li>
+                            <li>Users see risk assessments through tooltips and warnings.</li>
+                          </ul>
 
-                          <h3 class="privacy-heading">13) Chrome Web Store Disclosures (Summary)</h3>
+                          <h3 class="privacy-heading">11) Chrome Web Store Disclosures (Summary)</h3>
                           <ul class="privacy-list">
                             <li><strong>Purpose limitation:</strong> Data accessed by DEVScan is used only to provide security features (link scanning, warnings, safety UI) or to improve them.</li>
                             <li><strong>Limited Use:</strong> We do not use data for unrelated purposes like ads or profiling.</li>
@@ -486,15 +488,21 @@
                             <li><strong>Control:</strong> Users can disable, remove, or change settings at any time.</li>
                           </ul>
 
-                          <h3 class="privacy-heading">14) Contact Us</h3>
+                          <h3 class="privacy-heading">12) Contact Us</h3>
                           <p>If you have questions or requests related to privacy, please contact:</p>
                           <p><a href="mailto:bscs3a.devscan@gmail.com" class="privacy-email">bscs3a.devscan@gmail.com</a></p>
+                          <p>Extension Store: Report concerns through your browser’s extension store</p>
 
-                  </section>
+                          <h3 class="privacy-disclosure-heading">Security Disclosure</h3>
+                          <p class="privacy-disclosure">
+                            If you discover a security vulnerability in DEVScan, please report it responsibly through our GitHub repository. 
+                            We take security issues seriously and will respond promptly to legitimate reports.
+                          </p>
+                        </section>
+
+
                 </div>
               </div>
-
-
 
 
   </div>
@@ -564,4 +572,3 @@
     
 </body>
 </html>
-
