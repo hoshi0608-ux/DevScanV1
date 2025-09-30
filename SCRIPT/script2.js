@@ -27,28 +27,26 @@ function updateIndicator(tab) {
 
   sliderTabs.forEach(t => {
     t.classList.remove('active');
-    t.style.color = 'white'; // reset all tabs color
-    t.style.borderBottomColor = 'white'; // reset underline color
+    t.style.color = 'white'; 
+    t.style.borderBottomColor = 'white'; 
   });
 
   tab.classList.add('active');
-  tab.style.color = '#a35bbe'; // active tab text color (hover color)
-  tab.style.borderBottomColor = '#a35bbe'; // active tab underline color
+  tab.style.color = '#a35bbe';
+  tab.style.borderBottomColor = '#a35bbe';
 
-  // Position sliderIndicator under the active tab's text
   const tabText = tab.querySelector('.tab-text');
   const tabTextRect = tabText.getBoundingClientRect();
   const containerRect = tab.parentElement.getBoundingClientRect();
   const offsetLeft = tabTextRect.left - containerRect.left;
   const width = tabTextRect.width;
 
-  const extraWidthVW = (65 / 1536) * 100; // approx 4.23vw
+  const extraWidthVW = (65 / 1536) * 100; // ~4.23vw
 
   sliderIndicator.style.transform = `translateX(${offsetLeft}px)`;
   sliderIndicator.style.width = `calc(${width}px + ${extraWidthVW}vw)`;
-  sliderIndicator.style.backgroundColor = '#a35bbe'; // underline hover color for active
+  sliderIndicator.style.backgroundColor = '#a35bbe';
 
-  // Scroll active tab into view on smaller screens
   if (window.innerWidth <= 768) {
     tab.scrollIntoView({
       behavior: 'smooth',
@@ -65,7 +63,7 @@ function checkPaginationOverflow() {
   sliderPagination.classList.toggle('scrollable', isOverflowing);
 }
 
-// Responsive styling adjustments
+// Responsive adjustments
 function responsiveAdjustments() {
   const width = window.innerWidth;
 
@@ -77,13 +75,11 @@ function responsiveAdjustments() {
     btn.style.width = `${btnWidth}px`;
   });
 
-  // <<<< CHANGE FONT SIZE OF .slider-tabsss ELEMENTS HERE >>>>
   sliderTabs.forEach(tab => {
     tab.style.fontSize =
-      width <= 480 ? '1rem' : width <= 768 ? '1.2rem' : '1.5rem';  // <-- Edit these values to change font size
+      width <= 480 ? '1rem' : width <= 768 ? '1.2rem' : '1.5rem';
   });
 
-  // Other responsive styles remain unchanged
   document.querySelectorAll('.Text').forEach(text => {
     text.style.fontSize =
       width <= 480 ? '2.5rem' : width <= 768 ? '4rem' : '6rem';
@@ -103,42 +99,39 @@ function responsiveAdjustments() {
 sliderTabs.forEach((tab, index) => {
   tab.style.cursor = 'pointer';
 
-  // On tab click, slide to that index and update indicator
   tab.addEventListener('click', () => {
     swiper.slideTo(index);
     updateIndicator(tab);
   });
 
-  // On mouse enter, highlight the tab text only (not underline anymore)
   tab.addEventListener('mouseenter', () => {
     if (!tab.classList.contains('active')) {
-      tab.style.color = '#a35bbe';             // hover color text
-      // tab.style.borderBottomColor = '#a35bbe'; // ❌ removed so underline stays white
-      sliderIndicator.style.backgroundColor = '#a35bbe'; // indicator hover color
+      tab.style.color = '#a35bbe';
+      sliderIndicator.style.backgroundColor = '#a35bbe';
     }
   });
 
-  // On mouse leave, revert tab styles (active stays highlighted)
   tab.addEventListener('mouseleave', () => {
     if (tab.classList.contains('active')) {
-      tab.style.color = '#a35bbe';             // active color text
-      tab.style.borderBottomColor = '#a35bbe'; // active underline color
+      tab.style.color = '#a35bbe';
+      tab.style.borderBottomColor = '#a35bbe';
       sliderIndicator.style.backgroundColor = '#a35bbe';
     } else {
-      tab.style.color = 'white';               // default text color
-      tab.style.borderBottomColor = 'white';   // default underline color
+      tab.style.color = 'white';
+      tab.style.borderBottomColor = 'white';
       sliderIndicator.style.backgroundColor = 'white';
     }
   });
 });
 
-// Blur nav buttons after click for better UX
+// Blur nav buttons after click
 prevBtn.addEventListener('click', (e) => e.currentTarget.blur());
 nextBtn.addEventListener('click', (e) => e.currentTarget.blur());
 
-// Initial setup on load
+// ===== Reset to first slide on load =====
 window.addEventListener('load', () => {
-  updateIndicator(sliderTabs[0]);
+  swiper.slideTo(0, 0);           // force to first slide instantly
+  updateIndicator(sliderTabs[0]); // highlight Home
   checkPaginationOverflow();
   responsiveAdjustments();
 });
@@ -151,7 +144,7 @@ window.addEventListener('resize', () => {
   responsiveAdjustments();
 });
 
-// Keyboard navigation (ArrowLeft, ArrowRight)
+// Keyboard navigation
 window.addEventListener('keydown', (e) => {
   if (e.key === 'ArrowLeft') {
     swiper.slidePrev();
