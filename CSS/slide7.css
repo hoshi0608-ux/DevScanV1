@@ -106,6 +106,35 @@
   color: #e0e0e0;
 }
 
+/* Security Disclosure Heading */
+.privacy-disclosure-heading {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.4rem; /* same as .privacy-heading */
+  font-weight: 700;
+  text-align: center;
+  margin: 32px 0 14px;
+  background: linear-gradient(
+    90deg,
+    rgba(163, 91, 190, 1) 10.8%,
+    rgba(84, 51, 163, 1) 58.3%,
+    rgba(36, 28, 94, 1) 94.3%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+   font-style: italic;
+}
+
+/* Security Disclosure Paragraph */
+.privacy-disclosure {
+  text-align: center;
+  margin: 0 auto 30px;
+  font-size: 1.05rem;
+  font-style: italic;
+  color: #dcdcdc;
+  max-width: 90%;
+  line-height: 1.6;
+}
+
 /* Responsive: Tablets */
 @media (max-width: 1024px) {
   .privacy-container {
@@ -115,12 +144,17 @@
   .privacy-title {
     font-size: 2.2rem;
   }
-  .privacy-heading {
+  .privacy-heading,
+  .privacy-disclosure-heading {
     font-size: 1.3rem;
   }
   .privacy-container p,
   .privacy-list li {
     font-size: 1.05rem;
+  }
+  .privacy-disclosure {
+    font-size: 1rem;
+    margin: 25px auto;
   }
 }
 
@@ -133,7 +167,8 @@
   .privacy-title {
     font-size: 2rem;
   }
-  .privacy-heading {
+  .privacy-heading,
+  .privacy-disclosure-heading {
     font-size: 1.2rem;
   }
   .privacy-container p,
@@ -141,19 +176,27 @@
     font-size: 1rem;
     line-height: 1.8;
   }
+  .privacy-disclosure {
+    font-size: 0.95rem;
+    margin: 22px auto;
+    line-height: 1.5;
+  }
 }
 
 /* Responsive: Small Phones */
 @media (max-width: 480px) {
   .privacy-container {
-    height: auto;
+    max-height: 380px;   /* fixed height for scroll */
     padding: 18px;
     margin: 50px auto;
+    overflow-y: auto;    /* force vertical scroll */
+    overflow-x: hidden;
   }
   .privacy-title {
     font-size: 1.6rem;
   }
-  .privacy-heading {
+  .privacy-heading,
+  .privacy-disclosure-heading {
     font-size: 1rem;
   }
   .privacy-container p,
@@ -164,18 +207,27 @@
   .privacy-effective-date {
     font-size: 0.65rem;
   }
+  .privacy-disclosure {
+    font-size: 0.9rem;
+    margin: 20px auto;
+    line-height: 1.45;
+  }
 }
+
 /* Responsive: Ultra Small Phones (≤370px) */
 @media (max-width: 370px) {
   .privacy-container {
-    height: auto;            /* let it scroll naturally */
+    max-height: 320px;   /* smaller scroll area for tiny screens */
     padding: 15px;
     margin: 40px auto;
+    overflow-y: auto;
+    overflow-x: hidden;
   }
   .privacy-title {
     font-size: 1.4rem;
   }
-  .privacy-heading {
+  .privacy-heading,
+  .privacy-disclosure-heading {
     font-size: 0.9rem;
   }
   .privacy-container p,
@@ -185,5 +237,10 @@
   }
   .privacy-effective-date {
     font-size: 0.6rem;
+  }
+  .privacy-disclosure {
+    font-size: 0.85rem;
+    margin: 18px auto;
+    line-height: 1.4;
   }
 }
