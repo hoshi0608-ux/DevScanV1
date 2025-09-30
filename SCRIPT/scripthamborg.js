@@ -3,6 +3,7 @@ const drawerToggle = document.querySelector('.drawer-toggle');
 const drawerClose = document.querySelector('.drawer-close');
 const drawerOverlay = document.querySelector('.drawer-overlay');
 const drawerTabs = document.querySelectorAll('.drawer-tabs .slider-tab');
+const paginationTabs = document.querySelectorAll('.slider-pagination .slider-tabsss');
 
 const MOBILE_BREAKPOINT = 768; // match your CSS @media breakpoint
 
@@ -36,30 +37,42 @@ window.addEventListener('resize', () => {
   }
 });
 
-// ===== Restore Active Tab from Local Storage =====
-const savedTabIndex = localStorage.getItem('activeDrawerTab');
-if (savedTabIndex !== null && drawerTabs[savedTabIndex]) {
+// ===== Helper to update active state everywhere =====
+function setActiveTab(index) {
+  // Drawer tabs
   drawerTabs.forEach(t => t.classList.remove('active'));
-  drawerTabs[savedTabIndex].classList.add('active');
+  if (drawerTabs[index]) drawerTabs[index].classList.add('active');
+
+  // Pagination tabs
+  paginationTabs.forEach(t => t.classList.remove('active'));
+  if (paginationTabs[index]) paginationTabs[index].classList.add('active');
 }
 
-// ===== Link Drawer Tabs to Swiper & Set Active =====
+// ===== Always Reset to Home (first tab) on refresh =====
+window.addEventListener("load", () => {
+  swiper.slideTo(0, 0); // jump to first slide instantly
+  setActiveTab(0);      // set Home as active
+});
+
+// ===== Link Drawer Tabs to Swiper =====
 drawerTabs.forEach((tab, index) => {
   tab.addEventListener('click', () => {
-    drawerTabs.forEach(t => t.classList.remove('active'));
-    tab.classList.add('active');
-    localStorage.setItem('activeDrawerTab', index);
     swiper.slideTo(index);
+    setActiveTab(index);
     closeDrawer();
   });
 });
 
-// ===== Sync Active Tab When Swiper Changes =====
+// ===== Link Pagination Tabs to Swiper =====
+paginationTabs.forEach((tab, index) => {
+  tab.addEventListener('click', () => {
+    swiper.slideTo(index);
+    setActiveTab(index);
+  });
+});
+
+// ===== Sync When Swiper Changes =====
 swiper.on('slideChange', () => {
   const activeIndex = swiper.activeIndex;
-  drawerTabs.forEach(t => t.classList.remove('active'));
-  if (drawerTabs[activeIndex]) {
-    drawerTabs[activeIndex].classList.add('active');
-    localStorage.setItem('activeDrawerTab', activeIndex);
-  }
+  setActiveTab(activeIndex);
 });
