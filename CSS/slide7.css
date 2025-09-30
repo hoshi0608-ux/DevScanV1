@@ -121,7 +121,7 @@
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-   font-style: italic;
+  font-style: italic;
 }
 
 /* Security Disclosure Paragraph */
@@ -133,6 +133,25 @@
   color: #dcdcdc;
   max-width: 90%;
   line-height: 1.6;
+}
+
+/* Email Label */
+.privacy-email-label {
+  color: #dcdcdc; /* white for "Email:" */
+  font-weight: 500;
+  margin-right: 4px;
+}
+
+/* Email Link */
+.privacy-email {
+  color: rgba(163, 91, 190, 1); /* purple */
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+.privacy-email:hover {
+  color: rgba(84, 51, 163, 1); /* darker purple on hover */
+  text-decoration: underline;
 }
 
 /* Responsive: Tablets */
