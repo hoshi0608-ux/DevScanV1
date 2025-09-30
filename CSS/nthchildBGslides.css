@@ -24,7 +24,10 @@
   background-image: url("../IMAGES/faq.png");
 }
 .slider-wrapper .slider-item:nth-child(6):before {
-  background-image: url("../IMAGES/StillYouHardToPretend.png");
+  background-image: url("../IMAGES/Rushing\ w\ hurting.png");
+}
+.slider-wrapper .slider-item:nth-child(7):before {
+  background-image: url("../IMAGES/technologies.png");
 }
 
 /*.slider-wrapper .slider-item .slide-content > * {
