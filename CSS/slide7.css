@@ -205,61 +205,42 @@
 /* Responsive: Small Phones */
 @media (max-width: 480px) {
   .privacy-container {
-    max-height: 380px;   /* fixed height for scroll */
-    padding: 18px;
-    margin: 50px auto;
-    overflow-y: auto;    /* force vertical scroll */
-    overflow-x: hidden;
-  }
-  .privacy-title {
-    font-size: 1.6rem;
-  }
-  .privacy-heading,
-  .privacy-disclosure-heading {
-    font-size: 1rem;
-  }
-  .privacy-container p,
-  .privacy-list li {
-    font-size: 0.95rem;
-    line-height: 1.7;
-  }
-  .privacy-effective-date {
-    font-size: 0.65rem;
-  }
-  .privacy-disclosure {
-    font-size: 0.9rem;
-    margin: 20px auto;
-    line-height: 1.45;
-  }
-}
-
-/* Responsive: Ultra Small Phones (≤370px) */
-@media (max-width: 370px) {
-  .privacy-container {
-    max-height: 320px;   /* smaller scroll area for tiny screens */
-    padding: 15px;
-    margin: 40px auto;
+    height: 80vh;         /* take up 90% of phone screen height */
+    padding: 20px;
+    margin: 85px auto;    /* reduce top margin so it fills more */
     overflow-y: auto;
     overflow-x: hidden;
   }
+
   .privacy-title {
-    font-size: 1.4rem;
+    font-size: 1.8rem;
+    margin-bottom: 8px;
   }
+
+  .privacy-effective-date {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #cfcfcf;
+    margin: 6px 0 14px;
+    text-align: center;
+  }
+
   .privacy-heading,
   .privacy-disclosure-heading {
-    font-size: 0.9rem;
+    font-size: 1.1rem;
   }
+
   .privacy-container p,
   .privacy-list li {
-    font-size: 0.9rem;
-    line-height: 1.6;
+    font-size: 1rem;
+    line-height: 1.7;
   }
-  .privacy-effective-date {
-    font-size: 0.6rem;
-  }
+
   .privacy-disclosure {
-    font-size: 0.85rem;
-    margin: 18px auto;
-    line-height: 1.4;
+    font-size: 0.95rem;
+    margin: 24px auto;
+    line-height: 1.5;
   }
 }
+
+
