@@ -364,21 +364,21 @@
 /* Mobile Adjustments */
 @media (max-width: 768px) {
   .Text {
-    font-size: clamp(4rem, 6vw, 5rem) !important;
-    margin-left: clamp(-20px, -5vw, -60px); /* responsive negative margin */
+    font-size: clamp(3.5rem, 6vw, 4.5rem) !important;
+    margin-left: clamp(-25px, -5vw, -60px); /* responsive negative margin */
   }
 
   .Info {
-    font-size: clamp(0.8rem, 3.5vw, 1.2rem) !important;
+    font-size: clamp(0.80rem, 3.5vw, 1.2rem) !important;
     margin-left: clamp(-20px, -5vw, -60px); /* responsive negative margin */
-    padding-top: clamp(6px, 10vw, 20px);     /* scales spacing above */
+    padding-top: clamp(3px, 10vw, 20px);     /* scales spacing above */
   }
 
   .button {
-    height: clamp(1.8rem, 2.5rem, 3rem);
+    height: clamp(1.6rem, 2.5rem, 3rem);
     padding: 0 clamp(1.5rem, 2.5rem, 3rem);
-   margin-left: clamp(-40px, -5vw, -20px);
-    margin-top: clamp(5px, 10vw, 20px);      /* scales spacing above */
+   margin-left: clamp(-40px, -5vw, -40px);
+    margin-top: clamp(5px, 10vw, 10px);      /* scales spacing above */
   }
 
   .button-content {
@@ -387,3 +387,83 @@
     
   }
 }
+
+
+/* Mobile Adjustments: Small Phones (≤480px) */
+@media (max-width: 480px) {
+  .Text {
+    font-size: clamp(3.3rem, 5vw, 4rem) !important;  /* reduced */
+    margin-left: clamp(10px, -5vw, 60px);        /* smaller negative margin */
+  }
+
+  .Info {
+    font-size: clamp(0.8rem, 4vw, 1.1rem) !important; /* reduced */
+    margin-left: clamp(10px, -3vw, 60px);
+    padding-top: clamp(4px, 5vw, 12px);             /* less spacing */
+  }
+
+  .button {
+     height: clamp(1.6rem, 2.3rem, 2.8rem);
+    padding: 0 clamp(1.5rem, 2.5rem, 3rem);
+   margin-left: clamp(-40px, -5vw, -20px);
+    margin-top: clamp(5px, 10vw, 10px);              /* less gap */
+  }
+
+  .button-content {
+    font-size: clamp(0.65rem, 0.8rem, 0.9rem);      /* reduced */
+    line-height: clamp(1rem, 2rem, 2rem);       /* match new button height */
+  }
+}
+/* Mobile Adjustments: Ultra Small Phones (≤370px) */
+@media (max-width: 370px) {
+  .Text {
+    font-size: clamp(2.9rem, 4.5vw, 3.9rem) !important;  /* smaller */
+    margin-left: clamp(5px, -3vw, 20px);                 /* reduce shift */
+  }
+
+  .Info {
+    font-size: clamp(0.8rem, 3.7vw, 1.1rem) !important; /* slightly smaller */
+    margin-left: clamp(5px, -2vw, 20px);
+    padding-top: clamp(4px, 4vw, 12px);                  /* tighter spacing */
+  }
+
+  .button {
+    height: clamp(1.5rem, 2.1rem, 2.7rem);                 /* shorter button */
+    padding: 0 clamp(1.3rem, 2.3rem, 2.8rem);                /* slimmer */
+    margin-left: clamp(-30px, -4vw, -15px);
+    margin-top: clamp(4px, 8vw, 8px);                    /* smaller gap */
+  }
+
+  .button-content {
+    font-size: clamp(0.6rem, 0.75rem, 0.85rem);          /* reduced text */
+    line-height: clamp(1rem, 1.8rem, 2rem);            /* match button */
+  }
+}
+
+
+/* Mobile Adjustments: Extra Small Phones (≤320px) */
+@media (max-width: 320px) {
+  .Text {
+    font-size: clamp(2.6rem, 4.2vw, 3.6rem) !important;  /* smaller heading */
+    margin-left: clamp(2px, -2vw, 12px);               /* minimal shift */
+  }
+
+  .Info {
+    font-size: clamp(0.7rem, 3.5vw, 1rem) !important; /* reduced text */
+    margin-left: clamp(2px, -2vw, 12px);
+    padding-top: clamp(3px, 4vw, 12px);                  /* very tight */
+  }
+
+  .button {
+    height: clamp(1.5rem, 2.1rem, 2.7rem);                 /* shorter button */
+    padding: 0 clamp(1.3rem, 2.3rem, 2.8rem);                /* slimmer */
+    margin-left: clamp(-30px, -4vw, -15px);
+    margin-top: clamp(4px, 8vw, 8px);                     /* small gap */
+  }
+
+  .button-content {
+    font-size: clamp(0.6rem, 0.75rem, 0.85rem);          /* reduced text */
+    line-height: clamp(1rem, 1.8rem, 2rem);          /* sync with button */
+  }
+}
+
