@@ -16,7 +16,7 @@
 }
 
 .slide4-description {
-  font-size: clamp(0.85rem, 1.2vw + 0.5rem, 1.25rem); /* ~16px → 20px */
+  font-size: clamp(1rem, 1.2vw + 0.5rem, 1.25rem); /* ~16px → 20px */
   max-width: 1000px;
   margin: 0 auto;
   line-height: 1.6;
@@ -24,274 +24,161 @@
   font-family: 'Montserrat', sans-serif;
   font-weight: 400;
   letter-spacing: 1px;
+  text-align: center;
 }
 
-/* Chat Box Container */
-.slide4-chat-box {
-  background: #f2f2f2;
+/* ✅ Video Container (replacement for chatbox) */
+.slide4-video-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 30px auto;
+  width: 100%;
+  max-width: 850px; 
+}
+
+.slide4-video-container video {
+  width: 100%;
+  max-width: 650px;   /* same width as old chatbox */
+  height: auto;
   border-radius: 12px;
-  padding: 25px;
-  width: 80%;
-  max-width: 1250px;
-  margin: 20px auto;
   box-shadow: 0px 5px 25px rgba(0,0,0,0.3);
 }
 
-/* Top Bar */
-.slide4-top-bar {
-  background: #fff;
-  border-radius: 6px;
-  padding: 8px;
-  font-size: 14px;
-  overflow-x: auto;
-  white-space: nowrap;
-  color: #666;
+/* ✅ Responsive - Tablet (769px → 1024px) */
+@media (max-width: 1024px) and (min-width: 768px) {
+  .slide4-video-container video {
+    max-width: 800px;
+  }
+  .slide4-title, .slide4-description { margin-left: auto; margin-right: auto;}
+
+  .slide4-title {
+    margin-top: 80px; /* push content lower */
+  }
+  
+  .slide4-description {
+    font-size: 0.95rem; /* smaller text */
+    max-width: 90%;
+    margin: 0 auto;
+    line-height: 1.5;
+    text-align: center;
+  }
+
+  .slide4-video-container {
+    margin-top: 20px;
+    max-width: 95%;
+  }
 }
 
-/* Messages */
-.slide4-message {
-  background: #fff;
-  border-radius: 10px;
-  padding: 15px;
-  margin-top: 15px;
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  box-shadow: 0px 3px 12px rgba(0,0,0,0.1);
+/* ✅ Responsive - Mobile (≤600px) */
+@media (max-width: 769px) {
+  .slide4-title {
+    margin-top: 100px; /* push content lower */
+  }
+
+  .slide4-heading {
+    font-size: 1.6rem; /* smaller heading */
+  }
+
+  .slide4-description {
+    font-size: 0.95rem; /* smaller text */
+    max-width: 90%;
+    margin: 0 auto;
+    line-height: 1.5;
+    text-align: center;
+  }
+
+  .slide4-video-container {
+    margin-top: 20px;
+    max-width: 95%;
+  }
+
+  .slide4-video-container video {
+    max-width: 100%;
+    border-radius: 8px;
+  }
+  
 }
 
-.slide4-avatar {
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;
-  background: #aaa;
-  flex-shrink: 0;
-}
+/* Extra Small Mobile (≤480px) */
+@media (max-width: 480px) {
 
-.slide4-content {
-  flex: 1;
-}
-
-.slide4-name {
-  font-weight: bold;
-  font-size: 15px;
-  color: #666;
-}
-
-.slide4-time {
-  font-size: 12px;
-  color: #666;
-  margin-bottom: 8px;
-}
-
-.slide4-text {
-  font-size: 14px;
-  line-height: 1.5;
-  color: #666;
-}
-
-/* Links */
-.slide4-link {
-  color: #2e72e6;
-  text-decoration: underline;
-  position: relative;
-  cursor: pointer;
-}
-
-.slide4-link::after {
-  content: "";
-  display: none;
-  position: absolute;
-  top: 120%;
-  left: 0;
-  width: 350px;
-  height: 110px;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: left;
-  z-index: 10;
-}
-
-.slide4-link-caution:hover::after {
-  display: block;
-  background-image: url("../IMAGES/caution.png");
-}
-
-.slide4-link-warning:hover::after {
-  display: block;
-  background-image: url("../IMAGES/warning.png");
-}
-
-.slide4-link-safe:hover::after {
-  display: block;
-  background-image: url("../IMAGES/safe.png");
-}
-
-/* Fix centering issue at 1024px */
-@media (max-width: 1024px) {
   .slide4-title,
-  .slide4-description
-   {
+  .slide4-description {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; /* stack properly */
     margin-left: auto;
     margin-right: auto;
-
-  }
- 
-  .slide4-chat-box {
-    width: 100%;          /* scale properly */
-  }
-}
-
-
-/* Small tablets & large phones (601px–768px) */
-@media (max-width: 768px) and (min-width: 601px) {
-  .slide4-title {
-    margin-top: 85px !important;  /* push down the title */
-  }
-
-  .slide4-description {
-    margin-top: 20px;
-     width: 90%;
-  }
-
-  .slide4-chat-box {
-    width: 92%;
-    margin-top: 30px;
-  }
-}
-/* Responsive - Mobile (≤600px) */
-@media (max-width: 600px) {
-  .slide4 {
-    height: 100vh;
-    max-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    padding: 0 40px;                /* more space left & right */
-  }
-  .slide4-description {
-    margin-top: 10px;
-     width: 90%;
-  }
-
-  .slide4-title {
-    margin-top: 100px;              /* push content lower */
     text-align: center;
   }
 
-  .slide4-chat-box {
-    flex: 1;
-    min-height: 0;
-    max-height: 68vh;               /* prevent overflow */
-    overflow-y: auto;
-    margin: 15px auto 20px auto;    /* balanced spacing */
-    padding: 14px;
-    width: 90%;                    /* stretch inside padded area */
-    border-radius: 10px;
+  .slide4-title {
+    margin-top: 200px; /* push content lower */
   }
 
-  .slide4-message {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 8px;                   /* reduced bubble padding */
-    margin-top: 10px;
+  .slide4-heading {
+    font-size: 1.4rem; /* smaller heading */
   }
 
-  .slide4-avatar {
-    width: 28px;
-    height: 28px;
-    margin-bottom: 5px;
-  }
-
-  .slide4-name {
-    font-size: 12px;
-  }
-
-  .slide4-time {
-    font-size: 10px;
-  }
-
-  .slide4-text {
-    font-size: 12px;
+  .slide4-description {
+    font-size: 0.9rem; /* reduce text size */
+    max-width: 95%;
+    margin: 0 auto;
     line-height: 1.4;
+    text-align: center;
   }
 
-  .slide4-link::after {
-    width: 180px;
-    height: 55px;
+  .slide4-video-container {
+    margin-top: 15px;
+    max-width: 95%;
+  }
+
+  .slide4-video-container video {
+    max-width: 100%;
+    border-radius: 8px;
   }
 }
-/* Responsive - Tablet (769px → 1024px) */
-@media (max-width: 1024px) and (min-width: 769px) {
-  .slide4 {
-    display: block;           /* remove flex width constraint */
-    height: auto;             /* let height grow naturally */
-    min-height: 100vh;        /* still at least full screen */
-    padding: 0 40px;          /* side breathing room */
+
+/* Ultra Small Mobile (≤370px) */
+@media (max-width: 370px) {
+
+  .slide4-title,
+  .slide4-description {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; /* stack properly */
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+  
+  .slide4-title {
+    margin-top: 200px; /* slightly less spacing */
   }
 
-  .slide4-title {
-    margin-top: 60px; 
-    text-align: center;
+  .slide4-heading {
+    font-size: 1.2rem; /* shrink heading further */
+    letter-spacing: 1px; /* reduce spacing */
   }
 
   .slide4-description {
-    font-size: clamp(1rem, 1.2vw + 0.5rem, 1.3rem);
-    max-width: 1200px;         /* allow wide scaling */
-    width: 95%;                /* near full width */
-    margin: 15px auto 0 auto;
-    line-height: 1.6;
+    font-size: 0.85rem; /* smaller description */
+    max-width: 95%;
+    margin: 0 auto;
+    line-height: 1.4;
     text-align: center;
   }
 
-  .slide4-chat-box {
-    width: 95%;                /* almost full width */
-    max-width: 1200px;         /* close to desktop */
-    margin: 30px auto;
-    padding: 22px;
-    border-radius: 12px;
-    height: auto;              /* natural height */
-    overflow: visible;         /* no scrollbar */
-  }
-
-  .slide4-message {
-    padding: 12px 14px;
+  .slide4-video-container {
     margin-top: 12px;
-    gap: 12px;
+    max-width: 95%;
   }
 
-  .slide4-avatar {
-    width: 40px;
-    height: 40px;
+  .slide4-video-container video {
+    max-width: 100%;
+    border-radius: 6px;
   }
-
-  .slide4-name {
-    font-size: 15px;
-  }
-
-  .slide4-time {
-    font-size: 12px;
-  }
-
-  .slide4-text {
-    font-size: 14px;
-    line-height: 1.5;
-  }
-
-  .slide4-link::after {
-    width: 320px;
-    height: 100px;
-  }
-
-}
-
-  @media (max-width: 480px)  {
-    .slide4-chat-box {
-    border-radius: 12px;
-    padding: 25px;
-    width: 80%;
-    height: 45%;
-    margin: 20px auto;
-    box-shadow: 0px 5px 25px rgba(0,0,0,0.3);
-    }
 }
