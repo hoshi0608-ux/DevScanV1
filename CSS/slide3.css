@@ -170,6 +170,7 @@
 }
 
 
+
 @media (max-width: 768px) {
   .slide3-section {
     display: flex;
@@ -184,7 +185,7 @@
     box-sizing: border-box;
 
     /* keep only right/left/bottom paddings here (no top) */
-    padding: 200px 10px 80px;
+    padding: 250px 10px 80px;
     -webkit-overflow-scrolling: touch; /* smooth on iOS */
     scrollbar-width: thin;
     scrollbar-color: #87cefa transparent;
@@ -228,193 +229,37 @@
   .slide3-section::-webkit-scrollbar-track { background: transparent; }
   .slide3-section::-webkit-scrollbar-thumb { background-color: #87cefa; border-radius: 10px; }
   .slide3-section::-webkit-scrollbar-thumb:hover { background-color: #5ab4e8; }
-}
-
-/* Extra small phones (≤ 480px) */
-@media (max-width: 480px) {
-  .slide3-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    /* keep this as the scroll viewport */
-    position: relative;
-    height: 100vh;
-    overflow-y: auto;
-    overflow-x: hidden;
-    box-sizing: border-box;
-
-    /* smaller padding since screen is narrower */
-    padding: 400px 6px 60px;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: thin;
-    scrollbar-color: #87cefa transparent;
-    margin-left: 80px;
-  }
-
-  /* pseudo-element spacer for top offset */
-  .slide3-section::before {
-    content: "";
-    display: block;
-    flex: 0 0 600px;   /* reduced from 800px for smaller screens */
-    height: 600px;
-    width: 100%;
-  }
-
-  .slide3-section::after {
-    content: "";
-    display: block;
-    flex: 0 0 16px;
-    height: 16px;
-    width: 100%;
-  }
-
-  .slide3-card {
-    width: 100%;
-    max-width: 280px;   /* slimmer than 320px */
-    min-height: 360px;  /* slightly shorter */
-    padding: 10px;
-    box-sizing: border-box;
-  }
-
-  .slide3-card h2 {
-    font-size: clamp(18px, 6vw, 22px); /* scale heading down */
-    text-align: center;
-  }
-
-  .slide3-card p {
-    font-size: clamp(13px, 4vw, 16px);
-    line-height: 1.5;
-    padding: clamp(8px, 3vw, 14px);
-    word-spacing: 1;
-    text-align: justify;
-  }
-
-  .slide3-card img {
-    max-width: 100px;
-    max-height: 100px;
-    margin: 0 auto; /* keep centered */
-  }
-
-  /* horizontal nudge */
-  .slide3-section > .slide3-card,
-  .slide3-section > .slide3-card-container {
-    transform: translateX(4px);
-  }
-
-  /* scrollbar for webkit browsers */
-  .slide3-section::-webkit-scrollbar { width: 6px; scrollbar-gutter: stable; }
-  .slide3-section::-webkit-scrollbar-track { background: transparent; }
-  .slide3-section::-webkit-scrollbar-thumb { background-color: #87cefa; border-radius: 10px; }
-  .slide3-section::-webkit-scrollbar-thumb:hover { background-color: #5ab4e8; }
-}
-
-/* Extra small phones (≤ 480px) */
-@media (max-width: 480px) {
-  .slide3-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    /* keep this as the scroll viewport */
-    position: relative;
-    height: 100vh;
-    overflow-y: auto;
-    overflow-x: hidden;
-    box-sizing: border-box;
-
-    /* smaller padding since screen is narrower */
-    padding: 400px 6px 60px;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: thin;
-    scrollbar-color: #87cefa transparent;
-    margin-left: 80px;
-  }
-
-  /* pseudo-element spacer for top offset */
-  .slide3-section::before {
-    content: "";
-    display: block;
-    flex: 0 0 600px;   /* reduced from 800px for smaller screens */
-    height: 600px;
-    width: 100%;
-  }
-
-  .slide3-section::after {
-    content: "";
-    display: block;
-    flex: 0 0 16px;
-    height: 16px;
-    width: 100%;
-  }
-
-  .slide3-card {
-    width: 100%;
-    max-width: 280px;   /* slimmer than 320px */
-    min-height: 360px;  /* slightly shorter */
-    padding: 10px;
-    box-sizing: border-box;
-  }
-
-  .slide3-card h2 {
-    font-size: clamp(18px, 6vw, 22px); /* scale heading down */
-    text-align: center;
-  }
-
-  .slide3-card p {
-    font-size: clamp(13px, 4vw, 16px);
-    line-height: 1.5;
-    padding: clamp(8px, 3vw, 14px);
-    word-spacing: 1;
-    text-align: justify;
-  }
-
-  .slide3-card img {
-    max-width: 100px;
-    max-height: 100px;
-    margin: 0 auto; /* keep centered */
-  }
-
-  /* horizontal nudge */
-  .slide3-section > .slide3-card,
-  .slide3-section > .slide3-card-container {
-    transform: translateX(4px);
-  }
-
-  /* scrollbar for webkit browsers */
-  .slide3-section::-webkit-scrollbar { width: 6px; scrollbar-gutter: stable; }
-  .slide3-section::-webkit-scrollbar-track { background: transparent; }
-  .slide3-section::-webkit-scrollbar-thumb { background-color: #87cefa; border-radius: 10px; }
-  .slide3-section::-webkit-scrollbar-thumb:hover { background-color: #5ab4e8; }
-}
-
-/* Extra small phones (≤ 480px) */
-@media (max-width: 480px) {
-  .slide3-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    /* keep this as the scroll viewport */
-    position: relative;
-    height: 100vh;
-    overflow-y: auto;
-    overflow-x: hidden;
-    box-sizing: border-box;
-
-    /* smaller padding since screen is narrower */
-    padding: 400px 6px 60px;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: thin;
-    scrollbar-color: #87cefa transparent;
   
+}
+
+
+
+/* Extra small phones (≤ 480px) */
+@media (max-width: 480px) {
+  .slide3-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    position: relative;
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    box-sizing: border-box;
+
+    padding: 550px 6px 60px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: #87cefa transparent;
+
+    margin: 0 auto;          /* keeps container centered */
+    max-width: 95%;          /* increase width but prevent overflow */
   }
 
-  /* pseudo-element spacer for top offset */
   .slide3-section::before {
     content: "";
     display: block;
-    flex: 0 0 600px;   /* reduced from 800px for smaller screens */
+    flex: 0 0 600px;
     height: 600px;
     width: 100%;
   }
@@ -429,79 +274,77 @@
 
   .slide3-card {
     width: 100%;
-    max-width: 280px;   /* slimmer than 320px */
-    min-height: 360px;  /* slightly shorter */
-    padding: 10px;
+    max-width: 340px;   /* slightly wider than 320px */
+    min-height: 380px;
+    padding: 14px;
     box-sizing: border-box;
+
+    word-wrap: break-word;
+    overflow-wrap: break-word;
   }
 
   .slide3-card h2 {
-    font-size: clamp(18px, 6vw, 22px); /* scale heading down */
+    font-size: clamp(15px, 6.5vw, 26px); /* scales better */
     text-align: center;
   }
 
-  .slide3-card p {
-    font-size: clamp(13px, 4vw, 16px);
-    line-height: 1.5;
-    padding: clamp(8px, 3vw, 14px);
-    word-spacing: 1;
-    text-align: justify;
-  }
-
+  
   .slide3-card img {
-    max-width: 100px;
-    max-height: 100px;
-    margin: 0 auto; /* keep centered */
+    max-width: 130px;  
+    max-height: 130px;
+    margin: 0 auto;
   }
 
-  /* horizontal nudge */
   .slide3-section > .slide3-card,
   .slide3-section > .slide3-card-container {
-    transform: translateX(40px);
+    transform: translateX(4px);
   }
 
-  /* scrollbar for webkit browsers */
   .slide3-section::-webkit-scrollbar { width: 6px; scrollbar-gutter: stable; }
   .slide3-section::-webkit-scrollbar-track { background: transparent; }
   .slide3-section::-webkit-scrollbar-thumb { background-color: #87cefa; border-radius: 10px; }
   .slide3-section::-webkit-scrollbar-thumb:hover { background-color: #5ab4e8; }
 }
 
+/* keep design, just make scaling adjustments */
 @media (max-width: 480px) {
-  .slide3-card-container  {
-    margin-right: 12.5vh;
+  .slide3-section > .slide3-card,
+  .slide3-section > .slide3-card-container {
+    transform: translateX(30px); /* less push so it stays centered */
   }
 
-}
+  .slide3-card-container {
+    margin-right: 6vh; /* keep spacing but allow wider content */
+  }
 
-
-@media (max-width: 480px) {
   .slide3-card p {
-    font-size: clamp(10px, 4vw, 12px);
-    line-height: 1.2;
-    padding: clamp(8px, 3vw, 10px);
-    word-spacing: 1;
+    font-size: clamp(5px, 4vw, 13px);
+    line-height: 1.4;
+    padding: clamp(5px, 3vw, 12px);
     text-align: justify;
   }
-   .slide3-section {
-    -ms-overflow-style: none;    /* IE and old Edge */
-    scrollbar-width: none;       /* Firefox */
+
+  .slide3-section {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
+
   .slide3-section::-webkit-scrollbar {
-    display: none;               /* Chrome, Safari, Opera */
+    display: none;
   }
-  }
-/* Extra-small phones (≤ 370px) – force same size as 480px and center */
+}
+
+/* Extra-small phones (≤ 370px) */
 @media (max-width: 370px) {
   .slide3-section {
     display: flex !important;
     flex-direction: column !important;
-    align-items: center !important;        /* horizontal center */
-    justify-content: center !important;    /* vertical center */
+    align-items: center !important;
+    justify-content: center !important;
     position: relative !important;
     min-height: 100vh !important;
     height: auto !important;
-    padding: 70px 6px 60px !important;      /* same as 480px */
+    padding: 80px 6px 60px !important;
     margin: 0 auto !important;
     overflow-y: auto !important;
     overflow-x: hidden !important;
@@ -509,7 +352,6 @@
     -webkit-overflow-scrolling: touch !important;
   }
 
-  /* kill the big spacers completely */
   .slide3-section::before,
   .slide3-section::after {
     content: none !important;
@@ -518,29 +360,31 @@
 
   .slide3-card {
     width: 100% !important;
-    max-width: 280px !important;
-    min-height: 360px !important;
-    padding: 10px !important;
+    max-width: 300px !important;  /* was 280px → now wider */
+    min-height: 380px !important;
+    padding: 12px !important;
     box-sizing: border-box !important;
   }
 
   .slide3-card h2 {
-    font-size: clamp(18px, 6vw, 22px) !important;
+    font-size: clamp(18px, 6.2vw, 20px) !important;
     text-align: center !important;
   }
 
   .slide3-card p {
-    font-size: clamp(10px, 4vw, 12px) !important;
-    line-height: 1.2 !important;
-    padding: clamp(8px, 3vw, 10px) !important;
+    font-size: clamp(10px, 4.2vw, 12px) !important;
+    line-height: 1.3 !important;
+    padding: clamp(9px, 3.2vw, 12px) !important;
     text-align: justify !important;
   }
 
   .slide3-card img {
-    max-width: 100px !important;
-    max-height: 100px !important;
+    max-width: 115px !important;
+    max-height: 115px !important;
     margin: 0 auto !important;
   }
 }
+
+
 
 
