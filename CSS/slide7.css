@@ -154,52 +154,26 @@
   text-decoration: underline;
 }
 
-/* Responsive: Tablets */
+/* -------------------- Responsive -------------------- */
 @media (max-width: 1024px) {
-  .privacy-container {
-    height: 450px;
-    padding: 26px 40px;
-  }
-  .privacy-title {
-    font-size: 2.2rem;
-  }
-  .privacy-heading,
-  .privacy-disclosure-heading {
-    font-size: 1.3rem;
-  }
-  .privacy-container p,
-  .privacy-list li {
-    font-size: 1.05rem;
-  }
-  .privacy-disclosure {
-    font-size: 1rem;
-    margin: 25px auto;
-  }
+  .privacy-container { height: 450px; padding: 26px 40px; }
+  .privacy-title { font-size: 2.2rem; }
+  .privacy-heading, .privacy-disclosure-heading { font-size: 1.3rem; }
+  .privacy-container p, .privacy-list li { font-size: 1.05rem; }
+  .privacy-disclosure { font-size: 1rem; margin: 25px auto; }
 }
 
-/* Responsive: Standard Tablets / Large Phones */
 @media (max-width: 768px) {
-  .privacy-container {
-    height: 400px;
-    padding: 22px;
+  .privacy-container { 
+    height: 400px; 
+    padding: 22px; 
+    max-width: 100%;   /* makes box narrower */
+    margin: 150px 50px; /* adds space top/bottom + keeps center horizontally */
   }
-  .privacy-title {
-    font-size: 2rem;
-  }
-  .privacy-heading,
-  .privacy-disclosure-heading {
-    font-size: 1.2rem;
-  }
-  .privacy-container p,
-  .privacy-list li {
-    font-size: 1rem;
-    line-height: 1.8;
-  }
-  .privacy-disclosure {
-    font-size: 0.95rem;
-    margin: 22px auto;
-    line-height: 1.5;
-  }
+  .privacy-title { font-size: 2rem; margin-bottom: 50px;}
+  .privacy-heading, .privacy-disclosure-heading { font-size: 1.2rem; }
+  .privacy-container p, .privacy-list li { font-size: 1rem; line-height: 1.8; }
+  .privacy-disclosure { font-size: 0.95rem; margin: 22px auto; line-height: 1.5; }
 }
 
 /* Responsive: Small Phones */
@@ -242,5 +216,3 @@
     line-height: 1.5;
   }
 }
-
-
