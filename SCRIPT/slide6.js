@@ -1,33 +1,55 @@
-// slide6.js
-$(document).ready(function () {
-  const $carousel = $('.carousel-slide6');
+// Wait for everything to load completely
+document.addEventListener('DOMContentLoaded', function() {
+    // Small delay to ensure CSS is fully applied
+    setTimeout(initSecuritySlider, 100);
+});
 
-  $carousel.carousel({
-    padding: 200,
-    numVisible: 3,
-    shift: 50,
-    dist: -50,
-    indicators: false, // we are using custom dots
-    onCycleTo: function (el /* DOM element */) {
-      // Find index of the new active item
-      const items = $carousel[0].querySelectorAll('.carousel-item');
-      const index = Array.prototype.indexOf.call(items, el);
+function initSecuritySlider() {
+    const SecuritySlider = new Swiper('.security-slider', {
+        effect: 'coverflow',
+        grabCursor: true,
+        centeredSlides: true,
+        loop: true,
+        slidesPerView: 'auto',
+        coverflowEffect: {
+            rotate: 0,
+            stretch: 0,
+            depth: 100,
+            modifier: 2.5,
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        // Force proper initialization
+        observer: true,
+        observeParents: true,
+        observeSlideChildren: true,
+        // Re-initialize on window resize
+        on: {
+            init: function () {
+                console.log('Swiper initialized successfully');
+            },
+            resize: function () {
+                this.update();
+            }
+        }
+    });
+    
+    return SecuritySlider;
+}
 
-      // Broadcast a custom event that pagination listens to
-      $carousel[0].dispatchEvent(
-        new CustomEvent('slide6:change', { detail: { index } })
-      );
+// Additional fix: Update Swiper when window loads completely
+window.addEventListener('load', function() {
+    const slider = document.querySelector('.security-slider')?.swiper;
+    if (slider) {
+        setTimeout(() => {
+            slider.update();
+            slider.slideTo(0);
+        }, 150);
     }
-  });
-
-  // OPTIONAL autoplay (works with dots)
-  // setInterval(() => $carousel.carousel('next'), 4500);
-
-  // Sync once on load
-  const active = $carousel[0].querySelector('.carousel-item.active');
-  if (active) {
-    const items = $carousel[0].querySelectorAll('.carousel-item');
-    const index = Array.prototype.indexOf.call(items, active);
-    $carousel[0].dispatchEvent(new CustomEvent('slide6:change', { detail: { index } }));
-  }
 });
