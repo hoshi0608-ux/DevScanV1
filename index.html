@@ -105,6 +105,11 @@
         </div>
     <!-- Team Members -->
         <div class="team-members">
+           <div class="member klarence">
+            <img class="avatar" src="../IMAGES/Sir mallari.png" alt="Klarence Baluyut">
+            <h3>Christian S. Mallari</h3>
+            <p>PROJECT ADVISER</p>
+          </div>
           <div class="member charlotte">
             <img class="avatar" src="../IMAGES/lot.png" alt="Charlotte Carrillo">
             <h3>Charlotte Carrillo</h3>
@@ -185,7 +190,7 @@
       </div>
     </div>
 
-         <!-- SLIDE 4 -->
+                  <!-- SLIDE 4 -->
               <div class="slider-item swiper-slide">
                 <div class="slide-content">
                   <div class="DEVLOGO">
@@ -212,123 +217,51 @@
               </div>
 
     
-                <!-- SLIDE 5 (FAQ) -->
+                           <!-- SLIDE 5 (Support Center Form) -->
               <div class="slider-item swiper-slide">
                 <div class="slide-content">
-                       <div class="DEVLOGO">
-                            <img class="logo" src="../IMAGES/logo.png" alt="Logo">
-                       </div>
-   
-                       <main>
-                        <article class="container faq-slide6">
-                          <h1>Frequently Asked Questions</h1>
+                  <div class="DEVLOGO">
+                    <img class="logo" src="../IMAGES/logo.png" alt="Logo">
+                  </div>
 
-                          <!-- faq container -->
-                          <div class="faq-box-container">
+                  <main>
+                    <!-- Heading + Description OUTSIDE the box -->
+                    <div class="support-header">
+                      <h1 class="support-title">SUPPORT CENTER</h1>
+                      <p class="support-desc">
+                        Need Help Or Want To Share Feedback? You're In The Right Place. 
+                        This Page Is Your Hub For Support, Suggestions, And Answers To Common Questions.
+                      </p>
+                    </div>
 
-                            <!-- faq box 1 -->
-                            <div class="faq-box">
-                              <div class="faq-box-question">
-                                <h3>Q: What Is DEVScan?</h3>
-                                <span class="faq-box-icon"></span>
-                              </div>
-                              <div class="faq-box-answer">
-                                <p class="answer">
-                                  A: DEVScan Is A Chrome Extension That Protects Users From Malicious 
-                                  And Suspicious Links In Real-Time Using
-                                  Machine Learning And External Threat Intelligence.
-                                </p>
-                              </div>
-                            </div>
+                    <!-- The Form INSIDE the box -->
+                    <section class="support-container">
+                      <form class="support-form">
+                        <!-- Left Side -->
+                        <div class="support-left">
+                          <label for="name">Name:</label>
+                          <input type="text" id="name" placeholder="Enter your name" required>
 
-                            <!-- faq box 2 -->
-                            <div class="faq-box">
-                              <div class="faq-box-question">
-                                <h3>Q: How Does DEVScan Warn Me About A Risky Link?</h3>
-                                <span class="faq-box-icon"></span>
-                              </div>
-                              <div class="faq-box-answer">
-                                <p>A: DEVScan Highlights Links In Three Colors:</p>
-                                <ul class="Colors-legend">
-                                    <li>
-                                      🔴 <strong>Red</strong>
-                                      <span>For Confirmed Threats</span>
-                                    </li>
-                                    <li>
-                                      🟡 <strong>Yellow</strong>
-                                      <span>For Anomalies</span>
-                                    </li>
-                                    <li>
-                                      🟢 <strong>Green</strong>
-                                      <span>For Safe Links</span>
-                                    </li>
-                                </ul>
+                          <label for="email">Email (Optional):</label>
+                          <input type="email" id="email" placeholder="Enter your email">
 
-                              </div>
-                            </div>
+                          <label for="feedback">Feedback Request:</label>
+                          <input type="text" id="feedback" placeholder="What would you like to request?">
 
-                            <!-- faq box 3 -->
-                            <div class="faq-box">
-                              <div class="faq-box-question">
-                                <h3>Q: Will DEVScan Slow Down My Browser?</h3>
-                                <span class="faq-box-icon"></span>
-                              </div>
-                              <div class="faq-box-answer">
-                                <p>
-                                  A: No. DEVScan Is Designed To Run Efficiently In The Background 
-                                  And Only Scans Links, So Your Browsing Stays Smooth.
-                                </p>
-                              </div>
-                            </div>
+                          <button type="submit" class="submit-btn">SUBMIT</button>
+                        </div>
 
-                            <!-- faq box 4 -->
-                            <div class="faq-box">
-                              <div class="faq-box-question">
-                                <h3>Q: Does DEVScan Collect My Data?</h3>
-                                <span class="faq-box-icon"></span>
-                              </div>
-                              <div class="faq-box-answer">
-                                <p>
-                                  A: No. We Prioritize Privacy And Do Not Store Personal Information 
-                                  Or Browsing History. All Threat Detection Happens Securely.
-                                </p>
-                              </div>
-                            </div>
-
-                            <!-- faq box 5 -->
-                            <div class="faq-box">
-                              <div class="faq-box-question">
-                                <h3>Q: Can I Disable Auto-Blocking?</h3>
-                                <span class="faq-box-icon"></span>
-                              </div>
-                              <div class="faq-box-answer">
-                                <p>
-                                  A: Yes. Auto-Blocking Is Optional. You Can Enable Or Disable It 
-                                  In The Extension Settings.
-                                </p>
-                              </div>
-                            </div>
-
-                            <!-- faq box 6 -->
-                            <div class="faq-box">
-                              <div class="faq-box-question">
-                                <h3>Q: Is There A Mobile Version?</h3>
-                                <span class="faq-box-icon"></span>
-                              </div>
-                              <div class="faq-box-answer">
-                                <p>
-                                  A: Currently, DEVScan Is Only Available For Desktop Chrome Browsers. 
-                                  Mobile Support Is Planned In Future Updates.
-                                </p>
-                              </div>
-                            </div>
-
-                          </div>
-                        </article>
-                      </main>
-  
-                 </div>
+                        <!-- Right Side -->
+                        <div class="support-right">
+                          <label for="message">Your Message:</label>
+                          <textarea id="message" rows="10" placeholder="Type your message here..."></textarea>
+                        </div>
+                      </form>
+                    </section>
+                  </main>
+                </div>
               </div>
+
 
     
                                
@@ -453,13 +386,14 @@
                             <li><strong>Control:</strong> Users can disable, remove, or change settings at any time.</li>
                           </ul>
 
-                           <h3 class="privacy-heading">12) Contact Us</h3>
+                          <h3 class="privacy-heading">12) Contact Us</h3>
                           <p>If you have questions or requests related to privacy, please contact:</p>
                           <p>
                             <span class="privacy-email-label">Email:</span>
                             <a href="mailto:bscs3a.devscan@gmail.com" class="privacy-email">bscs3a.devscan@gmail.com</a>
                           </p>
                           <p>Extension Store: Report concerns through your browser’s extension store</p>
+
 
                           <h3 class="privacy-disclosure-heading">Security Disclosure</h3>
                           <p class="privacy-disclosure">
@@ -482,7 +416,7 @@
                       <li class="slider-tabsss"><span class="tab-text">Technology Used</span></li>
                       <li class="slider-tabsss"><span class="tab-text">How It Works?</span></li>
                       <li class="slider-tabsss"><span class="tab-text">
-                      Frequently Asked<br>Questions
+                      Support Center
                       </span></li>
                       <li class="slider-tabsss"><span class="tab-text">
                       About DEVScan
@@ -510,7 +444,7 @@
                      <li class="slider-tab"><span class="tab-text">Developers</span></li>
                      <li class="slider-tab"><span class="tab-text">Technology Used</span></li>
                      <li class="slider-tab"><span class="tab-text">How It Works?</span></li>
-                     <li class="slider-tab"><span class="tab-text">Frequently Asked<br>Questions</span></li>
+                     <li class="slider-tab"><span class="tab-text">Support Center</span></li>
                      <li class="slider-tab"><span class="tab-text">About DEvScan</span></li>
                      <li class="slider-tab"><span class="tab-text">Privacy Policy</span></li>
                 </ul>
@@ -540,5 +474,3 @@
     
 </body>
 </html>
-
-
