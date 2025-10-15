@@ -7,29 +7,37 @@
   padding: auto;
   margin: auto;
 }
-.slider-wrapper .slider-item:nth-child(1):before {
-  background-image: url("../IMAGES/MacBook\ Pro\ 16_\ -\ 4\ \(1\).png");
+
+.slider-wrapper .slider-item.slide1::before {
+  background-image: url("../IMAGES/MacBook Pro 16_ - 4 (1).png");
 }
 
-.slider-wrapper .slider-item:nth-child(2):before {
+.slider-wrapper .slider-item.slide2::before {
   background-image: url("../IMAGES/developers.png");
 }
-.slider-wrapper .slider-item:nth-child(3):before {
-  background-image: url("../IMAGES/technologies.png");
-}
-.slider-wrapper .slider-item:nth-child(4):before {
-  background-image: url("../IMAGES/Slide4BG.png");
-}
-.slider-wrapper .slider-item:nth-child(5):before {
-  background-image: url("../IMAGES/faq.png");
-}
-.slider-wrapper .slider-item:nth-child(6):before {
-  background-image: url("../IMAGES/Rushing\ w\ hurting.png");
-}
-.slider-wrapper .slider-item:nth-child(7):before {
+
+.slider-wrapper .slider-item.slide3::before {
   background-image: url("../IMAGES/technologies.png");
 }
 
+.slider-wrapper .slider-item.slide4::before {
+  background-image: url("../IMAGES/newbgslide4.png");
+}
+
+.slider-wrapper .slider-item.slide5::before {
+  background-image: url("../IMAGES/faq.png");
+}
+
+.slider-wrapper .slider-item.slide6::before {
+  background-image: url("../IMAGES/Rushing w hurting.png");
+}
+
+.slider-wrapper .slider-item.slide7::before {
+  background-image: url("../IMAGES/technologies.png");
+}
+.slider-item::before {
+  background-image: var(--bg-image);
+}
 /*.slider-wrapper .slider-item .slide-content > * {
    max-width: 35%; 
 }
@@ -58,3 +66,33 @@
   z-index: -1; /* keep it behind content */
 }
 
+/* Cyberflow aesthetic */
+.slider-item::before {
+  transition: all 1.2s ease;
+  filter: brightness(0.9) contrast(1.2);
+}
+
+/* Glowing focus when active */
+.swiper-slide-active .slider-item::before,
+.cyber-glow::before {
+  filter: brightness(1.2) contrast(1.5) drop-shadow(0 0 20px #a35bbe);
+  transform: scale(1.02);
+}
+
+/* Optional cyber scan overlay */
+.slider-item::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    rgba(163, 91, 190, 0.1),
+    rgba(0, 0, 0, 0.6)
+  );
+  mix-blend-mode: overlay;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+.swiper-slide-active .slider-item::after {
+  opacity: 1;
+}
