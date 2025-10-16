@@ -8,6 +8,13 @@ const sliderControls = document.querySelector(".slider-controls");
 const prevBtn = document.getElementById("slide-prev");
 const nextBtn = document.getElementById("slide-next");
 
+// SAFETY: prevent indicator from blocking hover clicks
+if (sliderIndicator) {
+  sliderIndicator.style.pointerEvents = "none";
+  sliderIndicator.style.zIndex = 0;
+  sliderTabs.forEach((t) => (t.style.zIndex = 1));
+}
+
 // ============================
 //  INIT SWIPER (Expo-like effect)
 // ============================
@@ -26,7 +33,6 @@ const swiper = new Swiper(".slider-container", {
       scale: 1,
       opacity: 1,
     },
-    // You can also add a mid effect if supported, or tweak shadows
   },
   navigation: {
     prevEl: "#slide-prev",
@@ -38,12 +44,11 @@ const swiper = new Swiper(".slider-container", {
   },
 });
 
-
 // ============================
-//  INDICATOR UPDATE
+//  INDICATOR UPDATE (safe measurement)
 // ============================
 function updateIndicator(tab) {
-  if (!tab) return;
+  if (!tab || !sliderIndicator) return;
 
   sliderTabs.forEach((t) => {
     t.classList.remove("active");
@@ -55,33 +60,54 @@ function updateIndicator(tab) {
   tab.style.color = "#a35bbe";
   tab.style.borderBottomColor = "#a35bbe";
 
-  const tabText = tab.querySelector(".tab-text");
-  const tabTextRect = tabText.getBoundingClientRect();
-  const containerRect = tab.parentElement.getBoundingClientRect();
-  const offsetLeft = tabTextRect.left - containerRect.left;
-  const width = tabTextRect.width;
-  const extraWidthVW = (65 / 1536) * 100; // ~4.23vw
+  requestAnimationFrame(() => {
+    const tabText = tab.querySelector(".tab-text");
+    if (!tabText) return;
 
-  sliderIndicator.style.transform = `translateX(${offsetLeft}px)`;
-  sliderIndicator.style.width = `calc(${width}px + ${extraWidthVW}vw)`;
-  sliderIndicator.style.backgroundColor = "#a35bbe";
+    const tabTextRect = tabText.getBoundingClientRect();
+    const containerRect = sliderPagination
+      ? sliderPagination.getBoundingClientRect()
+      : tab.parentElement.getBoundingClientRect();
+    const offsetLeft = tabTextRect.left - containerRect.left;
+    const width = tabTextRect.width;
+    const extraWidthVW = (65 / 1536) * 100;
 
-  if (window.innerWidth <= 768) {
-    tab.scrollIntoView({
-      behavior: "smooth",
-      inline: "center",
-      block: "nearest",
-    });
-  }
+    sliderIndicator.style.transform = `translateX(${offsetLeft}px)`;
+    sliderIndicator.style.width = `calc(${width}px + ${extraWidthVW}vw)`;
+    sliderIndicator.style.backgroundColor = "#a35bbe";
+  });
 }
+
+// ============================
+//  SWIPER–INDICATOR SYNC
+// ============================
+function syncIndicatorToSwiper() {
+  const idx = typeof swiper.realIndex === "number" ? swiper.realIndex : 0;
+  const targetTab = sliderTabs[idx];
+  if (targetTab) updateIndicator(targetTab);
+}
+
+swiper.on("init", () => syncIndicatorToSwiper());
+swiper.on("slideChange", () => syncIndicatorToSwiper());
+swiper.on("transitionStart", () => syncIndicatorToSwiper());
+swiper.on("transitionEnd", () => syncIndicatorToSwiper());
+swiper.on("reachBeginning", () => syncIndicatorToSwiper());
+swiper.on("reachEnd", () => syncIndicatorToSwiper());
+
+if (swiper.initialized) syncIndicatorToSwiper();
 
 // ============================
 //  RESPONSIVENESS & BUTTONS
 // ============================
 function checkPaginationOverflow() {
-  const isOverflowing = sliderPagination.scrollWidth > sliderControls.clientWidth;
-  sliderControls.classList.toggle("scrollable", isOverflowing);
-  sliderPagination.classList.toggle("scrollable", isOverflowing);
+  const isOverflowing =
+    sliderPagination && sliderControls &&
+    sliderPagination.scrollWidth > sliderControls.clientWidth;
+
+  if (sliderControls)
+    sliderControls.classList.toggle("scrollable", isOverflowing);
+  if (sliderPagination)
+    sliderPagination.classList.toggle("scrollable", isOverflowing);
 }
 
 function responsiveAdjustments() {
@@ -90,6 +116,7 @@ function responsiveAdjustments() {
   const btnWidth = width <= 480 ? 80 : width <= 768 ? 120 : 165;
 
   [prevBtn, nextBtn].forEach((btn) => {
+    if (!btn) return;
     btn.style.fontSize = `${btnSize}px`;
     btn.style.width = `${btnWidth}px`;
   });
@@ -129,56 +156,49 @@ sliderTabs.forEach((tab, index) => {
     if (!tab.classList.contains("active")) {
       tab.style.color = "#a35bbe";
       sliderIndicator.style.backgroundColor = "#a35bbe";
+      updateIndicator(tab);
     }
   });
 
   tab.addEventListener("mouseleave", () => {
-    if (tab.classList.contains("active")) {
-      tab.style.color = "#a35bbe";
-      tab.style.borderBottomColor = "#a35bbe";
-      sliderIndicator.style.backgroundColor = "#a35bbe";
-    } else {
-      tab.style.color = "white";
-      tab.style.borderBottomColor = "white";
-      sliderIndicator.style.backgroundColor = "white";
-    }
+    syncIndicatorToSwiper();
   });
 });
 
 // ============================
 //  BUTTONS & KEYS
 // ============================
-prevBtn.addEventListener("click", (e) => {
+prevBtn?.addEventListener("click", (e) => {
   e.currentTarget.blur();
   swiper.slidePrev();
-  swiper.autoplay.start();
+  swiper.autoplay?.start();
 });
 
-nextBtn.addEventListener("click", (e) => {
+nextBtn?.addEventListener("click", (e) => {
   e.currentTarget.blur();
   swiper.slideNext();
-  swiper.autoplay.start();
+  swiper.autoplay?.start();
 });
 
 window.addEventListener("keydown", (e) => {
   if (e.key === "ArrowLeft") {
     swiper.slidePrev();
-    prevBtn.focus();
-    prevBtn.classList.add("temp-focus");
+    prevBtn?.focus();
+    prevBtn?.classList.add("temp-focus");
   } else if (e.key === "ArrowRight") {
     swiper.slideNext();
-    nextBtn.focus();
-    nextBtn.classList.add("temp-focus");
+    nextBtn?.focus();
+    nextBtn?.classList.add("temp-focus");
   }
 });
 
 window.addEventListener("keyup", (e) => {
   if (e.key === "ArrowLeft") {
-    prevBtn.classList.remove("temp-focus");
-    prevBtn.blur();
+    prevBtn?.classList.remove("temp-focus");
+    prevBtn?.blur();
   } else if (e.key === "ArrowRight") {
-    nextBtn.classList.remove("temp-focus");
-    nextBtn.blur();
+    nextBtn?.classList.remove("temp-focus");
+    nextBtn?.blur();
   }
 });
 
@@ -187,7 +207,7 @@ window.addEventListener("keyup", (e) => {
 // ============================
 window.addEventListener("load", () => {
   swiper.slideToLoop(0, 0);
-  updateIndicator(sliderTabs[0]);
+  syncIndicatorToSwiper();
   checkPaginationOverflow();
   responsiveAdjustments();
 });
@@ -197,4 +217,19 @@ window.addEventListener("resize", () => {
   if (activeTab) updateIndicator(activeTab);
   checkPaginationOverflow();
   responsiveAdjustments();
+});
+
+// ============================
+//  PAUSE AUTOPLAY WHILE TYPING (Support Center fix)
+// ============================
+document.addEventListener("focusin", (e) => {
+  if (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA") {
+    swiper.autoplay?.stop();
+  }
+});
+
+document.addEventListener("focusout", (e) => {
+  if (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA") {
+    swiper.autoplay?.start();
+  }
 });
