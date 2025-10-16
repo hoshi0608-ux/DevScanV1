@@ -46,39 +46,62 @@
 
 
 
+
 .slider-tabsss {
-  border-bottom: 2px solid white;
+  position: relative;
   padding-bottom: 10px;
   cursor: pointer;
   color: white; /* fallback text color */
-  transition: color 0.3s ease, border-color 0.3s ease;
+  transition: color 1s ease;
   display: inline-flex;
   align-items: center;
-  margin-right: 0; /* spacing between icon and text */
-  width: 300px;     /* if applicable */
-  justify-content: center; 
+  margin-right: 0;
+  width: 160px;
+  justify-content: center;
+}
+
+/* Rounded underline (acts as your border-bottom) */
+.slider-tabsss::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: white;
+  border-radius: 10px; /* 👈 smooth rounded edges */
+  transition: background-color 1.5s ease, height 1.5s ease;
+  pointer-events: none;
 }
 
 /* Make sure tab-text inherits color */
 .slider-tabsss .tab-text {
   color: inherit;
-  transition: color 0.3s ease;
+  transition: color 1.5s ease;
 }
 
 /* Active tab */
 .slider-tabsss.active {
-  border-bottom-color:  #a35bbe;
-  color:  #a35bbe;
+  color: #a35bbe;
+  transition: color 1s ease;
+}
+.slider-tabsss.active::after {
+  background-color: #a35bbe;
+  height: 5.5px; /* thicker when active */
 }
 
 /* Hover effect on tab and tab-text */
 .slider-tabsss:hover,
 .slider-tabsss:hover .tab-text {
-  border-bottom-color:  #a35bbe;
-  color:  #a35bbe
+  color: #a35bbe;
+  transition: color 1.5s ease;
 }
+.slider-tabsss:hover::after {
+  background-color: #a35bbe;
+}
+
+/* Tab text */
 .tab-text {
   font-size: 1rem !important;
-  font-weight: 400  !important ;
-  
+  font-weight: 400 !important;
 }
