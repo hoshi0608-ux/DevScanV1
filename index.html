@@ -4,6 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DEVScan</title>
+
+         </script>
+      <script type="text/javascript">
+        (function(){
+            emailjs.init({
+              publicKey: "avupW0Wiva7-VLeGW",
+            });
+        })();
+      </script>
+      <script src="../SCRIPT/send.js"></script>
+    
     <style type="text/css">
         *{
             text-decoration: none;
@@ -242,28 +253,28 @@
 
                     <!-- The Form INSIDE the box -->
                     <section class="support-container">
-                      <form class="support-form">
-                        <!-- Left Side -->
-                        <div class="support-left">
-                          <label for="name">Name:</label>
-                          <input type="text" id="name" placeholder="Enter your name" required>
+                        <form class="support-form">
+                          <!-- Left Side -->
+                          <div class="support-left">
+                            <label for="name">Name:</label>
+                            <input type="text" id="name" placeholder="Enter your name" required>
 
-                          <label for="email">Email (Optional):</label>
-                          <input type="email" id="email" placeholder="Enter your email">
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" placeholder="Enter your email" required>
 
-                          <label for="feedback">Feedback Request:</label>
-                          <input type="text" id="feedback" placeholder="What would you like to request?">
+                            <label for="feedback">Feedback Request:</label>
+                            <input type="text" id="feedback" placeholder="What would you like to request?" required>
 
-                          <button type="submit" class="submit-btn">SUBMIT</button>
-                        </div>
+                            <button type="button" class="submit-btn" onclick="sendMail()">SUBMIT</button>
+                          </div>
 
-                        <!-- Right Side -->
-                        <div class="support-right">
-                          <label for="message">Your Message:</label>
-                          <textarea id="message" rows="10" placeholder=""Tell us what you need help with...""></textarea>
-                        </div>
-                      </form>
-                    </section>
+                          <!-- Right Side -->
+                          <div class="support-right">
+                            <label for="message">Your Message:</label>
+                            <textarea id="message" rows="10" placeholder="Type your message here..." required></textarea>
+                          </div>
+                        </form>
+                  </section>
                   </main>
                 </div>
               </div>
@@ -480,6 +491,7 @@
     
 </body>
 </html>
+
 
 
 
