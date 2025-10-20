@@ -16,7 +16,7 @@ if (sliderIndicator) {
 }
 
 // ============================
-//  INIT SWIPER (Expo-like effect)
+//  INIT SWIPER
 // ============================
 const swiper = new Swiper(".slider-container", {
   effect: "creative",
@@ -39,13 +39,13 @@ const swiper = new Swiper(".slider-container", {
     nextEl: "#slide-next",
   },
   autoplay: {
-    delay: 5000,
+    delay: 8000,
     disableOnInteraction: false,
   },
 });
 
 // ============================
-//  INDICATOR UPDATE (safe measurement)
+//  INDICATOR UPDATE
 // ============================
 function updateIndicator(tab) {
   if (!tab || !sliderIndicator) return;
@@ -79,7 +79,7 @@ function updateIndicator(tab) {
 }
 
 // ============================
-//  SWIPER–INDICATOR SYNC
+//  SYNC INDICATOR TO SWIPER
 // ============================
 function syncIndicatorToSwiper() {
   const idx = typeof swiper.realIndex === "number" ? swiper.realIndex : 0;
@@ -87,17 +87,11 @@ function syncIndicatorToSwiper() {
   if (targetTab) updateIndicator(targetTab);
 }
 
-swiper.on("init", () => syncIndicatorToSwiper());
-swiper.on("slideChange", () => syncIndicatorToSwiper());
-swiper.on("transitionStart", () => syncIndicatorToSwiper());
-swiper.on("transitionEnd", () => syncIndicatorToSwiper());
-swiper.on("reachBeginning", () => syncIndicatorToSwiper());
-swiper.on("reachEnd", () => syncIndicatorToSwiper());
-
+swiper.on("init slideChange transitionStart transitionEnd reachBeginning reachEnd", syncIndicatorToSwiper);
 if (swiper.initialized) syncIndicatorToSwiper();
 
 // ============================
-//  RESPONSIVENESS & BUTTONS
+//  RESPONSIVE ADJUSTMENTS
 // ============================
 function checkPaginationOverflow() {
   const isOverflowing =
@@ -142,7 +136,7 @@ function responsiveAdjustments() {
 }
 
 // ============================
-//  TABS & EVENTS
+//  TABS EVENTS
 // ============================
 sliderTabs.forEach((tab, index) => {
   tab.style.cursor = "pointer";
@@ -220,16 +214,35 @@ window.addEventListener("resize", () => {
 });
 
 // ============================
-//  PAUSE AUTOPLAY WHILE TYPING (Support Center fix)
+//  PAUSE AUTOPLAY ON USER ACTIVITY
 // ============================
-document.addEventListener("focusin", (e) => {
-  if (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA") {
-    swiper.autoplay?.stop();
-  }
-});
 
-document.addEventListener("focusout", (e) => {
-  if (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA") {
+let userInteracting = false;
+let inactivityTimeout;
+
+function pauseAutoplay() {
+  if (swiper.autoplay.running) swiper.autoplay.stop();
+  userInteracting = true;
+  clearTimeout(inactivityTimeout);
+}
+
+function resumeAutoplay() {
+  clearTimeout(inactivityTimeout);
+  inactivityTimeout = setTimeout(() => {
     swiper.autoplay?.start();
-  }
-});
+    userInteracting = false;
+  }, 6000); // resumes after 6s of inactivity
+}
+
+// Pause when typing, focusing, scrolling, or clicking
+["scroll", "mousedown", "mousemove", "wheel", "touchstart", "keydown", "focusin"]
+  .forEach(evt => {
+    document.addEventListener(evt, pauseAutoplay, { passive: true });
+  });
+
+// Resume when user stops interacting
+["scroll", "mouseup", "touchend", "keyup", "focusout"]
+  .forEach(evt => {
+    document.addEventListener(evt, resumeAutoplay, { passive: true });
+  });
+
