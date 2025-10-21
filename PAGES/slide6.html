@@ -1,100 +1,197 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DEVSCAN Security Slider</title>
-    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="../CSS/slide6.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DEVScan Security Carousel</title>
+
+  <!-- Materialize CSS -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+  />
+
+  <!-- Ionicons -->
+  <script
+    type="module"
+    src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+  ></script>
+  <script
+    nomodule
+    src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+  ></script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="../CSS/slide6.css">
 </head>
 
 <body>
-    <section id="security">
-        <div class="container">
-            <div class="swiper security-slider">
-                <div class="swiper-wrapper">
-                    <!-- Slide 1 -->
-                    <div class="swiper-slide security-slide">
-                        <div class="security-slide-content">
-                            <h2 class="slide-title">Stay Safe Online With DEVSCAN</h2>
-                            <p class="slide-text">Every day, millions of malicious links circulate across emails, social media, and websites.
-                                                Clicking one unsafe link can expose you to phishing scams, identity theft, or even malware that locks your entire device.
-                                                At DEVScan, our mission is to help you browse the web with confidence by detecting unsafe links in real time.</p>
-                        </div>
-                    </div>
-                    <!-- Slide 2 -->
-                    <div class="swiper-slide security-slide" id="link-types-slide">
-                        <div class="security-slide-content">
-                        <h2 class="slide-title">Types Of Links We Detect</h2>
-                        <ul class="slide-text"> 
-                            <li><strong>Safe Links</strong><br> Safe links come from trusted websites and use secure HTTPS connections</li>
-                            <li><strong>Anomalous Links</strong><br> Links that look unusual and require caution.</li>
-                            <li><strong>Malicious Links</strong><br> Designed to trick you, steal data, or install harmful software.</li>
-                        </ul>
-                        </div>
-                    </div>
-                    <!-- Slide 3 -->
-                    <div class="swiper-slide security-slide">
-                        <div class="security-slide-content">
-                            <h2 class="slide-title">How DEVSCAN Protects You</h2>
-                                <ol>
-                                    <li>Analyzes every link using advanced features like domain structure, keywords, and patterns.</li>
-                                    <li>Classifies the link using anomaly detection and machine learning.</li>
-                                    <li>Warns you instantly if the link is safe, anomalous, or malicious.</li>
-                                </ol>
-                            </div>
-                        </div>
-                    <!-- Slide 4 -->
-                    <div class="swiper-slide security-slide">
-                        <div class="security-slide-content">
-                            <h2 class="slide-title">Why It Matters</h2>
-                            <p class="slide-text"> 
-                                   Phishing and malicious websites are among the top causes of online breaches.
-                                   Even a single unsafe click can lead to stolen credentials, drained bank accounts, or compromised devices.
-                                   By using DEVScan, you reduce your risk and take control of your online safety.
-                            </p>
-                        </div>
-                    </div>
-                    <!-- Slide 5 -->
-                    <div class="swiper-slide security-slide">
-                        <div class="security-slide-content">
-                            <h2 class="slide-title">Tips to Stay Safe Online</h2>
-                                <ul>
-                                    <li>Hover over links before clicking.</li>
-                                    <li>Watch for small spelling tricks in domains.</li>
-                                    <li>Avoid links from unknown sources.</li>
-                                    <li>When in doubt, let DEVScan scan the link.</li>
-                                </ul>
-                        </div>
-                    </div>
-                    <!-- Slide 6 -->
-                    <div class="swiper-slide security-slide">
-                        <div class="security-slide-content">
-                            <h2 class="slide-title">Browse Smarter With DEVSCAN</h2>
-                            <p class="slide-text"> The internet shouldn’t feel like a minefield. With DEVScan, you’ll know instantly whether a link is safe, anomalous, or malicious so you can focus on what matters, without the risks.</p>
-                        </div>
-                    </div>
-                </div>
+  <section id="security">
+    <div class="carousel carousel-slide6">
+
+      <!-- Slide 1 -->
+      <div class="carousel-item flip-card">
+        <div class="flip-inner">
+          <div class="flip-front">
+            <img src="../IMAGES/StaySafeGuys.jpg" alt="Stay Safe Online" />
+            <div class="front-overlay">
+              <h2 class="front-title title-safe-online">Stay Safe Online</h2>
             </div>
+            <div class="front-sub-wrapper">
+            <p class="front-sub">Click to learn more...</p>
+            </div>
+          </div>
+          <div class="flip-back">
+            <h2 class="slide-title">Stay Safe Online With DEVSCAN</h2>
+            <p class="slide-text">
+              Every day, millions of malicious links circulate across emails, social media, and websites.
+              Clicking one unsafe link can expose you to phishing scams, identity theft, or even malware that locks your entire device.
+              At DEVScan, our mission is to help you browse the web with confidence by detecting unsafe links in real time.
+            </p>
+          </div>
         </div>
-        <div class="security-slider-control">
-                    <div class="swiper-button-prev slider-arrow">
-                        <ion-icon name="arrow-back-outline"></ion-icon>
-                    </div>
-                     <div class="swiper-pagination"></div>
-                    <div class="swiper-button-next slider-arrow">
-                        <ion-icon name="arrow-forward-outline"></ion-icon>
-                    </div>
+      </div>
 
-                </div>
-    </section>
+      <!-- Slide 2 -->
+      <div class="carousel-item flip-card">
+        <div class="flip-inner">
+          <div class="flip-front">
+            <img src="../IMAGES/TypeOfLinks.jpg" alt="Types Of Links" />
+            <div class="front-overlay">
+              <h2 class="front-title title-types-links">Types Of Links</h2>
+              
+            </div>
+             <div class="front-sub-wrapper">
+            <p class="front-sub">Click to learn more...</p>
+            </div>
+          </div>
+          <div class="flip-back">
+            <h2 class="slide-title">Types Of Links We Detect</h2>
+            <ul class="slide-text">
+               <li><strong>Safe Links</strong><br> Safe links come from trusted websites and use secure HTTPS connections</li>
+               <li><strong>Anomalous Links</strong><br> Links that look unusual and require caution.</li>
+               <li><strong>Malicious Links</strong><br> Designed to trick you, steal data, or install harmful software.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
 
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
-    <script src="../SCRIPT/slide6.js"></script>
+      <!-- Slide 3 -->
+      <div class="carousel-item flip-card">
+        <div class="flip-inner">
+          <div class="flip-front">
+            <img src="../IMAGES/HowDevscanProtects.jpg" alt="How It Works" />
+            <div class="front-overlay">
+              <h2 class="front-title title-how-protects">How DEVSCAN <br> Protects You</h2>
+              
+             </div>
+             <div class="front-sub-wrapper">
+             <p class="front-sub">Click to learn more...</p>
+             </div>
+          </div>
+          <div class="flip-back">
+            <h2 class="slide-title">How DEVSCAN Protects You</h2>
+            <ol class="slide-text">
+              <li>Analyzes every link using advanced features like domain structure, keywords, and patterns.</li>
+              <li>Classifies the link using anomaly detection and machine learning.</li>
+              <li>Warns you instantly if the link is safe, anomalous, or malicious.</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 4 -->
+      <div class="carousel-item flip-card">
+        <div class="flip-inner">
+          <div class="flip-front">
+            <img src="../IMAGES/WhyItMatters.jpg" alt="Why It Matters" />
+            <div class="front-overlay">
+              <h2 class="front-title title-why-matters">Why It Matters</h2>
+              
+            </div>
+             <div class="front-sub-wrapper">
+             <p class="front-sub">Click to learn more...</p>
+             </div>
+          </div>
+          <div class="flip-back">
+            <h2 class="slide-title">Why It Matters</h2>
+            <p class="slide-text">
+            Phishing and malicious websites are among the top causes of online breaches.
+            Even a single unsafe click can lead to stolen credentials, drained bank accounts, or compromised devices.
+            By using DEVScan, you reduce your risk and take control of your online safety.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 5 -->
+      <div class="carousel-item flip-card">
+        <div class="flip-inner">
+          <div class="flip-front">
+            <img src="../IMAGES/Tips_TO_Safe.jpg" alt="Safety Tips" />
+            <div class="front-overlay">
+              <h2 class="front-title title-tips-safe">Tips to Stay Safe</h2>
+              
+            </div>
+              <div class="front-sub-wrapper">
+              <p class="front-sub">Click to learn more...</p>
+              </div>
+          </div>
+          <div class="flip-back">
+            <h2 class="slide-title">Tips to Stay Safe Online</h2>
+            <ul class="slide-text">
+              <li>Hover over links before clicking.</li>
+              <li>Watch for small spelling tricks in domains.</li>
+              <li>Avoid links from unknown sources.</li>
+              <li>When in doubt, let DEVScan scan the link.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 6 -->
+      <div class="carousel-item flip-card">
+        <div class="flip-inner">
+          <div class="flip-front">
+            <img src="../IMAGES/Browse.jpg" alt="Browse Smarter" />
+            <div class="front-overlay">
+              <h2 class="front-title title-browse-smarter">Browse Smarter</h2>  
+            </div>
+             <div class="front-sub-wrapper">
+             <p class="front-sub">Click to learn more...</p>
+             </div>
+          </div>
+          <div class="flip-back">
+            <h2 class="slide-title">Browse Smarter With DEVSCAN</h2>
+            <p class="slide-text">
+              The internet shouldn’t feel like a minefield. With DEVScan, 
+              you’ll know instantly whether a link is safe, anomalous, 
+              or malicious so you can focus on what matters, without the risks.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pagination + Arrows -->
+    <div class="security-slider-control">
+      <div class="slider-arrow" id="prevBtn">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </div>
+
+      <div class="carousel-pagination"></div>
+
+      <div class="slider-arrow" id="nextBtn">
+        <ion-icon name="arrow-forward-outline"></ion-icon>
+      </div>
+    </div>
+  </section>
+
+  <!-- jQuery + Materialize -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+  <!-- Custom JS -->
+  <script src="../SCRIPT/try copy.js"></script>
 </body>
-
 </html>
