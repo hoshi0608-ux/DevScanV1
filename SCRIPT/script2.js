@@ -43,6 +43,10 @@
         disableOnInteraction: false,
       },
     });
+
+    // ✅ Added: make Swiper globally accessible for scripthamborg.js
+    window.swiper = swiper;
+
     console.log("Main Swiper initialized with autoplay delay:", swiper?.params?.autoplay?.delay);
   } catch (err) {
     console.error("Swiper init failed:", err);
