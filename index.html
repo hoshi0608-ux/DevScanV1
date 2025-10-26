@@ -154,19 +154,44 @@
             </div>
         
                               
-            <!-- SLIDE 3 -->
+                        <!-- SLIDE 3 -->
             <section class="slide3-section">
-              <div class="slide3-card-container">
+              <!-- FIRST CARD (scrollable, with 3 APIs total) -->
+              <div class="slide3-card-container scrollable-card">
                 <div class="slide3-card">
-                  <h2 class="slide3-title">Tranco API</h2>
-                  <p class="slide3-text">
-                    DEVScan uses the Tranco ranking to check if a domain is popular and likely trustworthy. 
-                    The server looks up the domain in the Tranco list (via local CSV) and uses this as a feature in threat detection.
-                  </p>
-                  <img class="slide3-img" src="../IMAGES/Group 203.png" alt="Tranco Logo" />
+                  <div class="slide3-scroll-content">
+                    <!-- API 1 -->
+                    <div class="api-block">
+                      <h2 class="slide3-title">Tranco API</h2>
+                      <p>
+                        DEVScan uses the Tranco ranking to check if a domain is popular and likely trustworthy.
+                        The server looks up the domain in the Tranco list (via local CSV) and uses this as a feature in threat detection.
+                      </p>
+                      <img class="slide3-img" src="../IMAGES/Group 203.png" alt="Tranco Logo" />
+                    </div>
+            
+                    <!-- API 2 -->
+                    <div class="api-block">
+                      <h2 class="slide3-title">VirusTotal API</h2>
+                      <p>
+                        Integrates with VirusTotal to analyze URLs and files, providing additional security insights and detection data.
+                      </p>
+                      <img class="slide3-img" src="../IMAGES/virustotal.jpg" alt="VirusTotal Logo" />
+                    </div>
+            
+                    <!-- API 3 -->
+                    <div class="api-block">
+                      <h2 class="slide3-title">Whois API</h2>
+                      <p>
+                        Retrieves domain registration data to identify suspicious or recently created domains often used in phishing.
+                      </p>
+                      <img class="slide3-img" src="../IMAGES/whois.png" alt="Whois Logo" />
+                    </div>
+                  </div>
                 </div>
               </div>
-
+            
+              <!-- SECOND CARD -->
               <div class="slide3-card-container">
                 <div class="slide3-card">
                   <h2 class="slide3-title">Isolation Forest</h2>
@@ -176,7 +201,8 @@
                   <img class="slide3-img" src="../IMAGES/isolation.png" alt="Isolation Forest Logo" />
                 </div>
               </div>
-
+            
+              <!-- THIRD CARD -->
               <div class="slide3-card-container">
                 <div class="slide3-card">
                   <h2 class="slide3-title">LightGBM</h2>
@@ -189,9 +215,9 @@
             </section>
 
 
+
       </div>
     </div>
-
                               <!-- SLIDE 4 -->
             <div class="slider-item swiper-slide slide4">
               <div class="slide-content">
@@ -496,6 +522,7 @@
     
 </body>
 </html>
+
 
 
 
