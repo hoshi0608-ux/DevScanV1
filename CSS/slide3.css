@@ -4,8 +4,8 @@
 /* Slide 3 Container */
 .slide3-section {
   display: flex;
-  justify-content: center;    /* Center horizontally */
-  align-items: center;        /* Center vertically */
+  justify-content: center;
+  align-items: center;
   gap: 25px;
   flex-wrap: nowrap;
   width: 100%;
@@ -36,7 +36,7 @@
   border-radius: 16px;
   padding: 20px;
   width: 350px;
-  height: 470px; /* fixed height for desktop */
+  height: 470px;
   text-align: center;
   box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3);
   border: 1px solid rgba(255, 255, 255, 0.25);
@@ -55,7 +55,7 @@
 /* Slide 3 Title */
 .slide3-card h2 {
   font-size: 35px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   font-weight: 800;
 }
 
@@ -69,6 +69,7 @@
   word-spacing: 10px;
   margin-bottom: 15px;
   line-height: 1.27;
+  margin-top: 20px;
 }
 
 /* Slide 3 Image */
@@ -76,36 +77,36 @@
   max-width: 200px;
   max-height: 200px;
   align-self: center;
+  margin-bottom: 20px;
 }
 
 /* Standard laptops (13"–15") */
 @media (min-width: 1025px) and (max-width: 1405px) {
   .slide3-section {
     display: flex;
-    flex-direction: row;         
-    justify-content: center;    
-    align-items: flex-start;    
-    gap: 18px;                  
-    width: 100%;                 
-    margin: 0 auto;              
-    padding: 90px 500px 100px;   /* extra bottom space for arrows */
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 18px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 90px 500px 100px;
     box-sizing: border-box;
   }
 
   .slide3-card-container {
-    flex: 1 1 auto;              
-    max-width: 300px;   /* ↓ reduce width so all 3 fit */
-    min-width: 260px;            
+    flex: 1 1 auto;
+    max-width: 300px;
+    min-width: 260px;
   }
 
   .slide3-card {
     width: 100%;
-    height: auto;                
-    min-height: 480px;           
+    height: auto;
+    min-height: 480px;
     padding: 16px;
   }
 
-  /* Adjust text for laptops */
   .slide3-card h2 {
     font-size: 28px;
   }
@@ -116,42 +117,38 @@
     word-spacing: normal;
   }
 
-  /* Images slightly smaller */
   .slide3-card img {
     max-width: 160px;
     max-height: 160px;
   }
 }
 
-
-
 /* Tablet Responsive (769px–1024px) */
 @media (min-width: 769px) and (max-width: 1024px) {
   .slide3-section {
     display: flex;
-    flex-direction: row;         
-    justify-content: center;    
-    align-items: flex-start;    
-    gap: 15px;                  
-    width: 100%;                 
-    margin: 0 auto;              
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 15px;
+    width: 100%;
+    margin: 0 auto;
     padding: 90px 10px;
   }
 
   .slide3-card-container {
-    flex: 1 1 auto;              
-    max-width: 300px;            /* keep balance */
-    min-width: 260px;            /* prevent too small */
+    flex: 1 1 auto;
+    max-width: 300px;
+    min-width: 260px;
   }
 
   .slide3-card {
     width: 100%;
-    height: auto;                
-    min-height: 470px;           
+    height: auto;
+    min-height: 470px;
     padding: 15px;
   }
 
-  /* scale down text for tablets */
   .slide3-card h2 {
     font-size: 28px;
   }
@@ -159,48 +156,39 @@
   .slide3-card p {
     font-size: 16px;
     padding: 15px;
-    word-spacing: normal;  /* fix awkward spacing */
+    word-spacing: normal;
   }
 
-  /* images shrink proportionally */
   .slide3-card img {
     max-width: 150px;
     max-height: 150px;
   }
 }
 
-
-
 @media (max-width: 768px) {
   .slide3-section {
     display: flex;
     flex-direction: column;
     align-items: center;
-
-    /* keep this as the scroll viewport */
     position: relative;
     height: 100vh;
     overflow-y: auto;
     overflow-x: hidden;
     box-sizing: border-box;
-
-    /* keep only right/left/bottom paddings here (no top) */
     padding: 250px 10px 80px;
-    -webkit-overflow-scrolling: touch; /* smooth on iOS */
+    -webkit-overflow-scrolling: touch;
     scrollbar-width: thin;
     scrollbar-color: #87cefa transparent;
   }
 
-  /* pseudo-element becomes a real scrollable spacer */
   .slide3-section::before {
     content: "";
     display: block;
-    flex: 0 0 800px;    /* fixed spacer height */
+    flex: 0 0 800px;
     height: 800px;
     width: 100%;
   }
 
-  /* optional small bottom spacer so last card isn't flush to edge */
   .slide3-section::after {
     content: "";
     display: block;
@@ -216,44 +204,34 @@
     box-sizing: border-box;
   }
 
-  /* If you still use transforms for horizontal nudge — it's OK,
-     but if you see clipping try replacing transform with margin-left */
   .slide3-section > .slide3-card,
   .slide3-section > .slide3-card-container {
     transform: translateX(7px);
     will-change: transform;
   }
 
-  /* webkit scrollbar styling (same as you had) */
   .slide3-section::-webkit-scrollbar { width: 8px; scrollbar-gutter: stable; }
   .slide3-section::-webkit-scrollbar-track { background: transparent; }
   .slide3-section::-webkit-scrollbar-thumb { background-color: #87cefa; border-radius: 10px; }
   .slide3-section::-webkit-scrollbar-thumb:hover { background-color: #5ab4e8; }
-  
 }
 
-
-
-/* Extra small phones (≤ 480px) */
 @media (max-width: 480px) {
   .slide3-section {
     display: flex;
     flex-direction: column;
     align-items: center;
-
     position: relative;
     height: 100vh;
     overflow-y: auto;
     overflow-x: hidden;
     box-sizing: border-box;
-
     padding: 550px 6px 60px;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: thin;
     scrollbar-color: #87cefa transparent;
-
-    margin: 0 auto;          /* keeps container centered */
-    max-width: 95%;          /* increase width but prevent overflow */
+    margin: 0 auto;
+    max-width: 95%;
   }
 
   .slide3-section::before {
@@ -274,23 +252,21 @@
 
   .slide3-card {
     width: 100%;
-    max-width: 340px;   /* slightly wider than 320px */
+    max-width: 340px;
     min-height: 380px;
     padding: 14px;
     box-sizing: border-box;
-
     word-wrap: break-word;
     overflow-wrap: break-word;
   }
 
   .slide3-card h2 {
-    font-size: clamp(15px, 6.5vw, 26px); /* scales better */
+    font-size: clamp(15px, 6.5vw, 26px);
     text-align: center;
   }
 
-  
   .slide3-card img {
-    max-width: 130px;  
+    max-width: 130px;
     max-height: 130px;
     margin: 0 auto;
   }
@@ -306,15 +282,14 @@
   .slide3-section::-webkit-scrollbar-thumb:hover { background-color: #5ab4e8; }
 }
 
-/* keep design, just make scaling adjustments */
 @media (max-width: 480px) {
   .slide3-section > .slide3-card,
   .slide3-section > .slide3-card-container {
-    transform: translateX(30px); /* less push so it stays centered */
+    transform: translateX(30px);
   }
 
   .slide3-card-container {
-    margin-right: 6vh; /* keep spacing but allow wider content */
+    margin-right: 6vh;
   }
 
   .slide3-card p {
@@ -334,7 +309,6 @@
   }
 }
 
-/* Extra-small phones (≤ 370px) */
 @media (max-width: 370px) {
   .slide3-section {
     display: flex !important;
@@ -360,7 +334,7 @@
 
   .slide3-card {
     width: 100% !important;
-    max-width: 300px !important;  /* was 280px → now wider */
+    max-width: 300px !important;
     min-height: 380px !important;
     padding: 12px !important;
     box-sizing: border-box !important;
@@ -386,5 +360,73 @@
 }
 
 
+/* === SLIDE 3 SCROLLABLE CARD FIX (Improved Glass Scrollbar) === */
+.scrollable-card .slide3-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+}
 
+.scrollable-card .slide3-scroll-content {
+  overflow-y: auto;
+  max-height: 420px;
+  padding-right: 8px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+  scroll-behavior: smooth;
+  border-radius: 12px;
+}
 
+/* Glassy scrollbar style */
+.scrollable-card .slide3-scroll-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.scrollable-card .slide3-scroll-content::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+}
+
+.scrollable-card .slide3-scroll-content::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.35);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(4px);
+  transition: all 0.3s ease;
+}
+
+.scrollable-card .slide3-scroll-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.55);
+}
+
+/* Remove the old dark fade */
+.scrollable-card .slide3-card::after {
+  display: none;
+}
+.scrollable-card .slide3-scroll-content {
+  overflow-y: auto;
+  max-height: 420px;
+  padding-right: 0;                /* remove inner spacing */
+  margin-right: -21px;              /* pulls scrollbar to edge */
+  box-sizing: content-box;         /* ensures padding doesn’t clip */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+}
+/* === API Block Spacing (inside scrollable card) === */
+.api-block {
+  margin-bottom: 40px; /* ⬅ increase this value for more space between API sections */
+  text-align: center;
+}
+
+.api-block:last-child {
+  margin-bottom: 0; /* removes extra gap after the last one */
+}
+
+/* Optional: adjust inner spacing inside each API */
+.api-block h2 {
+  margin-bottom: 12px; /* space below title */
+}
+
+.api-block p {
+  margin-bottom: 15px; /* space below text before image */
+}
