@@ -511,15 +511,3 @@ ion-icon {
   }
 }
 
-.carousel-slide6 {
-  display: flex !important;
-  justify-content: center !important;
-  align-items: center !important;
-  margin: 0 auto;
-  transform: translateX(0) !important;
-}
-.carousel-slide6 .carousel-item {
-  margin: 0 auto !important;
-  left: 0 !important;
-  right: 0 !important;
-}
