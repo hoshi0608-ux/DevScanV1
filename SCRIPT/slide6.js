@@ -1,4 +1,7 @@
-// try-copy.js (iframe nested carousel) - replace your iframe script with this
+// ==========================================
+// try-copy.js (Nested iframe carousel) - Final Version
+// ==========================================
+
 document.addEventListener("DOMContentLoaded", function () {
   const carouselEl = document.querySelector(".carousel-slide6");
   if (!carouselEl) {
@@ -7,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // ============================
-  // Materialize Carousel Init
+  // Carousel Config
   // ============================
   const options = {
     fullWidth: false,
@@ -20,19 +23,33 @@ document.addEventListener("DOMContentLoaded", function () {
   };
 
   let carouselInstance;
-  try {
-    carouselInstance = M.Carousel.init(carouselEl, options);
-    console.log("Nested carousel initialized");
-  } catch (err) {
-    console.error("Nested carousel init error", err);
-    return;
-  }
+  let autoInterval = null;
+  let autoPaused = false;
+  let resumeTimeout = null;
 
   const slides = Array.from(carouselEl.querySelectorAll(".carousel-item"));
   const paginationContainer = document.querySelector(".carousel-pagination");
+  const prevBtn = document.getElementById("prevBtn");
+  const nextBtn = document.getElementById("nextBtn");
 
   // ============================
-  // PostMessage helpers
+  // Initialize Carousel
+  // ============================
+  function initCarousel() {
+    try {
+      if (carouselInstance && typeof carouselInstance.destroy === "function") {
+        carouselInstance.destroy();
+      }
+      carouselInstance = M.Carousel.init(carouselEl, options);
+      console.log("✅ Nested carousel initialized");
+      updateDots();
+    } catch (err) {
+      console.error("❌ Carousel init error", err);
+    }
+  }
+
+  // ============================
+  // PostMessage Helpers
   // ============================
   function notifyParentPause() {
     try {
@@ -41,6 +58,7 @@ document.addEventListener("DOMContentLoaded", function () {
       console.warn("postMessage pause failed", err);
     }
   }
+
   function notifyParentResume() {
     try {
       window.parent.postMessage({ type: "resumeMainSwiper" }, "*");
@@ -50,12 +68,8 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // ============================
-  // Autoplay inside iframe (2s)
+  // Autoplay Controls
   // ============================
-  let autoInterval = null;
-  let autoPaused = false;
-  let resumeTimeout = null;
-
   function startAuto() {
     clearInterval(autoInterval);
     autoInterval = setInterval(() => {
@@ -63,15 +77,15 @@ document.addEventListener("DOMContentLoaded", function () {
         carouselInstance.next();
         updateDots();
       }
-    }, 2000);
-    console.log("Nested carousel autoplay started");
+    }, 2500); // 2.5s per slide
+    console.log("▶️ Nested carousel autoplay started");
   }
 
   function stopAuto() {
     autoPaused = true;
     clearInterval(autoInterval);
     clearTimeout(resumeTimeout);
-    console.log("Nested carousel autoplay paused");
+    console.log("⏸️ Nested carousel autoplay paused");
   }
 
   function scheduleResume(delay = 4000) {
@@ -83,14 +97,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }, delay);
   }
 
-  // start when fully loaded
-  window.addEventListener("load", () => {
-    startAuto();
-    setTimeout(updateDots, 120);
-  });
-
   // ============================
-  // Pagination dots
+  // Pagination Dots
   // ============================
   function buildDots() {
     if (!paginationContainer) return;
@@ -119,15 +127,68 @@ document.addEventListener("DOMContentLoaded", function () {
     dots.forEach((d, i) => d.classList.toggle("active", i === activeIndex));
   }
 
-  buildDots();
-  updateDots();
+  // ============================
+  // Flip Card Behavior
+  // ============================
+  function initFlip() {
+    const cardInners = carouselEl.querySelectorAll(".card-inner, .flip-inner");
+    cardInners.forEach((inner) => {
+      inner.addEventListener("pointerup", function (ev) {
+        ev.stopPropagation();
+        ev.preventDefault();
+        stopAuto();
+        notifyParentPause();
+
+        const parentItem = inner.closest(".carousel-item");
+        const target = parentItem || inner;
+
+        inner.style.transition = "transform 0.6s cubic-bezier(0.45, 0, 0.55, 1)";
+        inner.style.transformStyle = "preserve-3d";
+
+        if (!target.classList.contains("flipped")) {
+          target.classList.add("flipped");
+          inner.style.transform = "rotateY(180deg) scale(1.02)";
+        } else {
+          target.classList.remove("flipped");
+          inner.style.transform = "rotateY(0deg) scale(1)";
+        }
+
+        scheduleResume();
+      });
+    });
+  }
+
+  function unflipAllCards() {
+    const flipped = carouselEl.querySelectorAll(".carousel-item.flipped, .card-inner.flipped, .flip-inner.flipped");
+    flipped.forEach((item) => {
+      item.classList.remove("flipped");
+      const inner = item.querySelector(".card-inner, .flip-inner");
+      if (inner) inner.style.transform = "rotateY(0deg) scale(1)";
+    });
+  }
 
   // ============================
-  // Prev / Next
+  // Observe Active Class Changes
   // ============================
-  const prevBtn = document.getElementById("prevBtn");
-  const nextBtn = document.getElementById("nextBtn");
+  const observer = new MutationObserver((mutations) => {
+    let changed = false;
+    for (const m of mutations) {
+      const oldClass = m.oldValue || "";
+      const newClass = m.target.className || "";
+      if (oldClass.includes("active") !== newClass.includes("active")) changed = true;
+    }
+    if (changed) {
+      updateDots();
+      unflipAllCards();
+    }
+  });
+  slides.forEach((s) =>
+    observer.observe(s, { attributes: true, attributeFilter: ["class"], attributeOldValue: true })
+  );
 
+  // ============================
+  // Prev / Next Buttons
+  // ============================
   if (prevBtn) {
     prevBtn.addEventListener("click", (e) => {
       e.stopPropagation();
@@ -150,77 +211,47 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Watch for active class changes to update dots
-  const observer = new MutationObserver((mutations) => {
-    let changed = false;
-    for (const m of mutations) {
-      const oldClass = m.oldValue || "";
-      const newClass = m.target.className || "";
-      if (oldClass.includes("active") !== newClass.includes("active")) changed = true;
-    }
-    if (changed) {
-      updateDots();
-      unflipAllCards();
-    }
-  });
-  slides.forEach((s) => observer.observe(s, { attributes: true, attributeFilter: ["class"], attributeOldValue: true }));
-
   // ============================
-  // Flip cards
+  // Interaction: Pause / Resume on Hover or Touch
   // ============================
-  function initFlip() {
-    const cardInners = carouselEl.querySelectorAll(".card-inner, .flip-inner");
-    cardInners.forEach((inner) => {
-      inner.addEventListener("pointerup", function (ev) {
-        ev.stopPropagation();
-        ev.preventDefault();
-        stopAuto();
-        notifyParentPause();
-
-        const parentItem = inner.closest(".carousel-item");
-        const target = parentItem || inner;
-        inner.style.transition = "transform 0.6s cubic-bezier(0.45, 0, 0.55, 1)";
-        inner.style.transformStyle = "preserve-3d";
-
-        if (!target.classList.contains("flipped")) {
-          target.classList.add("flipped");
-          inner.style.transform = "rotateY(180deg) scale(1.02)";
-        } else {
-          target.classList.remove("flipped");
-          inner.style.transform = "rotateY(0deg) scale(1)";
-        }
-
-        // resume later
-        scheduleResume();
-      });
-    });
-  }
-  initFlip();
-
-  function unflipAllCards() {
-    const flipped = carouselEl.querySelectorAll(".carousel-item.flipped, .card-inner.flipped, .flip-inner.flipped");
-    flipped.forEach((item) => {
-      item.classList.remove("flipped");
-      const inner = item.querySelector(".card-inner, .flip-inner");
-      if (inner) inner.style.transform = "rotateY(0deg) scale(1)";
-    });
-  }
-
-  // Pause/resume when hovering or focusing the nested carousel itself
   ["mouseenter", "focusin", "touchstart"].forEach((ev) => {
     carouselEl.addEventListener(ev, () => {
       stopAuto();
       notifyParentPause();
     });
   });
+
   ["mouseleave", "focusout", "touchend"].forEach((ev) => {
     carouselEl.addEventListener(ev, () => {
       scheduleResume();
-      // let parent resume after short delay
       setTimeout(notifyParentResume, 3000);
     });
   });
 
-  // expose for debug
+  // ============================
+  // Init on Window Load (after images/fonts ready)
+  // ============================
+  window.addEventListener("load", () => {
+    initCarousel();
+    buildDots();
+    initFlip();
+
+    setTimeout(() => {
+      startAuto();
+      updateDots();
+    }, 300);
+  });
+
+  // ============================
+  // Re-init on Resize (GitHub Pages scaling fix)
+  // ============================
+  window.addEventListener("resize", () => {
+    setTimeout(() => {
+      initCarousel();
+      updateDots();
+    }, 400);
+  });
+
+  // Debug export
   window.__nestedCarousel = { startAuto, stopAuto, scheduleResume, carouselInstance };
 });
