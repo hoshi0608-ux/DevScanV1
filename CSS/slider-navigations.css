@@ -69,7 +69,7 @@
   width: 100%;
   height: 2px;
   background-color: white;
-  border-radius: 10px; /* 👈 smooth rounded edges */
+  border-radius: 10px; 
   transition: background-color 1.5s ease, height 1.5s ease;
   pointer-events: none;
 }
