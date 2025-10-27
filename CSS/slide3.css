@@ -365,12 +365,14 @@
   position: relative;
   overflow: hidden;
   border-radius: 16px;
+   padding-left: 30px;
+  padding-right: 45px;
 }
 
 .scrollable-card .slide3-scroll-content {
   overflow-y: auto;
-  max-height: 420px;
-  padding-right: 8px;
+  
+  padding-right: 0px;
   scrollbar-width: thin;
   scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
   scroll-behavior: smooth;
@@ -405,9 +407,10 @@
 }
 .scrollable-card .slide3-scroll-content {
   overflow-y: auto;
-  max-height: 420px;
-  padding-right: 0;                /* remove inner spacing */
-  margin-right: -21px;              /* pulls scrollbar to edge */
+  
+  padding-right: 11px;                /* remove inner spacing */
+  margin-right: -46px;              /* pulls scrollbar to edge */
+    margin-bottom: -5px; /* <— add this line */
   box-sizing: content-box;         /* ensures padding doesn’t clip */
   scrollbar-width: thin;
   scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
@@ -429,4 +432,93 @@
 
 .api-block p {
   margin-bottom: 15px; /* space below text before image */
+}
+
+/* === RESPONSIVE FIXES FOR SCROLLABLE CARD === */
+
+/* ✅ Large screens (≥1406px) */
+@media (min-width: 1406px) {
+  .scrollable-card .slide3-card {
+    padding-left: 27px;
+    padding-right: 50px;
+  }
+  .scrollable-card .slide3-scroll-content {
+
+    margin-right: -50px;
+  }
+}
+
+/* ✅ Standard laptops (1025px–1405px) */
+@media (min-width: 1025px) and (max-width: 1405px) {
+  .scrollable-card .slide3-card {
+    padding-left: 28px;
+    padding-right: 40px;
+  }
+  .scrollable-card .slide3-scroll-content {
+ 
+    margin-right: -38px;
+  }
+}
+
+/* ✅ Tablets (769px–1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .scrollable-card .slide3-card {
+    padding-left: 20px;
+    padding-right: 28px;
+  }
+  .scrollable-card .slide3-scroll-content {
+  
+    margin-right: -30px;
+  }
+  .api-block {
+    margin-bottom: 32px;
+  }
+}
+
+/* ✅ Large phones (481px–768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+  .scrollable-card .slide3-card {
+    padding-left: 16px;
+    padding-right: 20px;
+  }
+  .scrollable-card .slide3-scroll-content {
+    
+    margin-right: -22px;
+  }
+  .api-block {
+    margin-bottom: 28px;
+  }
+}
+
+/* ✅ Small phones (≤480px) */
+@media (max-width: 480px) {
+  .scrollable-card .slide3-card {
+    padding-left: 12px;
+    padding-right: 14px;
+  }
+  .scrollable-card .slide3-scroll-content {
+  
+    margin-right: -18px;
+  }
+  .api-block {
+    margin-bottom: 24px;
+  }
+  .scrollable-card .slide3-scroll-content::-webkit-scrollbar {
+    width: 6px;
+  }
+}
+
+/* ✅ Extra small phones (≤370px) */
+@media (max-width: 370px) {
+  .scrollable-card .slide3-card {
+    padding-left: 8px !important;
+    padding-right: 10px !important;
+  }
+  .scrollable-card .slide3-scroll-content {
+    
+    margin-right: -14px !important;
+  }
+  .api-block {
+    margin-bottom: 20px !important;
+  }
 }
