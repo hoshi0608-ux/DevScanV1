@@ -433,7 +433,7 @@ ion-icon {
   transform: translateY(-5px) scale(1.015);
 }
 /* --- Smooth scaling and perfect centering for screens between 320px and 380px --- */
-@media (min-width: 320px) and (max-width: 380px) {
+@media (min-width: 320px) and (max-width: 480px) {
   #security {
     padding: 0 12px;
   }
@@ -510,4 +510,5 @@ ion-icon {
     margin-top: 10px;
   }
 }
+
 
