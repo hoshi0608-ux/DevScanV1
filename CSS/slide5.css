@@ -221,62 +221,66 @@
   }
 }
 
-/* 480px */
-@media (max-width: 480px) {
+/* 📱 Large phones (481px–768px) */
+@media (min-width: 481px) and (max-width: 768px) {
   .support-container {
-    background: #0b1020;
-    padding: 18px;                /* ✅ smaller padding */
-    max-width: 92%;
-    margin-left: 80px;            /* ✅ center horizontally */
-    border-radius: 12px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;           /* ✅ centers content */
+    max-width: 85%;
+    padding: 25px;
+    margin: 20px auto;
   }
 
-  .support-title, 
+  .support-title {
+    font-size: 1.4rem;
+    margin-top: 40px;
+  }
+
   .support-desc {
-    position: relative;
-    display: flex;     
-    text-align: center; 
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;  
-    left: 70px;  
-    max-width: 100%;
-  }
-
-  .support-title { 
-    font-size: 1.3rem; 
-    margin-bottom: 8px;
-  }
-
-  .support-desc { 
-    font-size: 0.75rem;
-    max-width: 100%;
-    margin-bottom: 5px;
-  }
-
-  .support-form { 
-    width: 100%;
-    flex-direction: column; 
-    gap: 12px;
-    align-items: center;
-  }
-
-  .support-left,
-  .support-right {
-    width: 100%;
+    font-size: 0.85rem;
+    line-height: 1.4;
+    max-width: 95%;
   }
 
   .support-left input,
   .support-right textarea {
-    width: 100%;
     font-size: 0.85rem;
-    padding: 7px;
+    padding: 10px;
+  }
+
+  .submit-btn {
+    font-size: 0.85rem;
+    padding: 10px;
+  }
+}
+
+/* 📱 Small phones (≤480px) */
+@media (max-width: 480px) {
+  .support-container {
+    max-width: 90%;
+    padding: 22px;
+    border-radius: 12px;
+    margin: 15px auto;
+  }
+
+  .support-title {
+    font-size: 1.3rem;
+    margin-top: 30px;
+  }
+
+  .support-desc {
+    font-size: 0.8rem;
+    line-height: 1.4;
+    max-width: 90%;
+  }
+
+  .support-form {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .support-left input,
+  .support-right textarea {
+    font-size: 0.8rem;
+    padding: 8px;
   }
 
   .support-right textarea {
@@ -284,49 +288,62 @@
   }
 
   .submit-btn {
+    font-size: 0.8rem;
     padding: 9px;
-    font-size: 0.85rem;
-    width: 100%;
-    max-width: 300px;
   }
 }
 
-/* 370px */
+/* 📱 Extra small phones (≤370px) */
 @media (max-width: 370px) {
   .support-container {
-    background: #0b1020;
-    padding: 18px;                /* ✅ smaller padding */
     max-width: 92%;
-    margin-left: 80px;            /* ✅ center horizontally */
-    border-radius: 12px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;           /* ✅ centers content */
+    padding: 18px;
+    border-radius: 10px;
+    margin: 10px auto;
   }
 
-  .support-title, 
+  .support-title {
+    font-size: 1.15rem;
+    margin-top: 25px;
+  }
+
   .support-desc {
-    position: relative;
-    display: flex;     
-    text-align: center; 
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;  
-    left: 70px;  
-    max-width: 100%;
+    font-size: 0.75rem;
+    line-height: 1.3;
   }
 
   .support-left input,
   .support-right textarea {
-    font-size: 0.8rem;
-    padding: 6px;
+    font-size: 0.75rem;
+    padding: 6px 8px;
   }
 
   .submit-btn {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     padding: 7px;
   }
 }
+/* General adjustment */
+.support-header {
+  margin-top: 60px; /* pushes title + description down */
+}
+
+/* Adjust for tablets (max 769px) */
+@media (max-width: 769px) {
+  .support-header {
+    margin-top: 70px; /* more space for mobile view */
+  }
+}
+
+/* Adjust for small phones (≤480px) */
+@media (max-width: 480px) {
+  .support-header {
+    margin-top: 90px; /* more breathing room */
+  }
+}
+
+/* Optional: also push the form down slightly */
+.support-container {
+  margin-top: 25px; /* creates space between text and form */
+}
+
