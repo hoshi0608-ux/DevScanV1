@@ -1,7 +1,7 @@
-// script2.js (main page) — refined autoplay + iframe sync (Oct 2025 final)
+// script2.js — Modern Interactive Carousel (Oct 2025 Ultimate Edition)
 (function () {
   // ============================
-  // Element references
+  // Element References
   // ============================
   const sliderTabs = document.querySelectorAll(".slider-tabsss");
   const sliderIndicator = document.querySelector(".slider-indicator");
@@ -9,17 +9,9 @@
   const sliderControls = document.querySelector(".slider-controls");
   const prevBtn = document.getElementById("slide-prev");
   const nextBtn = document.getElementById("slide-next");
-
-  // Safety setup
-  try {
-    if (sliderIndicator) {
-      sliderIndicator.style.pointerEvents = "none";
-      sliderIndicator.style.zIndex = 0;
-      sliderTabs.forEach((t) => (t.style.zIndex = 1));
-    }
-  } catch (err) {
-    console.warn("Init styling failed:", err);
-  }
+  const sliderEl = document.querySelector(".slider-container");
+  const fullscreenBtn = document.getElementById("fullscreen-btn");
+  const mainContainer = document.querySelector(".main-container") || document.documentElement;
 
   // ============================
   // Swiper Initialization
@@ -28,42 +20,42 @@
   try {
     swiper = new Swiper(".slider-container", {
       effect: "creative",
-      speed: 1500,
+      speed: 1200,
       loop: true,
+      parallax: true,
+      grabCursor: true,
+      resistanceRatio: 0.85,
+      touchReleaseOnEdges: true,
       creativeEffect: {
-        prev: { translate: ["-30%", 0, -400], scale: 0.85, opacity: 0.6 },
-        next: { translate: ["100%", 0, 0], scale: 1, opacity: 1 },
+        prev: { translate: ["-30%", 0, -400], rotate: [0, 0, -3], scale: 0.9, opacity: 0.7 },
+        next: { translate: ["100%", 0, 0], rotate: [0, 0, 3], scale: 1, opacity: 1 },
       },
       navigation: {
         prevEl: "#slide-prev",
         nextEl: "#slide-next",
       },
       autoplay: {
-        delay: 7000,
+        delay: 6000,
         disableOnInteraction: false,
       },
     });
 
-    // ✅ Added: make Swiper globally accessible for scripthamborg.js
     window.swiper = swiper;
-
-    console.log("Main Swiper initialized with autoplay delay:", swiper?.params?.autoplay?.delay);
+    console.log("✅ Swiper initialized successfully");
   } catch (err) {
-    console.error("Swiper init failed:", err);
+    console.error("❌ Swiper initialization failed:", err);
   }
 
   // ============================
-  // Tab Indicator Logic
+  // Indicator Logic
   // ============================
   function updateIndicator(tab) {
     if (!tab || !sliderIndicator) return;
-
     sliderTabs.forEach((t) => {
       t.classList.remove("active");
       t.style.color = "white";
       t.style.borderBottomColor = "white";
     });
-
     tab.classList.add("active");
     tab.style.color = "#a35bbe";
     tab.style.borderBottomColor = "#a35bbe";
@@ -85,18 +77,16 @@
   }
 
   function syncIndicatorToSwiper() {
-    if (!swiper) return;
-    const idx = typeof swiper.realIndex === "number" ? swiper.realIndex : 0;
+    const idx = swiper?.realIndex ?? 0;
     const targetTab = sliderTabs[idx];
     if (targetTab) updateIndicator(targetTab);
   }
 
-  if (swiper && typeof swiper.on === "function") {
+  if (swiper) {
     swiper.on("slideChange transitionStart", () => {
       syncIndicatorToSwiper();
       notifyIframesOfActiveSlide(swiper.realIndex);
     });
-    if (swiper.initialized) syncIndicatorToSwiper();
   }
 
   // ============================
@@ -136,7 +126,7 @@
   }
 
   window.addEventListener("load", () => {
-    if (swiper?.slideToLoop) swiper.slideToLoop(0, 0);
+    swiper?.slideToLoop?.(0, 0);
     syncIndicatorToSwiper();
     checkPaginationOverflow();
     responsiveAdjustments();
@@ -160,11 +150,7 @@
       updateIndicator(tab);
     });
     tab.addEventListener("mouseenter", () => {
-      if (!tab.classList.contains("active")) {
-        tab.style.color = "#a35bbe";
-        sliderIndicator.style.backgroundColor = "#a35bbe";
-        updateIndicator(tab);
-      }
+      if (!tab.classList.contains("active")) updateIndicator(tab);
     });
     tab.addEventListener("mouseleave", () => syncIndicatorToSwiper());
   });
@@ -177,7 +163,6 @@
     swiper?.slidePrev?.();
     swiper?.autoplay?.start?.();
   });
-
   nextBtn?.addEventListener("click", (e) => {
     e.currentTarget.blur();
     swiper?.slideNext?.();
@@ -203,71 +188,151 @@
   });
 
   // ============================
-  // Autoplay Pause / Resume Logic
+  // Modern Autoplay Enhancements
   // ============================
-  let inactivityTimeout;
-  let isPaused = false;
+  sliderEl.addEventListener("mouseenter", () => swiper?.autoplay?.stop());
+  sliderEl.addEventListener("mouseleave", () => swiper?.autoplay?.start());
+  sliderEl.addEventListener("touchstart", () => swiper?.autoplay?.stop(), { passive: true });
+  sliderEl.addEventListener("touchend", () => swiper?.autoplay?.start(), { passive: true });
 
-  function pauseAutoplay(reason = "") {
-    if (!swiper?.autoplay?.running || isPaused) return;
-    swiper.autoplay.stop();
-    isPaused = true;
-    clearTimeout(inactivityTimeout);
-    console.log("Main Swiper paused:", reason);
-  }
-
-  function resumeAutoplay(delay = 5000) {
-    clearTimeout(inactivityTimeout);
-    inactivityTimeout = setTimeout(() => {
-      if (!swiper) return;
-      swiper.autoplay.start();
-      isPaused = false;
-      console.log("Main Swiper resumed");
-    }, delay);
-  }
-
-  // Pause only on real interactions
-  ["scroll", "mousedown", "wheel", "touchstart", "keydown", "focusin"].forEach((evt) => {
-    document.addEventListener(evt, () => pauseAutoplay(evt.type), { passive: true });
+  document.addEventListener("visibilitychange", () => {
+    if (!swiper) return;
+    if (document.hidden) swiper.autoplay.stop();
+    else swiper.autoplay.start();
   });
 
-  // Resume after inactivity (5s)
-  ["mouseup", "touchend", "keyup", "focusout"].forEach((evt) => {
-    document.addEventListener(evt, () => resumeAutoplay(5000), { passive: true });
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (swiper) {
+          if (entry.isIntersecting) swiper.autoplay.start();
+          else swiper.autoplay.stop();
+        }
+      });
+    },
+    { threshold: 0.4 }
+  );
+  if (sliderEl) observer.observe(sliderEl);
+
+  // ============================
+  // Progress Bar Indicator
+  // ============================
+  const progressEl = document.createElement("div");
+  progressEl.className = "autoplay-progress";
+  progressEl.innerHTML = `<span class="progress-bar"></span>`;
+  document.body.appendChild(progressEl);
+
+  swiper.on("autoplayTimeLeft", (s, time, progress) => {
+    const bar = document.querySelector(".autoplay-progress .progress-bar");
+    if (bar) {
+      bar.style.width = `${(1 - progress) * 100}%`;
+      bar.style.transition = "width 0.1s linear";
+    }
   });
 
   // ============================
-  // Iframe Communication Logic
+  // Iframe Communication
   // ============================
   function notifyIframesOfActiveSlide(activeIndex) {
     const iframes = document.querySelectorAll("iframe");
     iframes.forEach((iframe, i) => {
       try {
-        if (i === activeIndex) {
-          iframe.contentWindow.postMessage({ type: "startNestedCarousel" }, "*");
-        } else {
-          iframe.contentWindow.postMessage({ type: "pauseNestedCarousel" }, "*");
-        }
+        if (i === activeIndex) iframe.contentWindow.postMessage({ type: "startNestedCarousel" }, "*");
+        else iframe.contentWindow.postMessage({ type: "pauseNestedCarousel" }, "*");
       } catch (err) {
         console.warn("Failed to message iframe", err);
       }
     });
   }
 
-  // Listen for iframe messages
   window.addEventListener("message", (event) => {
     if (!event.data || typeof event.data !== "object") return;
     const { type } = event.data;
-    if (type === "pauseMainSwiper") pauseAutoplay("iframe");
-    else if (type === "resumeMainSwiper") resumeAutoplay(5000);
+    if (type === "pauseMainSwiper") swiper?.autoplay?.stop();
+    else if (type === "resumeMainSwiper") swiper?.autoplay?.start();
   });
 
   // ============================
-  // Debug helper
+  // FULLSCREEN + IDLE CURSOR + AUTOPLAY PAUSE SYSTEM (Smooth Fade)
   // ============================
-  window.__mainSwiper = {
-    swiperInstance: swiper,
-    pause: pauseAutoplay,
-    resume: resumeAutoplay,
-  };
+  let cursorTimeout, idleTimeout;
+  const idleDelay = 4000; // idle before autoplay resumes
+  const cursorFadeDelay = 2000; // 2s before fade
+
+  // Inject fade style
+  const styleEl = document.createElement("style");
+  styleEl.innerHTML = `
+    body {
+      transition: cursor 0.3s ease-in-out;
+    }
+    body.cursor-hidden {
+      cursor: none;
+    }
+  `;
+  document.head.appendChild(styleEl);
+
+  function isFullscreen() {
+    return (
+      document.fullscreenElement ||
+      document.webkitFullscreenElement ||
+      document.mozFullScreenElement ||
+      document.msFullscreenElement
+    );
+  }
+
+  function handleUserActivity() {
+    document.body.classList.remove("cursor-hidden");
+    clearTimeout(cursorTimeout);
+    clearTimeout(idleTimeout);
+    swiper?.autoplay?.stop();
+
+    if (isFullscreen()) {
+      cursorTimeout = setTimeout(() => {
+        if (isFullscreen()) document.body.classList.add("cursor-hidden");
+      }, cursorFadeDelay);
+
+      idleTimeout = setTimeout(() => {
+        if (isFullscreen()) swiper?.autoplay?.start();
+      }, idleDelay);
+    } else {
+      swiper?.autoplay?.start();
+    }
+  }
+
+  [
+    "mousemove",
+    "mousedown",
+    "mouseup",
+    "click",
+    "scroll",
+    "keydown",
+    "keyup",
+    "wheel",
+    "touchstart",
+    "touchmove",
+    "mouseenter",
+    "input",
+    "submit",
+  ].forEach((eventName) => {
+    document.addEventListener(eventName, handleUserActivity, { passive: true });
+  });
+
+  document.addEventListener("fullscreenchange", () => {
+    if (!isFullscreen()) {
+      document.body.classList.remove("cursor-hidden");
+      clearTimeout(cursorTimeout);
+      clearTimeout(idleTimeout);
+      swiper?.autoplay?.start();
+    } else {
+      handleUserActivity();
+    }
+  });
+
+  fullscreenBtn?.addEventListener("click", () => {
+    if (!isFullscreen()) {
+      mainContainer.requestFullscreen().catch(console.warn);
+    } else {
+      document.exitFullscreen();
+    }
+  });
 })();
