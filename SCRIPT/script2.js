@@ -23,7 +23,7 @@
       speed: 1200,
       loop: true,
       parallax: true,
-      grabCursor: true,
+      grabCursor: false,
       resistanceRatio: 0.85,
       touchReleaseOnEdges: true,
       creativeEffect: {
@@ -42,6 +42,12 @@
 
     window.swiper = swiper;
     console.log("✅ Swiper initialized successfully");
+
+    // <<< we keep these
+    const sliderContainer = document.querySelector(".slider-container");
+    sliderContainer.addEventListener("mouseover", () => swiper.autoplay.stop());
+    sliderContainer.addEventListener("mouseout", () => swiper.autoplay.start());
+    // <<< END
   } catch (err) {
     console.error("❌ Swiper initialization failed:", err);
   }
@@ -190,8 +196,8 @@
   // ============================
   // Modern Autoplay Enhancements
   // ============================
-  sliderEl.addEventListener("mouseenter", () => swiper?.autoplay?.stop());
-  sliderEl.addEventListener("mouseleave", () => swiper?.autoplay?.start());
+  sliderEl.addEventListener("mouseover", () => swiper?.autoplay?.stop());
+  sliderEl.addEventListener("mouseout", () => swiper?.autoplay?.start());
   sliderEl.addEventListener("touchstart", () => swiper?.autoplay?.stop(), { passive: true });
   sliderEl.addEventListener("touchend", () => swiper?.autoplay?.start(), { passive: true });
 
@@ -295,7 +301,9 @@
         if (isFullscreen()) swiper?.autoplay?.start();
       }, idleDelay);
     } else {
-      swiper?.autoplay?.start();
+      // <<< THIS WAS REMOVED
+      // swiper?.autoplay?.start();
+      // <<< DON'T AUTO RESUME HERE
     }
   }
 
