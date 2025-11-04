@@ -259,13 +259,13 @@
   });
 
   // ============================
-  // FULLSCREEN + IDLE CURSOR + AUTOPLAY PAUSE SYSTEM (Smooth Fade)
+  // FULLSCREEN + IDLE CURSOR + AUTOPLAY PAUSE SYSTEM (Edge-trigger)
   // ============================
-  let cursorTimeout, idleTimeout;
+  let idleTimeout;
+  let lastMouseX = null; // track last known pointer X so calls without event still work
   const idleDelay = 4000; // idle before autoplay resumes
-  const cursorFadeDelay = 2000; // 2s before fade
 
-  // Inject fade style
+  // Inject fade style (you still use body.cursor-hidden to hide cursor)
   const styleEl = document.createElement("style");
   styleEl.innerHTML = `
     body {
@@ -277,76 +277,105 @@
   `;
   document.head.appendChild(styleEl);
 
+  // Robust fullscreen detection: DOM fullscreen OR F11-like browser fullscreen (heuristic)
   function isFullscreen() {
-  return (
-    document.fullscreenElement ||
-    document.webkitFullscreenElement ||
-    document.mozFullScreenElement ||
-    document.msFullscreenElement ||
-    (window.innerHeight === screen.height && window.innerWidth === screen.width) // F11 FULLSCREEN
+    return (
+      !!document.fullscreenElement ||
+      !!document.webkitFullscreenElement ||
+      !!document.mozFullScreenElement ||
+      !!document.msFullscreenElement ||
+      // F11 / browser fullscreen heuristic (allow a small tolerance)
+      (Math.abs(window.innerHeight - screen.height) <= 5 && Math.abs(window.innerWidth - screen.width) <= 5)
+    );
+  }
+
+  // track lastMouseX from real moves so calls without event can use it
+  document.addEventListener(
+    "mousemove",
+    (ev) => {
+      lastMouseX = ev.clientX;
+    },
+    { passive: true }
   );
-}
 
+  // tolerant handleUserActivity — accepts optional event
+  function handleUserActivity(e) {
+    // only operate when in fullscreen — outside fullscreen we don't want to stop/autoplay here
+    if (!isFullscreen()) {
+      // if NOT fullscreen, make sure cursor visible and quit
+      document.body.classList.remove("cursor-hidden");
+      clearTimeout(idleTimeout);
+      return;
+    }
 
-  function handleUserActivity() {
-    document.body.classList.remove("cursor-hidden");
-    clearTimeout(cursorTimeout);
+    // clear any previous idle timer and stop autoplay immediately on activity
     clearTimeout(idleTimeout);
     swiper?.autoplay?.stop();
 
-    if (isFullscreen()) {
-      cursorTimeout = setTimeout(() => {
-        if (isFullscreen()) document.body.classList.add("cursor-hidden");
-      }, cursorFadeDelay);
+    // determine mouse X: prefer event (if provided), fallback to lastMouseX
+    const x = e && typeof e.clientX === "number" ? e.clientX : lastMouseX;
+    const screenW = window.innerWidth;
 
+    // if we don't have any pointer information, just show cursor and bail out
+    if (typeof x !== "number") {
+      document.body.classList.remove("cursor-hidden");
+      return;
+    }
+
+    const nearEdge = x <= 5 || x >= screenW - 5;
+
+    if (nearEdge) {
+      // hide cursor instantly
+      document.body.classList.add("cursor-hidden");
+
+      // resume autoplay after idleDelay (4s)
       idleTimeout = setTimeout(() => {
-        if (isFullscreen()) swiper?.autoplay?.start();
+        swiper?.autoplay?.start();
       }, idleDelay);
     } else {
-      // <<< THIS WAS REMOVED
-      // swiper?.autoplay?.start();
-      // <<< DON'T AUTO RESUME HERE
+      // show cursor when NOT at edge
+      document.body.classList.remove("cursor-hidden");
     }
   }
 
   // handle F11 (key code 122) — browser fullscreen toggle
-window.addEventListener("keydown", (e) => {
-  if (e.key === "F11" || e.keyCode === 122) {
-    // let the browser do its thing, then run lifecycle logic
-    setTimeout(() => {
-      if (isFullscreen()) {
-        handleUserActivity(); // schedule cursor fade + idle timers
-      } else {
-        // just exited browser fullscreen
-        document.body.classList.remove("cursor-hidden");
-        clearTimeout(cursorTimeout);
-        clearTimeout(idleTimeout);
-        swiper?.autoplay?.start();
-      }
-    }, 120); // 80–200ms is usually enough
-  }
-});
-let lastInnerHeight = window.innerHeight;
-let resizeTimer;
-window.addEventListener("resize", () => {
-  clearTimeout(resizeTimer);
-  resizeTimer = setTimeout(() => {
-    // If viewport height changed a lot, treat like fullscreen toggle
-    if (Math.abs(window.innerHeight - lastInnerHeight) > 100) {
-      // either entered or exited browser fullscreen — run same logic
-      if (isFullscreen()) handleUserActivity();
-      else {
-        document.body.classList.remove("cursor-hidden");
-        clearTimeout(cursorTimeout);
-        clearTimeout(idleTimeout);
-        swiper?.autoplay?.start();
-      }
+  window.addEventListener("keydown", (e) => {
+    if (e.key === "F11" || e.keyCode === 122) {
+      // let the browser do its thing, then run lifecycle logic
+      setTimeout(() => {
+        if (isFullscreen()) {
+          handleUserActivity(); // schedule idle timers using lastMouseX if available
+        } else {
+          // just exited browser fullscreen
+          document.body.classList.remove("cursor-hidden");
+          clearTimeout(idleTimeout);
+          swiper?.autoplay?.start();
+        }
+      }, 120); // 80–200ms is usually enough
     }
-    lastInnerHeight = window.innerHeight;
-  }, 150);
-});
+  });
 
+  // resize heuristic fallback (some browsers modify viewport on F11)
+  let lastInnerHeight = window.innerHeight;
+  let resizeTimer;
+  window.addEventListener("resize", () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      // If viewport height changed a lot, treat like fullscreen toggle
+      if (Math.abs(window.innerHeight - lastInnerHeight) > 100) {
+        // either entered or exited browser fullscreen — run same logic
+        if (isFullscreen()) handleUserActivity();
+        else {
+          document.body.classList.remove("cursor-hidden");
+          clearTimeout(idleTimeout);
+          swiper?.autoplay?.start();
+        }
+      }
+      lastInnerHeight = window.innerHeight;
+    }, 150);
+  });
 
+  // global input listeners — they will call handleUserActivity but it will no-op when not fullscreen
   [
     "mousemove",
     "mousedown",
@@ -365,27 +394,23 @@ window.addEventListener("resize", () => {
     document.addEventListener(eventName, handleUserActivity, { passive: true });
   });
 
-
+  // also attach to main surfaces in case browser directs events differently
   mainContainer.addEventListener("mousemove", handleUserActivity, { passive: true });
-mainContainer.addEventListener("click", handleUserActivity, { passive: true });
+  mainContainer.addEventListener("click", handleUserActivity, { passive: true });
+  document.documentElement.addEventListener("mousemove", handleUserActivity, { passive: true });
+  window.addEventListener("mousemove", handleUserActivity, { passive: true });
 
-// also attach to root surfaces in case browser directs events differently
-document.documentElement.addEventListener("mousemove", handleUserActivity, { passive: true });
-window.addEventListener("mousemove", handleUserActivity, { passive: true });
-
-
-    document.addEventListener("fullscreenchange", () => {
-      if (isFullscreen()) {
-        // when fullscreen is confirmed THEN run idle logic
-        handleUserActivity();
-      } else {
-        document.body.classList.remove("cursor-hidden");
-        clearTimeout(cursorTimeout);
-        clearTimeout(idleTimeout);
-        swiper?.autoplay?.start();
-      }
-    });
-
+  // DOM fullscreen change (for your fullscreenBtn path)
+  document.addEventListener("fullscreenchange", () => {
+    if (isFullscreen()) {
+      // when fullscreen is confirmed THEN run idle logic
+      handleUserActivity();
+    } else {
+      document.body.classList.remove("cursor-hidden");
+      clearTimeout(idleTimeout);
+      swiper?.autoplay?.start();
+    }
+  });
 
   fullscreenBtn?.addEventListener("click", () => {
     if (!isFullscreen()) {
