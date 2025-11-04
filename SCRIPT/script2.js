@@ -278,13 +278,15 @@
   document.head.appendChild(styleEl);
 
   function isFullscreen() {
-    return (
-      document.fullscreenElement ||
-      document.webkitFullscreenElement ||
-      document.mozFullScreenElement ||
-      document.msFullscreenElement
-    );
-  }
+  return (
+    document.fullscreenElement ||
+    document.webkitFullscreenElement ||
+    document.mozFullScreenElement ||
+    document.msFullscreenElement ||
+    (window.innerHeight === screen.height && window.innerWidth === screen.width) // F11 FULLSCREEN
+  );
+}
+
 
   function handleUserActivity() {
     document.body.classList.remove("cursor-hidden");
@@ -307,6 +309,44 @@
     }
   }
 
+  // handle F11 (key code 122) — browser fullscreen toggle
+window.addEventListener("keydown", (e) => {
+  if (e.key === "F11" || e.keyCode === 122) {
+    // let the browser do its thing, then run lifecycle logic
+    setTimeout(() => {
+      if (isFullscreen()) {
+        handleUserActivity(); // schedule cursor fade + idle timers
+      } else {
+        // just exited browser fullscreen
+        document.body.classList.remove("cursor-hidden");
+        clearTimeout(cursorTimeout);
+        clearTimeout(idleTimeout);
+        swiper?.autoplay?.start();
+      }
+    }, 120); // 80–200ms is usually enough
+  }
+});
+let lastInnerHeight = window.innerHeight;
+let resizeTimer;
+window.addEventListener("resize", () => {
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(() => {
+    // If viewport height changed a lot, treat like fullscreen toggle
+    if (Math.abs(window.innerHeight - lastInnerHeight) > 100) {
+      // either entered or exited browser fullscreen — run same logic
+      if (isFullscreen()) handleUserActivity();
+      else {
+        document.body.classList.remove("cursor-hidden");
+        clearTimeout(cursorTimeout);
+        clearTimeout(idleTimeout);
+        swiper?.autoplay?.start();
+      }
+    }
+    lastInnerHeight = window.innerHeight;
+  }, 150);
+});
+
+
   [
     "mousemove",
     "mousedown",
@@ -325,16 +365,27 @@
     document.addEventListener(eventName, handleUserActivity, { passive: true });
   });
 
-  document.addEventListener("fullscreenchange", () => {
-    if (!isFullscreen()) {
-      document.body.classList.remove("cursor-hidden");
-      clearTimeout(cursorTimeout);
-      clearTimeout(idleTimeout);
-      swiper?.autoplay?.start();
-    } else {
-      handleUserActivity();
-    }
-  });
+
+  mainContainer.addEventListener("mousemove", handleUserActivity, { passive: true });
+mainContainer.addEventListener("click", handleUserActivity, { passive: true });
+
+// also attach to root surfaces in case browser directs events differently
+document.documentElement.addEventListener("mousemove", handleUserActivity, { passive: true });
+window.addEventListener("mousemove", handleUserActivity, { passive: true });
+
+
+    document.addEventListener("fullscreenchange", () => {
+      if (isFullscreen()) {
+        // when fullscreen is confirmed THEN run idle logic
+        handleUserActivity();
+      } else {
+        document.body.classList.remove("cursor-hidden");
+        clearTimeout(cursorTimeout);
+        clearTimeout(idleTimeout);
+        swiper?.autoplay?.start();
+      }
+    });
+
 
   fullscreenBtn?.addEventListener("click", () => {
     if (!isFullscreen()) {
