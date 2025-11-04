@@ -433,7 +433,7 @@ ion-icon {
   transform: translateY(-5px) scale(1.015);
 }
 /* --- Smooth scaling and perfect centering for screens between 320px and 380px --- */
-@media (min-width: 320px) and (max-width: 480px) {
+@media (min-width: 320px) and (max-width: 380px) {
   #security {
     padding: 0 12px;
   }
@@ -453,9 +453,9 @@ ion-icon {
 
   /* override materialize/JS inline transforms */
   .carousel .carousel-item {
-    max-width: 90%;
-    width: 270px;
-    height: 330px;
+    max-width: 95%;
+    width: 400px;
+    height: 420px;
     margin: 0 auto !important;
     display: flex;
     justify-content: center;
@@ -471,29 +471,75 @@ ion-icon {
   }
 
   .front-title {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     margin-top: -50px;
   }
+
+  /* Title Variations */
+.title-safe-online {
+  color: #fff;
+  font-style: oblique;
+  letter-spacing: 1px;
+  margin-top: -35px;
+}
+
+.title-types-links {
+  color: #fff;
+  font-style: oblique;
+  font-size: 1.9rem;
+  margin-top: -75px;
+  margin-left: -57px;
+  
+}
+
+.title-how-protects {
+  color: #fff;
+  font-style: oblique;
+  padding-bottom: 5px;
+  font-size: 2rem;
+}
+
+.title-why-matters {
+  color: #fff;
+  font-style: oblique;
+  letter-spacing: 1px;
+  margin-top: -115px;
+}
+
+.title-tips-safe {
+  color: #fff;
+   font-style: oblique;
+  margin-top: -60px;
+  font-size: 2rem;
+}
+
+.title-browse-smarter {
+  color: #fff;
+  text-transform: capitalize;
+  font-style: italic;
+  margin-top: -20px
+}
 
   .flip-back {
     padding: 18px 14px;
   }
 
   .flip-back h2.slide-title {
-    font-size: 1.25rem;
+    font-size: 1.7rem;
   }
 
   .flip-back p,
   .flip-back li,
   .flip-back ul,
   .flip-back ol {
-    font-size: 1rem !important;
-    line-height: 1.5;
+    font-size: 1.4rem !important;
+    line-height: 1.6;
   }
 
   .slider-arrow {
     width: 36px;
     height: 36px;
+    margin-top: 15px;
   }
 
   ion-icon {
@@ -503,6 +549,7 @@ ion-icon {
   .carousel-dot {
     width: 8px;
     height: 8px;
+    margin-top: 15px;
   }
 
   .security-slider-control {
@@ -510,5 +557,3 @@ ion-icon {
     margin-top: 10px;
   }
 }
-
-
